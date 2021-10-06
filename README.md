@@ -21,11 +21,12 @@ different phones and tablets to its potential clients.
             * Checking out the products.
 
     2. The information present on the site is organized in the following top-level pages:
-        1. Main Page:
+        1. Home Page:
             * Short general information about the site.
             * Values and mottos
             * Banners with the current campaigns / Brand Banners
             * Best deals present at the moment
+            * Technical terms explained
         2. The Products Page:
             * The products listed in a gallery format. The user can click and
             inspect each device being redirected to its custom page.
@@ -35,8 +36,8 @@ different phones and tablets to its potential clients.
             * News made by this website.
         4. Register Page
             * Login - Separate Page
+                * Forgot Password - Separate Page
             * Create - Separate Page
-            * Forgot Password - Separate Page
         5. Account Page
             * Personal Identifiers Information  (PIIs)
             * Delete / Update Account / Disable (Parking)
