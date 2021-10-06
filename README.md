@@ -107,7 +107,7 @@ different phones and tablets to its potential clients.
         and it also contains a search bar to facilitate product searching.
 
         Overall observations:
-        * The site mentioned above all use pagination in order to display their
+        * The sites mentioned above all use pagination in order to display their
     products on the page.
         * The menu & contact info along with many links to other pages and infos
     are present in the header & footer.
