@@ -59,8 +59,8 @@ different phones and tablets to its potential clients.
         can be accessed from their top-level parent page.
 
     3. Keywords used for:
-        * Main Page: phone, phones, tablet, tablets, device, tech
-        * Products Page: 
+        * Main Page: phones, tablets, devices, tech
+        * Products Page: iphone, android, ios, phones, tablets
         * Latest News Page: latest, newest, new, top, best
         * Register Page: account, login, sign, create
             * Login Page: account, sign, login
