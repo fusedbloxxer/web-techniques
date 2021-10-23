@@ -132,3 +132,30 @@ different phones and tablets to its potential clients.
     products on the page.
         * The menu & contact info along with many links to other pages and infos
     are present in the header & footer.
+3. Website Chromatic Schema Used
+
+    Using the [Adobe Color Tool](https://color.adobe.com/create/color-wheel)
+    I chose the website's main color to be
+    <span style="color: #5AAAFA">
+        #5AAAFA
+    </span>
+    and by using the Shades option I picked similar colors around the main one.
+    To be more specific, the chromatic schema that I chose is represented
+    by the following colors:
+    * A: <span style="color: #437FBA">#437FBA</span>
+    * B: <span style="color: #2C537A">#2C537A</span>
+    * C: <span style="color: #5AAAFA">#5AAAFA</span> <- Main Color
+    * D: <span style="color: #15283B">#15283B</span>
+    * E: <span style="color: #5199E0">#5199E0</span>
+
+    The reasons as to why I chose these specific combinations include the following:
+      * Because the website is technology based, I chose to go with a colder
+    set of colors around blue.
+      * This color set should be more pleasing to the human eye than a bright
+    red or a blinding yellow.
+      * The products can have many different specifications and subtleties,
+    and the user might stay a while on the page. Because of this, the
+    chromatic schema should not provoke eye strain.
+      * Also, from a psychological view standpoint, color shades around blue should
+    give the user a sense of safety and calmness which will provide an
+    undisruptive environment during their stay.
