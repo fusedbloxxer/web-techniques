@@ -35,7 +35,7 @@ different phones and tablets to its potential clients.
             * Quoted articles from other websites.
             * News made by this website.
         4. Register Page
-            * Login - Separate Page
+            * Login - Separate Page + LoginBox to facilitate access
                 * Forgot Password - Separate Page
             * Create - Separate Page
         5. Account Page
@@ -55,31 +55,51 @@ different phones and tablets to its potential clients.
             * Schedule
 
         Linking between pages:
-    
+
         All top-level pages can be accessed from the header, meanwhile separate pages
         can be accessed from their top-level parent page.
 
     3. Keywords used for:
-        * Main Page: phones, tablets, devices, tech
-        * Products Page: iphone, android, ios, phones, tablets
-        * Latest News Page: latest, newest, new, top, best
-        * Register Page: account, login, sign, create
-            * Login Page: account, sign, login
-            * Create Page: create, new
-            * Forgot Password Page: reset, renew
-        * Account Page: email, name, information
-        * Order Page: checkout, sum, pay
-        * Contact Page: location, street, map, open, hours, phone, number
+        * Main Page:
+            andrion, phones, tablets, devices, tech,
+            samsung new phone, apple iphone, ipad pro,
+            surface pro
+        * Products Page:
+            andrion, iphone, android, ios, phones, tablets,
+            samsung galaxy tab, apple ipad 8th generation
+        * Latest News Page:
+            andrion, latest, newest, new, top, best,
+            newest galaxy phone 2021, what is the newest samsung phone,
+            newest razor phone, newest boost mobile phones
+        * Register Page:
+            andrion, account, login, sign, create,
+            third party login, oauth google
+            * Login Page:
+                andrion, account, sign, login,
+                third party login, oauth google
+            * Create Page:
+                andrion, create, new, membership, welcome
+            * Forgot Password Page:
+                andrion, reset, renew, email validation
+        * Account Page:
+            andrion, email, name, information,
+            account management
+        * Order Page:
+            andrion, checkout, sum, pay, payment
+            discount, giftcard, promotion, limited edition
+        * Contact Page:
+            andrion, location, street, map,
+            open, hours, phone, number, maps location
 
     4. Similar Web Sites:
         1. https://www.ubuy.com.ro/en/
-        
+
             PROs:
             * The products gallery is very nicely stylized : boxes with round corners,
         medium images, making the phones easy to see.
             * The content is being loaded dynamically, presenting the user
         with some nice content loading loops, instead of showing a blank page.
-            
+
             CONs:
             * The text under the products in the gallery is not organized very well,
         it tries to fit as much information in a very small space, making it look
@@ -100,7 +120,7 @@ different phones and tablets to its potential clients.
         for the user to find a better choice.
 
         4. https://www.mobileshop.eu/ro/
-            
+
             Observations:
             * The user is welcomed with multiple banners and carousels,
         displaying the top & newest offers to the user inciting him to start buying.
