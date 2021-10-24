@@ -1,0 +1,31 @@
+div.container {
+    display: grid;
+    grid-gap: 5px;
+    grid-template-columns: auto;
+    grid-template-areas:
+        "gr-presentation gr-presentation gr-presentation    gr-presentation"
+        "gr-motivation   gr-motivation   gr-motivation      gr-motivation"
+        "gr-toc          gr-toc          gr-events-calendar gr-online-users"
+        "gr-toc          gr-toc          gr-announcements   gr-online-users"
+        "gr-user-stats   gr-user-stats   gr-site-and-server gr-site-and-server"
+        "gr-offers       gr-offers       gr-tech-terms      gr-tech-terms"
+        "gr-offers       gr-offers       gr-tech-terms      gr-tech-terms"
+        "gr-faq          gr-faq          gr-tech-terms      gr-tech-terms";
+
+    /*
+    grid-template-areas:
+        "gr-presentation gr-presentation gr-presentation    gr-presentation"
+        "gr-presentation gr-presentation gr-presentation    gr-presentation"
+        "gr-toc          gr-toc          gr-events-calendar gr-events-calendar"
+        "gr-toc          gr-toc          gr-announcements   gr-announcements"
+        "gr-online-users gr-user-stats   gr-user-stats      gr-site-and-server"
+        "gr-motivation   gr-motivation   gr-motivation      gr-motivation"
+        "gr-offers       gr-offers       gr-offers          gr-tech-terms"
+        "gr-offers       gr-offers       gr-offers          gr-tech-terms"
+        "gr-faq          gr-faq          gr-faq             gr-faq";
+    */
+}
+
+body {
+    font-size: 1.125rem;
+}
