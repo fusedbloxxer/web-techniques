@@ -1,0 +1,27 @@
+.menu ul {
+  list-style-type: none;
+}
+.menu ul li {
+  background-color: var(--color-primary);
+  border: 2px solid var(--color-primary-dark);
+  box-sizing: border-box;
+  text-align: center;
+  margin: 1px;
+  width: 164px;
+}
+.menu ul li ul li {
+  opacity: 0.4;
+}
+.menu ul li:hover {
+  opacity: 1;
+}
+.menu ul li a {
+  text-decoration: none;
+  color: black;
+  box-sizing: border-box;
+  font-weight: bold;
+  display: block;
+  width: 100%;
+}
+
+/*# sourceMappingURL=home-menu.css.map */
