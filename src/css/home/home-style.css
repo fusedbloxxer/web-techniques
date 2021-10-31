@@ -20,25 +20,49 @@ div > section {
     background-color: var(--color-primary)
 }
 
-#triunghi{
-    height:0px;
-    width:0;
-    display:inline-block;
-    border-bottom: 1.5rem solid grey;
-    border-left: 1rem solid transparent;
-    border-right: 1rem solid transparent;
-    vertical-align: top;
-    transform: translateY(30%) rotateZ(-45deg);
-    border-radius: 20px;
+#top-link {
+    --hover-show-duration: 300ms;
+    --top-button-container-size: 3em;
+
+    display: block;
+    background-color: var(--color-neutral);
+
+    border: 1px solid black;
+    opacity: 1;
+    position: fixed;
+
+    height: var(--top-button-container-size);
+    width: var(--top-button-container-size);
+
+    bottom: 1.5em;
+    left: 1.5em;
+
+    transform: rotateZ(45deg);
+    transition: opacity var(--hover-show-duration) linear;
+    opacity: 0.25;
 }
 
-#link-top {
-    display: block;
-    position: fixed;
-    bottom: 10px;
-    left: 10px;
-    width: 30px;
-    height: 30px;
-    border: 1px solid black;
-    transform: rotateZ(45deg);
+#top-link:hover {
+    opacity: 1;
+}
+
+#triangle {
+    --top-button-traingle-border-size: 1em;
+    --top-button-traingle-border-size-bottom: 1.5em;
+    display:inline-block;
+
+    border-bottom: var(--top-button-traingle-border-size-bottom) solid var(--color-white);
+    border-right: var(--top-button-traingle-border-size) solid transparent;
+    border-left: var(--top-button-traingle-border-size) solid transparent;
+    border-radius: 20px;
+
+    height: 0px;
+    width: 0px;
+
+    transform: scale(1.5) rotateZ(-45deg) translateX(-6.5%) translateY(20%);
+    transition: border-bottom-color var(--hover-show-duration) linear;
+}
+
+#triangle:hover {
+    border-bottom-color: var(--color-primary);
 }
