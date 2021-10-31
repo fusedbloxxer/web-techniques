@@ -1,6 +1,8 @@
 body {
     --color-primary: #5199E0;
 
+    --color-primary-light: #00CAED;
+
     --color-primary-dark: #15283B;
 
     --color-secondary: #437FBA;
@@ -8,4 +10,8 @@ body {
     --color-tertiary: #437FBA;
 
     --color-neutral: #2C537A;
+
+    --text-color-primary: #000000;
+
+    --color-white: #FFFFFF;
 }

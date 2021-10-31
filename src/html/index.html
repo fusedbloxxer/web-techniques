@@ -33,26 +33,42 @@
     href="../css/home/grid/home-grid-large.css"
     media="screen and (min-width: 1256px)" />
 
+  <!-- FontAwesome -->
+  <script
+    src="https://kit.fontawesome.com/7ccb74d43e.js"
+    crossorigin="anonymous">
+  </script>
   <link rel="stylesheet" type="text/css" href="../css/home/grid/home-grid.css" />
 
   <!-- Menu CSS -->
   <link rel="stylesheet" type="text/css" href="../css/home/menu/home-menu.css" />
 
+  <!-- Offer CSS -->
+  <link rel="stylesheet" type="text/css" href="../css/home/offer/offer-video.css" />
+
   <!-- Other Styling Options -->
   <link rel="stylesheet" type="text/css" href="../css/home/home-style.css" />
-
   <link rel="stylesheet" type="text/css" href="../css/colors.css" />
+
 </head>
 
 <body>
   <a id="top"></a>
   <header>
-    <h1>Andrion -- Phones & Tablets</h1>
-    <nav class="menu">
-      <ul>
+    <h1 style="padding-top: 32px;">Andrion -- Phones & Tablets</h1>
+    <nav>
+      <label id="hamburger" for="hamburger-checkbox" alt="menu">
+        <span id="hamburger-icon" class="fas fa-bars fa-2x">
+        </span>
+      </label>
+      <input id="hamburger-checkbox" type="checkbox">
+      <ul class="menu">
         <li>
-          Homepage
-          <ul>
+          <a href="index.html">
+            <span class="fas fa-house-user"></span>
+            <span id="homepage"> Homepage</span>
+          </a>
+          <ul class="submenu">
             <li><a href="index.html#presentation">Presentation</a></li>
             <li><a href="index.html#table-of-contents">Table of Contents</a></li>
             <li><a href="index.html#events-calendar">Events Calendar</a></li>
@@ -68,35 +84,35 @@
         </li>
 
         <li>
-          Products
-          <ul>
+          <a href="products.html">Products</a>
+          <ul class="submenu">
             <li><a href="phones.html">Phones</a></li>
             <li><a href="tablets.html">Tablets</a></li>
           </ul>
         </li>
 
         <li>
-          Latest News
+          <a href="latest-news.html">Latest News</a>
         </li>
 
         <li>
-          Register
-          <ul>
-            <li>Login</li>
-            <li>Create an account</li>
+          <a href="register.html">Register</a>
+          <ul class="submenu">
+            <li><a href="login.html">Login</a></li>
+            <li><a href="create.html">Create an account</a></li>
           </ul>
         </li>
 
         <li>
-          Account
+          <a href="account.html">Account</a>
         </li>
 
         <li>
-          Orders
+          <a href="orders.html">Orders</a>
         </li>
 
         <li>
-          Contact
+          <a href="contact.html">Contact</a>
         </li>
       </ul>
     </nav>
@@ -394,7 +410,7 @@
       <section id="offers">
         <h2>Offers</h2>
 
-        <details>
+        <details open>
           <summary>
             iPad Pro - <ins datetime="2021-10-06">999$</ins> <s>1200$</s>
           </summary>
@@ -402,6 +418,33 @@
             The iPad Pro is a marvellous tech device. Available in sizes such as
             11' and 12.9', is an essential tools in your daily busy life.
           </p>
+          <h3>Most Powerful Tablet</h3>
+          <p>Apple introduced earlier in 2021, one of the <strong>most powerful tablets</strong>
+            on the market, the <a href="https://www.apple.com/ipad-pro/" target="_blank">iPad Pro</a>.</p>
+          <p>Check out the following tablets released and see how the iPad Pro shines.</p>
+          <div class="offer-video-container" id="#test-container">
+            <ul class="offer-video-links">
+              <li>
+                <a href="https://www.youtube.com/embed/p9L-AFxOdOw" target="best-tablets">
+                  <strong>TOP 5 Tablets in 2021</strong>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.youtube.com/embed/yUNgDz_oDmE" target="best-tablets">
+                  <strong>iPads Comparison</strong>
+                </a>
+              </li>
+            </ul>
+            <iframe
+              name="best-tablets"
+              width="560"
+              height="315"
+              title="YouTube video player"
+              src="https://www.youtube.com/embed/p9L-AFxOdOw"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen>
+            </iframe>
+          </div>
           Specifications:
           <ul>
             <li>Chip: M1</li>

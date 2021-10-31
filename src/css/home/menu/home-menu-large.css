@@ -94,47 +94,5 @@ nav > ul.menu > li > ul.submenu > li:hover > a::before, nav > ul.menu > li > ul.
     display: none;
   }
 }
-@media only screen and (min-width: 720px) and (max-width: 1256px) {
-  #hambuger, #hamburger-icon, #hamburger-checkbox {
-    display: none;
-  }
 
-  #homepage {
-    display: none;
-  }
-}
-@media only screen and (max-width: 720px) {
-  #homepage, #hamburger-checkbox {
-    display: none;
-  }
-
-  #hambuger, #hamburger-icon {
-    background-color: var(--color-primary);
-    display: block;
-  }
-
-  #hamburger-icon {
-    padding: 5px;
-    height: 100%;
-    box-sizing: border-box;
-  }
-
-  nav > input[type=checkbox]#hamburger-checkbox:checked + ul.menu {
-    flex-direction: column;
-    transform: scaleX(1);
-  }
-  nav > input[type=checkbox]#hamburger-checkbox:checked + ul.menu > li {
-    height: 100%;
-  }
-  nav > ul.menu {
-    transition: transform 300ms ease-out;
-    transform-origin: left;
-    transform: scaleX(0);
-    display: block;
-  }
-  nav > ul.menu > li > ul.submenu {
-    transition: none;
-  }
-}
-
-/*# sourceMappingURL=home-menu.css.map */
+/*# sourceMappingURL=home-menu-large.css.map */
