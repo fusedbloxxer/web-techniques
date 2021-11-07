@@ -1,0 +1,17 @@
+.error {
+  text-align: center;
+  font-family: "Anton", sans-serif;
+}
+.error .error-title {
+  color: var(--color-error-title);
+  text-decoration: underline;
+  font-weight: bold;
+}
+.error .error-message {
+  color: var(--color-error-message);
+}
+.error .error-image {
+  width: 35%;
+}
+
+/*# sourceMappingURL=error.css.map */

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Include Common Head Fragment -->
+    <%- include('../../fragments/head.ejs') %>
+
+    <!-- Page-Specific Information -->
+    <meta name="keywords" content="about, company, history, shop infomartion, vision, mission"/>
+    <meta name="description" content="Learn more about us and how we can help you."/>
+    <title>Andrion - About</title>
+
+    <!-- Preloading -->
+    <link rel="preload" href="/static/resources/videos/content/about/who-we-are.mp4" as="video" type="video/mp4"/>
+
+    <!-- CSS Styling -->
+    <link rel="stylesheet" href="/static/css/content/about/presentation/presentation.css"/>
+    <link rel="stylesheet" href="/static/css/content/about/about-style.css"/>
+</head>
+
+<body>
+    <%- include('../../fragments/header.ejs') %>
+
+    <main>
+        <div class="container">
+            <section id="introduction">
+                <h2 class="title">
+                    About Us
+                </h2>
+                <q class="quotation" lang="en">
+                    I have not failed. I’ve just found 10,000 ways that won’t work.
+                </q>
+                <p class="quotation-source">
+                    Thomas Edison
+                </p>
+                <video
+                    poster="/static/resources/images/content/about/who-we-are-poster.jpg"
+                    controls
+                    loop>
+                    <source src="/static/resources/videos/content/about/who-we-are.mp4" type="video/mp4"/>
+                    <source src="/static/resources/videos/content/about/who-we-are.ogv" type="video/ogv"/>
+                    <track  src="/static/resources/vtt/content/about/who-we-are-captions-en.vtt" default label="english" srclang="en" kind="captions"/>
+                    <track  src="/static/resources/vtt/content/about/who-we-are-captions-ro.vtt" label="romanian" srclang="ro" kind="captions"/>
+                </video>
+                <p class="credits">
+                    Stock footage provided by Beachfront,
+                    downloaded from <a href="https://www.videvo.net">Videvo</a>.
+                </p>
+            </section>
+            <section id="description">
+                <h2 class="title">
+                    Who We Are...
+                </h2>
+                <p>
+                    We are the best experts in the technology industry.
+                    We have insiders in many fields that will help us find
+                    the best options for your <b>hard-earned</b> money.
+                </p>
+            </section>
+        </div>
+    </main>
+
+    <%- include('../../fragments/footer.ejs') %>
+</body>
+
+</html>

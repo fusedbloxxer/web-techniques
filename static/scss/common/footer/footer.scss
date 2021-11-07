@@ -1,0 +1,15 @@
+footer {
+    padding: 0px;
+    margin: 10px 0px 0px 0px;
+    width: 100%;
+
+    > *:not(a) {
+        background-color: var(--color-primary);
+        text-align: center;
+    }
+
+    > small {
+        background-color: transparent;
+        display: block;
+    }
+}

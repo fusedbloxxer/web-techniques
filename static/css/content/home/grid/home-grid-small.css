@@ -1,0 +1,14 @@
+div.container {
+  display: block;
+}
+
+div.container > section {
+  margin: 10px;
+}
+
+body {
+  animation: none !important;
+  transition: none !important;
+}
+
+/*# sourceMappingURL=home-grid-small.css.map */

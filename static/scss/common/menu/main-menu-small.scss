@@ -1,0 +1,50 @@
+@use 'sass:map';
+@use '../variables' as variables;
+@use 'main-menu-common';
+
+@media screen and (max-width: map.get(variables.$screen-sizes, "small-max")) {
+    $hamburger-show-animation-duration: 300ms;
+
+    #homepage, #hamburger-checkbox {
+        display:none;
+    }
+
+    #hambuger, #hamburger-icon {
+        background-color: var(--color-primary);
+        display: block;
+    }
+
+    #hamburger-icon {
+        padding: 5px;
+        height: 100%;
+        box-sizing: border-box;
+    }
+
+    nav {
+        > input[type="checkbox"]#hamburger-checkbox:checked + ul.menu {
+            flex-direction: column;
+            transform: scaleX(1);
+            visibility: visible;
+            width: 100%;
+
+            > li {
+                height: 100%;
+            }
+        }
+
+        > ul.menu {
+            transition: transform $hamburger-show-animation-duration ease-out;
+            transform-origin: left;
+            transform: scaleX(0);
+            visibility: hidden;
+            display: flex;
+            width: 0%;
+
+            > li {
+                > ul.submenu {
+                    transition: none;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,8 @@
+#tech-terms blockquote > p {
+  font-family: "Roboto", sans-serif;
+}
+#tech-terms blockquote > p::before, #tech-terms blockquote > p::after {
+  content: '"';
+}
+
+/*# sourceMappingURL=tech-terms.css.map */

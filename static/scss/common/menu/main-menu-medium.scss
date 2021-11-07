@@ -1,0 +1,13 @@
+@use 'sass:map';
+@use '../variables' as variables;
+@use 'main-menu-common';
+
+@media screen and (min-width: map.get(variables.$screen-sizes, "medium-min")) and (max-width: map.get(variables.$screen-sizes, "medium-max")) {
+    #hambuger, #hamburger-icon, #hamburger-checkbox {
+        display: none;
+    }
+
+    #homepage {
+        display:none;
+    }
+}

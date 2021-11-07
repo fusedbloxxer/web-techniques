@@ -1,0 +1,9 @@
+#tech-terms {
+    blockquote > p {
+        font-family: 'Roboto', sans-serif;
+
+        &::before, &::after {
+            content: "\""
+        }
+    }
+}

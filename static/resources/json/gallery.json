@@ -1,0 +1,21 @@
+{
+    "gallery-path": "resources/images/gallery",
+    "images": [
+        {
+            "filename": "cool.ok",
+            "description": "interesting"
+        },
+        {
+            "filename": "cool.ok",
+            "description": "interesting"
+        },
+        {
+            "filename": "cool.ok",
+            "description": "interesting"
+        },
+        {
+            "filename": "cool.ok",
+            "description": "interesting"
+        }
+    ]
+}

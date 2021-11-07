@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Include Common Head Fragment -->
+    <%- include('../../fragments/head.ejs') %>
+
+    <!-- Page-Specific Information -->
+    <meta name="keywords" content="phone, phones, tablet, tablets, devices, tech, andrion" />
+    <meta name="description" content="Tech and devices - phones and tables." />
+    <title>Andrion - Error <%- locals.error.code %></title>
+
+    <!-- Google Fonts API -->
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+
+    <!-- Error CSS -->
+    <link rel="stylesheet" href="/static/css/errors/error.css" />
+</head>
+
+<body>
+    <%- include('../../fragments/header.ejs') %>
+
+    <main>
+        <section class="error">
+            <h2 class="error-title">
+                <%- locals.error.title %>
+            </h2>
+            <p class="error-message">
+                <%- locals.error.message %>
+            </p>
+            <img
+                class="error-image"
+                src="<%- locals.error.image  %>"
+                title="<%- `${locals.error.code} - ${locals.error.title}` %>"
+                alt="Error Image">
+        </section>
+    </main>
+
+    <%- include('../../fragments/footer.ejs') %>
+</body>
+
+</html>

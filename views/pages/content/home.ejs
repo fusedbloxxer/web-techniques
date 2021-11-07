@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Include Common Head Fragment -->
+    <%- include('../../fragments/head.ejs') %>
+
+    <!-- Page-Specific Information -->
+    <meta name="keywords" content="phone, phones, tablet, tablets, devices, tech, andrion" />
+    <meta name="description" content="Tech and devices - phones and tables." />
+    <title>Andrion - Home</title>
+
+    <!-- Grid -->
+    <link rel="stylesheet" type="text/css" href="/static/css/content/home/grid/home-grid-small.css"
+        media="screen and (max-width: 720px)" />
+    <link rel="stylesheet" type="text/css" href="/static/css/content/home/grid/home-grid-medium.css"
+        media="screen and (min-width: 720px) and (max-width: 1256px)" />
+    <link rel="stylesheet" type="text/css" href="/static/css/content/home/grid/home-grid-large.css"
+        media="screen and (min-width: 1256px)" />
+    <link rel="stylesheet" type="text/css" href="/static/css/content/home/grid/home-grid.css" />
+
+    <!-- Google Fonts API -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
+
+    <!-- Other CSS Styling -->
+    <link rel="stylesheet" type="text/css" href="/static/css/content/home/tech-terms/tech-terms.css" />
+    <link rel="stylesheet" type="text/css" href="/static/css/content/home/offer/offer-video.css" />
+    <link rel="stylesheet" type="text/css" href="/static/css/content/home/sells/sells.css" />
+    <link rel="stylesheet" type="text/css" href="/static/css/content/home/home-style.css" />
+</head>
+
+<body>
+    <%- include('../../fragments/header.ejs') %>
+
+    <main>
+        <div class="container">
+            <section id="presentation">
+                <h2>Presentation</h2>
+
+                <p>We offer you the <b>greatest deals</b> on the latest mobile tech devices.</p>
+
+                <section>
+                    <h3>Industry Insights</h3>
+                    <p>We have deep knowledge in tech regarding what's best on the market.</p>
+                </section>
+            </section>
+
+            <section id="table-of-contents">
+                <h2>Best Sold Mobile Devices</h2>
+                <caption>Sell Stats In 2021</caption>
+                <table style="border: 1px solid black">
+                    <thead>
+                        <tr>
+                            <th rowspan="2">Model</th>
+                            <th rowspan="2">Type</th>
+                            <th rowspan="2">Manufacturer</th>
+                            <th colspan="3">Units (millions)</th>
+                            <th>User Satisfaction</th>
+                            <th>Performance</th>
+                            <th>Use Case</th>
+                        </tr>
+                        <tr>
+                            <th>Q1</th>
+                            <th>Q2</th>
+                            <th>Q3</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                    <tfooter>
+
+                    </tfooter>
+                </table>
+            </section>
+
+            <section id="events-calendar">
+                <h2>Events Calendar</h2>
+
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse tincidunt congue leo. Nulla dui
+                    arcu,
+                    ullamcorper id volutpat eget, ullamcorper non tortor. Proin eros nibh, blandit eget aliquet et,
+                    vulputate eget
+                    lorem. Nulla vehicula mi lectus, a aliquet neque mattis at. Aenean molestie in nulla et venenatis.
+                    Class
+                    aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec sit amet
+                    volutpat
+                    mauris. Cras eu commodo augue. Quisque malesuada commodo purus non condimentum. Mauris auctor, erat
+                    sit amet
+                    vulputate elementum, augue augue lobortis ipsum, ut gravida est libero non tellus. Aenean vitae nisl
+                    mauris.
+                    Nunc viverra velit ante.</p>
+            </section>
+
+            <section id="announcements">
+                <h2>Announcements</h2>
+
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse tincidunt congue leo. Nulla dui
+                    arcu,
+                    ullamcorper id volutpat eget, ullamcorper non tortor. Proin eros nibh, blandit eget aliquet et,
+                    vulputate eget
+                    lorem. Nulla vehicula mi lectus, a aliquet neque mattis at. Aenean molestie in nulla et venenatis.
+                    Class
+                    aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec sit amet
+                    volutpat
+                    mauris. Cras eu commodo augue. Quisque malesuada commodo purus non condimentum. Mauris auctor, erat
+                    sit amet
+                    vulputate elementum, augue augue lobortis ipsum, ut gravida est libero non tellus. Aenean vitae nisl
+                    mauris.
+                    Nunc viverra velit ante.</p>
+            </section>
+
+            <section id="online-users">
+                <h2>Online Users</h2>
+
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse tincidunt congue leo. Nulla dui
+                    arcu,
+                    ullamcorper id volutpat eget, ullamcorper non tortor. Proin eros nibh, blandit eget aliquet et,
+                    vulputate eget
+                    lorem. Nulla vehicula mi lectus, a aliquet neque mattis at. Aenean molestie in nulla et venenatis.
+                    Class
+                    aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec sit amet
+                    volutpat
+                    mauris. Cras eu commodo augue. Quisque malesuada commodo purus non condimentum. Mauris auctor, erat
+                    sit amet
+                    vulputate elementum, augue augue lobortis ipsum, ut gravida est libero non tellus. Aenean vitae nisl
+                    mauris.
+                    Nunc viverra velit ante.</p>
+            </section>
+
+            <section id="user-stats">
+                <h2>
+                    <span class="fas fa-globe fa-spin"></span>
+                    User Data and Stats
+                    <span class="fas fa-globe fa-spin"></span>
+                </h2>
+
+                <p>
+                    Your IP Address Is:
+                    <%- locals.ip %>
+                </p>
+            </section>
+
+            <section id="site-and-server">
+                <h2>Website &amp; Server</h2>
+
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse tincidunt congue leo. Nulla dui
+                    arcu,
+                    ullamcorper id volutpat eget, ullamcorper non tortor. Proin eros nibh, blandit eget aliquet et,
+                    vulputate eget
+                    lorem. Nulla vehicula mi lectus, a aliquet neque mattis at. Aenean molestie in nulla et venenatis.
+                    Class
+                    aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec sit amet
+                    volutpat
+                    mauris. Cras eu commodo augue. Quisque malesuada commodo purus non condimentum. Mauris auctor, erat
+                    sit amet
+                    vulputate elementum, augue augue lobortis ipsum, ut gravida est libero non tellus. Aenean vitae nisl
+                    mauris.
+                    Nunc viverra velit ante.
+                </p>
+            </section>
+
+            <section id="motivation">
+                <h2>Motivation</h2>
+
+                <p>Making the world a better place is what drives our efforts!</p>
+                <p>Helping everyone upgrade their daily lives is what motivates us!</p>
+            </section>
+
+            <section id="tech-terms">
+                <h3>
+                    <span class="fab fa-readme"></span>
+                    Tech Terms
+                </h3>
+
+                <blockquote cite="https://en.wikipedia.org/wiki/Mobile_device">
+                    <p>A smartphone is a portable device that combines mobile phone and computing functions into one
+                        unit. They
+                        are distinguished from feature phones by their stronger hardware capabilities.</p>
+                </blockquote>
+
+                <blockquote cite="https://en.wikipedia.org/wiki/Tablet_computer">
+                    <p>A tablet computer, commonly shortened to tablet, is a mobile device, typically with a mobile
+                        operating
+                        system
+                        and touchscreen display processing circuitry, and a rechargeable battery in a single, thin and
+                        flat package.
+                    </p>
+                </blockquote>
+            </section>
+
+            <section id="faq">
+                <h2>Frequently Asked Questions</h2>
+
+                <details>
+                    <summary>Are you really <b>excited</b> to buy a new phone or tablet?</summary>
+                    We've got you covered then.
+                </details>
+                <br />
+                <details>
+                    <summary>Where are you taking orders from?</summary>
+                    All over the world.
+                </details>
+                <br />
+                <details>
+                    <summary>What payment methods are available?</summary>
+                    We accept payment only using credit cards and cryptocurrencies.
+                </details>
+            </section>
+
+            <section id="offers">
+                <h2>Offers</h2>
+
+                <details open>
+                    <summary>
+                        iPad Pro - <ins datetime="2021-10-06">999$</ins> <s>1200$</s>
+                    </summary>
+                    <p>
+                        The iPad Pro is a marvellous tech device. Available in sizes such as
+                        11' and 12.9', is an essential tools in your daily busy life.
+                    </p>
+                    <h3>Most Powerful Tablet</h3>
+                    <p>Apple introduced earlier in 2021, one of the <strong>most powerful tablets</strong>
+                        on the market, the <a href="https://www.apple.com/ipad-pro/" target="_blank">iPad Pro</a>.</p>
+                    <p>Check out the following tablets released and see how the iPad Pro shines.</p>
+                    <div class="offer-video-container">
+                        <ul class="offer-video-links">
+                            <li>
+                                <a href="https://www.youtube.com/embed/p9L-AFxOdOw" target="best-tablets">
+                                    <strong>TOP 5 Tablets in 2021</strong>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.youtube.com/embed/yUNgDz_oDmE" target="best-tablets">
+                                    <strong>iPads Comparison</strong>
+                                </a>
+                            </li>
+                        </ul>
+                        <iframe name="best-tablets" width="100%" height="315" title="YouTube video player"
+                            src="https://www.youtube.com/embed/p9L-AFxOdOw"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    Specifications:
+                    <ul>
+                        <li>Chip: M1</li>
+                        <li>Screen size: 11'/12.9'</li>
+                        <li>Battery life: 10 hours</li>
+                        <li>User rating:
+                            <meter min="0" max="5" low="1" high="4" optimum="5" value="4.2">
+                                4.2 out of 5
+                            </meter>
+                        </li>
+                    </ul>
+                </details>
+
+                <details>
+                    <summary>
+                        Surface Pro - <ins datetime="2021-10-06">600$</ins> <s>720$</s>
+                    </summary>
+                    <p>
+                        The Surface Pro is the latest product from Microsoft on the market.
+                        Competing with many of its counterparts, this tablet comes bundled
+                        with all accessories you can think of!
+                    </p>
+                    <ul>
+                        <li>Chip: Intel i5</li>
+                        <li>Screen size: 10'</li>
+                        <li>Battery life: 16 hours</li>
+                        <li>User rating:
+                            <meter min="0" max="5" low="1" high="4" optimum="5" value="2.7">
+                                2.7 out of 5
+                            </meter>
+                        </li>
+                    </ul>
+                    Included in the package:
+                    <ol>
+                        <li>Notebook pen for digital writing</li>
+                        <li>Safety cover</li>
+                        <li>Wireless headphones</li>
+                    </ol>
+                </details>
+
+                <details>
+                    <summary>
+                        Samsung Galaxy Tab S7 - <ins datetime="2021-10-06">1200$</ins> <s>1600$</s>
+                    </summary>
+                    <p>
+                        Coming from realms outside of ours, this tablet knows no limits.
+                        It will please your ears everywhere you go. Your eyes will drop tears
+                        of hapiness seeing crystal clear images. <b>Now is the time</b> to get your
+                        hands on it.
+                    </p>
+                    <ul>
+                        <li>Chip: AMD Ryzen M7</li>
+                        <li>Screen size: 13'</li>
+                        <li>Battery life: 20 hours</li>
+                        <li>User rating:
+                            <meter min="0" max="5" low="1" high="4" optimum="5" value="5.0">
+                                5 out of 5
+                            </meter>
+                        </li>
+                    </ul>
+                </details>
+            </section>
+
+            <!-- <section id="latest">
+        <h2>Latest News in Tech</h2>
+
+        <article>
+          <h3>Most Powerful Tablet</h3>
+          <p>Apple introduced earlier in 2021, one of the <strong>most powerful tablets</strong>
+            on the market, the <a href="https://www.apple.com/ipad-pro/" target="_blank">iPad Pro</a>.</p>
+          <p>Check out the following tablets released and see how the iPad Pro shines.</p>
+          <ul>
+            <li>
+              <a href="https://www.youtube.com/embed/p9L-AFxOdOw" target="best-tablets">
+                <strong>TOP 5 Tablets in 2021</strong>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.youtube.com/embed/yUNgDz_oDmE" target="best-tablets">
+                <strong>iPads Comparison</strong>
+              </a>
+            </li>
+          </ul>
+          <iframe name="best-tablets" width="560" height="315" title="YouTube video player" style="border: 0px"
+            src="https://www.youtube.com/embed/p9L-AFxOdOw"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
+        </article>
+
+        <article>
+          <h3>Semiconductor Crisis</h3>
+
+          <blockquote
+            cite="https://www.autocar.co.uk/car-news/industry-news-tech%2C-development-and-manufacturing/semiconductor-crisis-latest-updates-chip">
+            <p>
+              The shortage of semiconductor processing chips continues to impact the automotive and technology
+              industries.
+            </p>
+          </blockquote>
+
+          <dl>
+            <dt>
+              Semiconductor
+            </dt>
+            <dd>
+              It's a
+              <q cite="https://en.wikipedia.org/wiki/Semiconductor">
+                material that has an <i>electrical conductivity</i>
+              </q>
+              and it is the essential part which drives the innovation in more performant devices.
+            </dd>
+          </dl>
+        </article>
+      </section>
+
+      <section id="sign-up">
+        <h2>Sign Up</h2>
+        <p>Come and join us in the world of the best phones and tablets you can find.</p>
+      </section>
+
+      <section id="contact-us">
+        <h2>Contact Us</h2>
+        <address>
+          You can get in touch with us at this e-mail:
+          <a href="mailto:andrion.support@gmail.com">
+            andrion.support@gmail.com
+          </a>
+        </address>
+        <br />
+      </section> -->
+        </div>
+    </main>
+
+    <%- include('../../fragments/footer.ejs') %>
+</body>
+
+</html>

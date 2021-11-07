@@ -1,0 +1,18 @@
+.error {
+    text-align: center;
+    font-family: 'Anton', sans-serif;
+
+    .error-title {
+        color: var(--color-error-title);
+        text-decoration: underline;
+        font-weight: bold;
+    }
+
+    .error-message {
+        color: var(--color-error-message);
+    }
+
+    .error-image {
+        width: 35%;
+    }
+}
