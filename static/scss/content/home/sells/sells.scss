@@ -1,3 +1,97 @@
-table, th, td {
-    border: 1px solid var(--color-primary-dark);
+@use 'sass:map';
+@use '../../../common/variables' as variables;
+
+$border-size: 2px;
+$border-spacing: 1px;
+$border-size-thick: 4px;
+$border-color-table: aqua;
+$box-shadow-color: var(--color-primary-dark);
+$border-color-even-odd: var(--color-secondary);
+$border-color-odd-even: var(--color-tertiary);
+
+%border-colors {
+    &:nth-child(2n + 1) {
+        border-left-color: $border-color-even-odd;
+        border-right-color: $border-color-odd-even;
+    }
+    &:nth-child(2n) {
+        border-left-color: $border-color-odd-even;
+        border-right-color: $border-color-even-odd;
+    }
+}
+
+%border-colors-first-last {
+    &:first-child {
+        border-left-color: $border-color-table;
+        border-right-color: $border-color-odd-even;
+    }
+    &:last-child {
+        border-left-color: $border-color-odd-even;
+        border-right-color: $border-color-table;
+    }
+}
+
+table {
+    $parent: &;
+    width: 100%;
+    text-align: center;
+    border-spacing: $border-spacing;
+
+    > caption {
+        caption-side: bottom;
+    }
+
+    th, td {
+        padding: 5px;
+    }
+
+    tr > td, tr > th {
+        border: $border-size solid $border-color-table;
+    }
+
+    // Row Highlight
+    > thead, > tbody > tr, > tfoot > tr {
+        transition: box-shadow 500ms linear;
+        box-shadow:  inset 0px 0px 30px 0px rgba(50, 50, 50, 0);
+    }
+    > thead:hover, > tbody > tr:hover, > tfoot > tr:hover {
+        box-shadow:  inset 0px 0px 30px 0px rgba(50, 50, 50, 1);
+    }
+
+    // Colored Column Borders
+    > thead > tr, > tbody > tr {
+        > td {
+            @extend %border-colors;
+        }
+
+        > th {
+            @extend %border-colors;
+        }
+    }
+    > thead > tr:first-child, > tbody > tr {
+        > td {
+            @extend %border-colors-first-last;
+        }
+        > th {
+            @extend %border-colors-first-last;
+        }
+    }
+
+    // Thick Borders
+    > thead > tr, > tbody > tr:last-child {
+        > td, > th:not([colspan]) {
+            border-bottom-width: $border-size-thick;
+        }
+    }
+    > tbody > tr:first-child, > tfoot > tr:first-child {
+        > td {
+            border-top-width: $border-size-thick;
+        }
+    }
+}
+
+@media screen and (max-width: map.get(variables.$screen-sizes, "small-max")) {
+    div#sells-table {
+        overflow-x: auto;
+    }
 }
