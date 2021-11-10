@@ -95,42 +95,14 @@ nav > ul.menu > li > ul.submenu > li:hover > a::before, nav > ul.menu > li > ul.
   transform: scaleY(1);
 }
 
-@media screen and (max-width: 720px) {
-  #homepage, #hamburger-checkbox {
+@media screen and (min-width: 840px) and (max-width: 1256px) {
+  #hambuger, #hamburger-icon, #hamburger-checkbox {
     display: none;
   }
 
-  #hambuger, #hamburger-icon {
-    background-color: var(--color-primary);
-    display: block;
-  }
-
-  #hamburger-icon {
-    padding: 5px;
-    height: 100%;
-    box-sizing: border-box;
-  }
-
-  nav > input[type=checkbox]#hamburger-checkbox:checked + ul.menu {
-    flex-direction: column;
-    transform: scaleX(1);
-    visibility: visible;
-    width: 100%;
-  }
-  nav > input[type=checkbox]#hamburger-checkbox:checked + ul.menu > li {
-    height: 100%;
-  }
-  nav > ul.menu {
-    transition: transform 300ms ease-out;
-    transform-origin: left;
-    transform: scaleX(0);
-    visibility: hidden;
-    display: flex;
-    width: 0%;
-  }
-  nav > ul.menu > li > ul.submenu {
-    transition: none;
+  #homepage {
+    display: none;
   }
 }
 
-/*# sourceMappingURL=main-menu-small.css.map */
+/*# sourceMappingURL=main-menu-medium.css.map */

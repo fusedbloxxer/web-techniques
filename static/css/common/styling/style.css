@@ -3,12 +3,12 @@
     font-size: 1.25rem;
   }
 }
-@media screen and (min-width: 720px) and (max-width: 1256px) {
+@media screen and (min-width: 840px) and (max-width: 1256px) {
   body {
     font-size: 1.125rem;
   }
 }
-@media screen and (max-width: 720px) {
+@media screen and (max-width: 840px) {
   body {
     font-size: 1rem;
   }

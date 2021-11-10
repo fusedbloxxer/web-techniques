@@ -1,3 +1,7 @@
+@use 'home-grid-large';
+@use 'home-grid-medium';
+@use 'home-grid-small';
+
 section#presentation {
     grid-area: gr-presentation;
 }

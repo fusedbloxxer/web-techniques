@@ -95,21 +95,7 @@ nav > ul.menu > li > ul.submenu > li:hover > a::before, nav > ul.menu > li > ul.
   transform: scaleY(1);
 }
 
-@media screen and (min-width: 1256px) {
-  #hambuger, #hamburger-icon, #hamburger-checkbox {
-    display: none;
-  }
-}
-@media screen and (min-width: 720px) and (max-width: 1256px) {
-  #hambuger, #hamburger-icon, #hamburger-checkbox {
-    display: none;
-  }
-
-  #homepage {
-    display: none;
-  }
-}
-@media screen and (max-width: 720px) {
+@media screen and (max-width: 840px) {
   #homepage, #hamburger-checkbox {
     display: none;
   }
@@ -147,4 +133,4 @@ nav > ul.menu > li > ul.submenu > li:hover > a::before, nav > ul.menu > li > ul.
   }
 }
 
-/*# sourceMappingURL=main-menu.css.map */
+/*# sourceMappingURL=main-menu-small.css.map */

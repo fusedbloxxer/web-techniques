@@ -90,7 +90,7 @@ table {
     }
 }
 
-@media screen and (max-width: map.get(variables.$screen-sizes, "small-max")) {
+@media screen and (max-width: map.get(variables.$screen-sizes, "medium-max")) {
     div#sells-table {
         overflow-x: auto;
     }

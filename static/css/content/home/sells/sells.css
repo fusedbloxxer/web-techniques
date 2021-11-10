@@ -44,7 +44,7 @@ table > tbody > tr:first-child > td, table > tfoot > tr:first-child > td {
   border-top-width: 4px;
 }
 
-@media screen and (max-width: 720px) {
+@media screen and (max-width: 1256px) {
   div#sells-table {
     overflow-x: auto;
   }

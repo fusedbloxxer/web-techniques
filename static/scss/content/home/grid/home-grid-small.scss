@@ -1,12 +1,17 @@
-div.container {
-    display: block;
-}
+@use 'sass:map';
+@use '../../../common/variables' as variables;
 
-div.container > section {
-    margin: 10px;
-}
+@media screen and (max-width: map.get(variables.$screen-sizes, "small-max")) {
+    div.container {
+        display: block;
+    }
 
-body {
-    animation: none !important;
-    transition: none !important;
+    div.container > section {
+        margin: 10px;
+    }
+
+    body {
+        animation: none !important;
+        transition: none !important;
+    }
 }

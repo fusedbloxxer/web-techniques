@@ -1,0 +1,111 @@
+@media print {
+    $watermark-border-color: var(--color-black);
+
+    /* Adjust the banner to be centered and at the bottom of the first page.  */
+    #banner {
+        border: 4px inset var(--color-black);
+        display: block;
+
+        padding: 5px;
+        margin: auto;
+        width: 70%;
+
+        position: absolute;
+        bottom: 0px;
+        right: 0px;
+        left: 0px;
+    }
+
+    @page:left {
+        margin-left: 3cm;
+        margin-right: 1cm;
+    }
+
+    @page:right {
+        margin-right: 3cm;
+        margin-left: 1cm;
+    }
+
+    /* Display the menu and the title one after another, in column, using flexbox. */
+    #top-container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* Center the h1 title horizontally. */
+    h1#title {
+        width: 100%;
+        margin: auto;
+        position: static;
+        text-align: center;
+    }
+
+    .watermark {
+        display: flex;
+        align-items: stretch;
+        flex-direction: column;
+
+        width: 4cm;
+        height: 1cm;
+        box-sizing: content-box;
+
+        position: fixed;
+        bottom: 0px;
+        right: 0px;
+
+        border: 3px solid $watermark-border-color;
+        border-radius: 5px;
+
+        text-align: center;
+        font-weight: bold;
+
+        opacity: 0.4;
+
+        > p {
+            margin: 0px;
+            width: auto;
+            flex-grow: 1;
+            display: inline-block;
+        }
+    }
+
+    nav {
+        /* Put the title and the nav one after another. */
+        position: static;
+
+        /* Display the menu options in column style. */
+        > ul.menu {
+            flex-direction: column;
+        }
+
+        /* Hide the submenus. */
+        .submenu {
+            display: none !important;
+        }
+
+        /* Hide the mobile hamburger and checkbox. */
+        *[id^="hamburger"] {
+            display: none;
+        }
+    }
+
+    /* Add page breaks after menu and before footer. */
+    footer, main {
+        page-break-before: always;
+    }
+
+    /* Hide media content and their dependencies. */
+    img, video, iframe, #top-link, .offer-video-container  {
+        display: none;
+
+        * {
+            display: none;
+        }
+    }
+
+    /* Treat links as normal text. */
+    a {
+        text-decoration: none;
+        color: var(--text-color-primary);
+    }
+}

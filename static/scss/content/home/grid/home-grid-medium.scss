@@ -1,14 +1,19 @@
-div.container {
-    display: grid;
-    grid-gap: 10px;
-    grid-template-columns: auto auto auto auto;
-    grid-template-areas:
-        "gr-presentation gr-presentation gr-presentation    gr-presentation"
-        "gr-motivation   gr-motivation   gr-motivation      gr-motivation"
-        "gr-toc          gr-toc          gr-events-calendar gr-online-users"
-        "gr-toc          gr-toc          gr-announcements   gr-online-users"
-        "gr-user-stats   gr-user-stats   gr-site-and-server gr-site-and-server"
-        "gr-offers       gr-offers       gr-tech-terms      gr-tech-terms"
-        "gr-offers       gr-offers       gr-tech-terms      gr-tech-terms"
-        "gr-faq          gr-faq          gr-tech-terms      gr-tech-terms";
+@use 'sass:map';
+@use '../../../common/variables' as variables;
+
+@media screen and (min-width: map.get(variables.$screen-sizes, "medium-min")) and (max-width: map.get(variables.$screen-sizes, "medium-max")){
+    div.container {
+        display: grid;
+        grid-gap: 10px;
+        grid-template-columns: auto auto auto auto;
+        grid-template-areas:
+            "gr-presentation gr-presentation gr-presentation    gr-presentation"
+            "gr-motivation   gr-motivation   gr-motivation      gr-motivation"
+            "gr-toc          gr-toc          gr-events-calendar gr-online-users"
+            "gr-toc          gr-toc          gr-announcements   gr-online-users"
+            "gr-user-stats   gr-user-stats   gr-site-and-server gr-site-and-server"
+            "gr-offers       gr-offers       gr-tech-terms      gr-tech-terms"
+            "gr-offers       gr-offers       gr-tech-terms      gr-tech-terms"
+            "gr-faq          gr-faq          gr-tech-terms      gr-tech-terms";
+    }
 }

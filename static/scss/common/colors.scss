@@ -6,9 +6,10 @@ body {
     --color-tertiary: #23588d;
     --color-neutral: #2C537A;
     --color-white: #FFFFFF;
-
-    --text-color-primary: #000000;
+    --color-black: #000000;
 
     --color-error-title: #F51100;
     --color-error-message: #B50C00;
+
+    --text-color-primary: var(--color-black);
 }
