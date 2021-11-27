@@ -1,0 +1,146 @@
+@use 'sass:map';
+@use 'sass:math';
+@use '../scss/common/variables.scss' as variables;
+
+@media screen and (min-width: map.get(variables.$screen-sizes, "large-min")) {
+    $caption-bg-color: var(--color-primary-light);
+    $caption-txt-color: var(--color-white);
+
+    // Units
+    $unit-of-err: 0.00001;
+    $units-total: <%-total%>;
+    $unit-of-start: math.div(100, $units-total);
+    $unit-of-end: 100 - $unit-of-start;
+
+    // Time per unit
+    $clip-out-item-animation-show-duration: 1.5s;
+    $clip-out-item-animation-transitition-duration: 1.5s;
+
+    // Total time per unit
+    $clip-out-item-animation-total-duration:
+        $clip-out-item-animation-show-duration +
+        $clip-out-item-animation-transitition-duration;
+
+    // Total time
+    $clip-out-total-animation-duration:
+        ($units-total * $clip-out-item-animation-total-duration);
+
+    @keyframes clip-out-animation {
+        // The image is being shown initially above the others
+        0% {
+            clip-path: circle(40%);
+            z-index: 10;
+            opacity: 1;
+        }
+
+        #{math.div($unit-of-start, 2)}% {
+            clip-path: circle(40%);
+            opacity: 1;
+        }
+
+        #{$unit-of-start}% {
+            z-index: 10;
+            opacity: 0;
+        }
+
+        #{$unit-of-start + $unit-of-err}% {
+            clip-path: circle(0%);
+            z-index: -10;
+        }
+
+        #{$unit-of-end}% {
+            z-index: -10;
+            opacity: 0;
+        }
+
+        #{$unit-of-end + $unit-of-err}% {
+            z-index: 0;
+        }
+
+        100% {
+            opacity: 1;
+            z-index: 0;
+        }
+    }
+
+    div.dynamic-gallery {
+        /* Use flexbox to center the container */
+        justify-content: center;
+        flex-direction: row;
+        display: flex;
+        width: 100%;
+
+        .dynamic-gallery-container {
+            overflow: hidden;
+            display: block;
+
+            height: <%-height%>px;
+            width: <%-width%>px;
+
+            &:hover .dynamic-gallery-item {
+                animation-play-state: paused;
+            }
+
+            .dynamic-gallery-item {
+                animation-name: clip-out-animation;
+                animation-timing-function: linear;
+                animation-iteration-count: infinite;
+                animation-fill-mode: forwards;
+                animation-duration: $clip-out-total-animation-duration;
+                transition: clip-path $clip-out-item-animation-transitition-duration;
+
+                position: relative;
+                padding: 0px;
+                margin: 0px;
+
+                > figure {
+                    position: absolute;
+                    padding: 0px;
+                    margin: 0px;
+
+                    figcaption {
+                        /*
+                            Center the text and stretch it at the bottom
+                            of the parent element
+                        */
+                        padding-bottom: 0.25em;
+                        text-align: center;
+                        position: absolute;
+                        width: 100%;
+                        bottom: 0px;
+
+                        /* Set the color for the caption */
+                        background-color: rgba(#00CAED, 0.75);
+
+                        // TODO: DOES NOT WORK:
+                        // background-color: rgba($caption-bg-color, 0.75);
+
+                        color: $caption-txt-color;
+                    }
+                }
+
+                @for $i from 0 to $units-total {
+                    &:nth-of-type(#{$units-total - $i}) {
+                        animation-delay:
+                            $i * $clip-out-item-animation-total-duration;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen
+    and (min-width: map.get(variables.$screen-sizes, "medium-min"))
+    and (max-width: map.get(variables.$screen-sizes, "medium-max")) {
+    .dynamic-gallery {
+        display: none;
+    }
+}
+
+@media screen
+    and (max-width: map.get(variables.$screen-sizes, "small-max")) {
+    .dynamic-gallery {
+        display: none;
+    }
+}

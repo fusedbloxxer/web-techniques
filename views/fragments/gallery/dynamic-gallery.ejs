@@ -1,1 +1,28 @@
-<p>dynamic</p>
+<div class="dynamic-gallery">
+    <div class="dynamic-gallery-container">
+        <% for (const image of locals.images) { %>
+            <div class="dynamic-gallery-item">
+                <figure>
+                    <picture>
+                        <source
+                            media="only screen and (max-width: 840px)"
+                            srcset="<%- image.sizes.small.url  %>" />
+                        <source
+                            media="only screen and (min-width: 840px) and (max-width: 1256px)"
+                            srcset="<%- image.sizes.medium.url %>" />
+                        <source
+                            media="only screen and (min-width: 1256px)"
+                            srcset="<%- image.sizes.large.url  %>" />
+                        <img
+                            src="<%- image.sizes.medium %>"
+                            title="<%- image.title %><%-image.credit ? `;${image.credit}` : ''%>"
+                            alt="<%- image.alt %>" />
+                    </picture>
+                    <figcaption>
+                        <%- image.description %>
+                    </figcaption>
+                </figure>
+            </div>
+        <% } %>
+    </div>
+</div>

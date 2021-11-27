@@ -1,6 +1,7 @@
 // Import dependencies
 const sharp = require('sharp');
 const path = require('path');
+const _ = require('lodash');
 const fs = require('fs');
 
 // CONSTANTS
@@ -40,14 +41,18 @@ function createImages() {
         // Add generate multiple sizes to each image in the gallery
         for (const [size, props] of Object.entries(gallery.sizes)) {
             // Create location for the new sized image
-            img.sizes[size] = basePath
-                .replace('{:SIZE_PATH}', props.path)
-                .replace('{:FORMAT}', props.ext)
-                .replace('{:PRE}', size);
+            img.sizes[size] = {
+                url: basePath
+                    .replace('{:SIZE_PATH}', props.path)
+                    .replace('{:FORMAT}', props.ext)
+                    .replace('{:PRE}', size),
+                height: props.height,
+                width: props.width,
+            };
 
             // Specify the location of the raw image
             const rawImgPath = path.join(root, gallery.path, img.filename);
-            const newImgPath = path.join(root, img.sizes[size]);
+            const newImgPath = path.join(root, img.sizes[size].url);
 
             // Create the parent folder if it does not exist
             fs.mkdir(path.dirname(newImgPath), {recursive: true}, (err) => {
@@ -97,7 +102,45 @@ function loadImages({
     return images;
 }
 
+function loadRandomImages({
+    low = 6,
+    high = 14,
+    shuffle = true,
+    filterBy = images => images.filter((x, i) => i % 2 != 0),
+} = {}) {
+    let images = filterBy(loadImages());
+
+    if (images.length < low) {
+        throw `Array of images has to be at least of size ${low} (currently: ${images.length})`;
+    }
+
+    const len = getRandomEvenIntBetween(low, high);
+
+    if (images.length < len) {
+        throw `Array of images has to be at least of rnd size ${len} (curently: ${images.length})`;
+    }
+
+    if (shuffle) {
+        images = _.sampleSize(images, len);
+    } else {
+        images = images.slice(0, len);
+    }
+
+    return images;
+}
+
+function getRandomEvenIntBetween(low, high) {
+    let rng = Math.round(Math.random() * (high - low)) + low;
+
+    while (rng % 2 != 0) {
+        rng = Math.round(Math.random() * (high - low)) + low;
+    }
+
+    return rng;
+}
+
 module.exports = {
+    loadRandomImages,
     createImages,
     loadImages,
 }

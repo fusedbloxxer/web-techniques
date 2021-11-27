@@ -35,7 +35,8 @@ app.use(function errorLogger(err, req, res, next) {
 
 app.use(function viewNotFoundHandler(err, req, res, next) {
     if (err.message?.includes('Failed to lookup view') ||
-        err.message?.includes('Cannot find')) {
+        err.message?.includes('Cannot find') ||
+        err.message?.includes('ENOENT')) {
         res
             .status(404)
             .render(

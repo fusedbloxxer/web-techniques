@@ -5,13 +5,13 @@
             <picture>
                 <source
                     media="only screen and (max-width: 840px)"
-                    srcset="<%- image.sizes.small  %>" />
+                    srcset="<%- image.sizes.small.url  %>" />
                 <source
                     media="only screen and (min-width: 840px) and (max-width: 1256px)"
-                    srcset="<%- image.sizes.medium %>" />
+                    srcset="<%- image.sizes.medium.url %>" />
                 <source
                     media="only screen and (min-width: 1256px)"
-                    srcset="<%- image.sizes.large  %>" />
+                    srcset="<%- image.sizes.large.url  %>" />
                 <img
                     src="<%- image.sizes.medium %>"
                     title="<%- image.title %>"
