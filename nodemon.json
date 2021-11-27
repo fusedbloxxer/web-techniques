@@ -3,5 +3,6 @@
         "./server/**",
         "index.js"
     ],
-    "ext": "js, ejs"
+    "ext": "js, ejs",
+    "delay": 1000
 }

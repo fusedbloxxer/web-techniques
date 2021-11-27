@@ -1,0 +1,31 @@
+<div class="static-gallery">
+<% for (const image of locals.images) { %>
+    <div class="static-gallery-item">
+        <figure>
+            <picture>
+                <source
+                    media="only screen and (max-width: 840px)"
+                    srcset="<%- image.sizes.small  %>" />
+                <source
+                    media="only screen and (min-width: 840px) and (max-width: 1256px)"
+                    srcset="<%- image.sizes.medium %>" />
+                <source
+                    media="only screen and (min-width: 1256px)"
+                    srcset="<%- image.sizes.large  %>" />
+                <img
+                    src="<%- image.sizes.medium %>"
+                    title="<%- image.title %>"
+                    alt="<%- image.alt %>" />
+            </picture>
+            <figcaption>
+                <%- image.description %>
+            </figcaption>
+        </figure>
+        <% if (image.credit) { %>
+            <p class="credits">
+                <%- image.credit %>
+            </p>
+        <% } %>
+    </div>
+<% } %>
+</div>

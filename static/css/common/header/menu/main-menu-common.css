@@ -10,6 +10,7 @@ nav {
   width: 100%;
   position: fixed;
   background-color: transparent;
+  z-index: 1000;
 }
 nav > ul.menu, nav > ul.menu > li > ul.submenu {
   background-color: transparent;

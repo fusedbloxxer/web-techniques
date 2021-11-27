@@ -1,4 +1,5 @@
 // Import dependencies
+const galleryRouter = require('./server/gallery/gallery.routes.js')
 const router = require('./server/app.routes.js');
 const express = require('express');
 const path = require('path');
@@ -12,15 +13,27 @@ app.use('/static', express.static(path.join(__dirname, 'static')));
 
 // Use a separately defined router
 app.use(router);
+app.use('/gallery', galleryRouter);
+
+// Handle all other routes
+app.get('/*', (req, res, next) => {
+    res.render(`pages/content${req.url}`, (err, html) => {
+        if (err) {
+            next(err);
+            return;
+        }
+        res.send(html);
+    });
+});
 
 // Use error handlers
-router.use(function errorLogger(err, req, res, next) {
+app.use(function errorLogger(err, req, res, next) {
     console.error(`An error occurred and was caught by the middleware:`);
     console.error(err);
     next(err);
 });
 
-router.use(function viewNotFoundHandler(err, req, res, next) {
+app.use(function viewNotFoundHandler(err, req, res, next) {
     if (err.message?.includes('Failed to lookup view') ||
         err.message?.includes('Cannot find')) {
         res
@@ -42,7 +55,7 @@ router.use(function viewNotFoundHandler(err, req, res, next) {
     next(err);
 })
 
-router.use(function forbiddenHandler(err, req, res, next) {
+app.use(function forbiddenHandler(err, req, res, next) {
     if (err.status === 403) {
         res
             .status(403)
@@ -63,7 +76,7 @@ router.use(function forbiddenHandler(err, req, res, next) {
     next(err);
 });
 
-router.use(function defaultErrorHandler(err, req, res, next) {
+app.use(function defaultErrorHandler(err, req, res, next) {
     res
         .status(500)
         .render(
@@ -88,31 +101,3 @@ app.set("view engine","ejs");
 app.listen(port, () => {
     console.log("Server is listening on http://localhost:8080/");
 });
-
-// const sharp = require('sharp');
-// const fs = require('fs');
-
-// app.get(['/', '/index', '/home'], function(req, res) {
-//     res.sendFile(`${__dirname}\\src\\html\\index.html`);
-
-//     // Calea relativa la folderul views
-//     console.log(req.ip);
-
-//     // ! foloseste sharp pentru img resize
-
-//     // Cale absoluta
-//     // Ceva redimensionare cu sharp?
-//     // let buf = fs.readFileSync(__dirname + '\\src\\resources\\json\\gallery.json').toString();
-//     // let galleryJson = JSON.parse(buf);
-//     // console.log(galleryJson);
-//     // for (let img of galleryJson.images) {
-//     //     let [name, extension] = img.filename.split('.');
-//     //     console.log(name, extension);
-//     // }
-
-//     // res.render('pages/index', {
-//     //     imagesPath: galleryJson["gallery-path"],
-//     //     images: galleryJson.images,
-//     //     ip: req.ip,
-//     // });
-// });

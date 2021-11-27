@@ -27,14 +27,4 @@ router.get('/*.ejs', (req, res, next) => {
     })
 });
 
-router.get('/*', (req, res, next) => {
-    res.render(`pages/content${req.url}`, (err, html) => {
-        if (err) {
-            next(err);
-            return;
-        }
-        res.send(html);
-    });
-});
-
 module.exports = router;

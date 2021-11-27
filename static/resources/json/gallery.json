@@ -1,21 +1,259 @@
 {
-    "gallery-path": "resources/images/gallery",
+    "path": "/static/resources/images/content/gallery",
+    "sizes": {
+        "small": {
+            "path": "/small",
+            "ext": ".webp",
+            "width": "100",
+            "height": "100"
+        },
+        "medium": {
+            "path": "/medium",
+            "ext": ".jpg",
+            "width": "200",
+            "height": "200"
+        },
+        "large": {
+            "path": "/large",
+            "ext": ".jpg",
+            "width": "400",
+            "height": "400"
+        }
+    },
     "images": [
         {
-            "filename": "cool.ok",
-            "description": "interesting"
+            "available": true,
+            "alt": "Macpac 2 sitting on a table",
+            "title": "Macpac 2",
+            "filename": "macpac-2.jpg",
+            "credit": "Photo by Josh Sorenson from Pexels",
+            "description": "Macpac 2 tablet is designed for everyone.",
+            "months": [
+                "november",
+                "january"
+            ]
         },
         {
-            "filename": "cool.ok",
-            "description": "interesting"
+            "available": true,
+            "alt": "Man holding a Hua Mars 2 tablet",
+            "title": "Hua Mars 2",
+            "filename": "hua-mars-2.jpg",
+            "description": "Hua Mars 2 tablet is designed for artists.",
+            "months": [
+                "january",
+                "march",
+                "april"
+            ]
         },
         {
-            "filename": "cool.ok",
-            "description": "interesting"
+            "available": true,
+            "alt": "Hand touching a Hua Moon Ops Phone",
+            "title": "Hua Moon Ops",
+            "filename": "hua-moon-ops.jpg",
+            "description": "One of the most comfortable phone to use!",
+            "months": [
+                "october",
+                "december",
+                "march",
+                "may",
+                "september",
+                "august"
+            ]
         },
         {
-            "filename": "cool.ok",
-            "description": "interesting"
+            "available": false,
+            "alt": "Hua 2 in one offer (tablet and phone)",
+            "title": "2 Huas For One",
+            "filename": "hua-two-in-one.jpg",
+            "description": "Limited time offer! Get two Hua devices for the price of one.",
+            "months": [
+                "december",
+                "september",
+                "january",
+                "november",
+                "february",
+                "october"
+            ]
+        },
+        {
+            "available": false,
+            "alt": "Big Menthos Tablet Screen",
+            "title": "Menthos OPX 2",
+            "filename": "menthos-opx-2.jpg",
+            "description": "The elitists' go to tablet. It's remarkable.",
+            "months": [
+                "november",
+                "february",
+                "march",
+                "december",
+                "september",
+                "august",
+                "june",
+                "january"
+            ]
+        },
+        {
+            "available": true,
+            "alt": "Rose covered Menthos phone back",
+            "title": "Menthos XLP",
+            "filename": "menthos-xlp.jpg",
+            "description": "The ultimate phone in the industry.",
+            "months": [
+                "july",
+                "august",
+                "may",
+                "february",
+                "december",
+                "november"
+            ]
+        },
+        {
+            "available": true,
+            "alt": "Hand holding a Palle 3 phone",
+            "title": "Palle 3",
+            "filename": "palle-3.jpg",
+            "description": "The casual user's go to phone. Cheap and useful.",
+            "months": [
+                "july",
+                "august",
+                "december",
+                "april",
+                "june",
+                "october",
+                "september",
+                "november"
+            ]
+        },
+        {
+            "alt": "Palle Pro Tablet sitting on table with calendar app opened",
+            "title": "Palle Pro",
+            "filename": "palle-pro.jpg",
+            "description": "Working can't be easier than when using a Palle 3.",
+            "months": [
+                "july",
+                "may",
+                "february",
+                "april",
+                "june",
+                "march",
+                "november"
+            ]
+        },
+        {
+            "available": false,
+            "alt": "Pogol 5 tablet sitting on table",
+            "title": "Pogol 5",
+            "filename": "pogol-5.jpg",
+            "description": "This small and simple tablet will be your daily driver in all areas.",
+            "months": [
+                "august",
+                "may",
+                "november",
+                "february",
+                "december",
+                "april"
+            ]
+        },
+        {
+            "available": true,
+            "alt": "Pogol Max 5 tabled showing search bar while being held in hands in coffee shop",
+            "title": "Pogol Max 5",
+            "filename": "pogol-max-5.jpg",
+            "description": "Fastest tablet on the market. The data proves it.",
+            "months": [
+                "august",
+                "may",
+                "december",
+                "november",
+                "april",
+                "june",
+                "october",
+                "september"
+            ]
+        },
+        {
+            "available": true,
+            "alt": "Pogol Sto 5 being used in fron of a pc",
+            "title": "Pogol Sto 5",
+            "filename": "pogol-sto-5.jpg",
+            "description": "This tablet is very fast amoung its competitors while being affordable!",
+            "months": [
+                "july",
+                "august",
+                "february",
+                "december",
+                "november",
+                "june",
+                "october",
+                "march"
+            ]
+        },
+        {
+            "available": false,
+            "alt": "Spear Figgle phone main screen showing app icons",
+            "title": "Spear Figgle Dox",
+            "filename": "spear-figgle-dox.jpg",
+            "description": "When you need robustness at all times.",
+            "months": [
+                "july",
+                "may",
+                "february",
+                "december",
+                "november",
+                "june",
+                "october",
+                "march"
+            ]
+        },
+        {
+            "available": true,
+            "alt": "Spear Figgle Ultra showing Social Media Apps",
+            "title": "Spear Figgle Ultra",
+            "filename": "spear-figgle-ultra.jpg",
+            "description": "When being on at all times is of utmost importance!",
+            "months": [
+                "august",
+                "may",
+                "december",
+                "april",
+                "november",
+                "january",
+                "march",
+                "september"
+            ]
+        },
+        {
+            "available": true,
+            "alt": "Thorn Dock Phone sitting on table while showing social media app",
+            "title": "Thord Dock SO",
+            "filename": "thorn-dock-so.jpg",
+            "description": "Cheap and simple. Can't get any better than this.",
+            "months": [
+                "july",
+                "may",
+                "december",
+                "november",
+                "january",
+                "march",
+                "september"
+            ]
+        },
+        {
+            "available": false,
+            "alt": "Thorn Dock using social media in house",
+            "title": "Thorn Dock",
+            "filename": "thorn-dock.jpg",
+            "description": "The base version of Thorn Dock SO. Smaller performance for better price and battery.",
+            "months": [
+                "august",
+                "february",
+                "november",
+                "april",
+                "june",
+                "october",
+                "march",
+                "september"
+            ]
         }
     ]
 }

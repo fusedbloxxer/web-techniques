@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Include Common Head Fragment -->
+    <%- include('../../../fragments/head.ejs') %>
+
+    <!-- Page-Specific Information -->
+    <meta
+        name="keywords"
+        content="gallery, presentation, product information, phones, tablets, tablets,
+        showcases, andrion"/>
+    <meta
+        name="description"
+        content="Best phones and tablets static image showcases."/>
+    <title>Andrion - Static Gallery</title>
+
+    <!-- CSS Styling -->
+    <link rel="stylesheet" type="text/css" href="/static/css/content/gallery/dynamic-gallery.css" />
+</head>
+
+<body>
+    <%- include('../../../fragments/header.ejs') %>
+
+    <main>
+        <%- include('../../../fragments/gallery/dynamic-gallery.ejs') %>
+    </main>
+
+    <%- include('../../../fragments/footer.ejs') %>
+</body>
+
+</html>
