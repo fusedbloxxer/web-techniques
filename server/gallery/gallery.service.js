@@ -23,12 +23,11 @@ const MONTHS = [
 const MAX_IMGS_GALLERY = 12;
 
 // Path to the json containing info about the gallery
-const root = path.resolve(__dirname, '../..');
 const localJsonPath = '/static/resources/json/gallery.json'
-const absJsonPath = path.join(root, localJsonPath)
 
 // Read images from storage and generate sizes
-function createImages() {
+function createImages(root) {
+    const absJsonPath = path.join(root, localJsonPath);
     const buffer = fs.readFileSync(absJsonPath).toString("utf-8");
     const gallery = JSON.parse(buffer);
 
@@ -78,11 +77,12 @@ function createImages() {
 }
 
 function loadImages({
+    root,
     filterByMonth = false,
     takeWithinLimit = false,
     filterByAvailability = false
 }= {}) {
-    let images = createImages();
+    let images = createImages(root);
 
     if (filterByMonth) {
         const currentMonth = new Date().getMonth();
@@ -103,12 +103,13 @@ function loadImages({
 }
 
 function loadRandomImages({
+    root,
     low = 6,
     high = 14,
     shuffle = true,
     filterBy = images => images.filter((x, i) => i % 2 != 0),
 } = {}) {
-    let images = filterBy(loadImages());
+    let images = filterBy(loadImages(root));
 
     if (images.length < low) {
         throw `Array of images has to be at least of size ${low} (currently: ${images.length})`;

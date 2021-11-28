@@ -1,5 +1,7 @@
+const {loadImages} = require('./gallery/gallery.service.js');
 const express = require('express');
 const router = express.Router();
+const path = require('path');
 
 // Intercept all requests to this router
 router.use(function(req, res, next) {
@@ -12,10 +14,17 @@ router.get(['/', '/index'], (req, res) => {
 });
 
 router.get(['/home'], (req, res) => {
+    const images = loadImages({
+        filterByMonth: true,
+        takeWithinLimit: true,
+        filterByAvailability: true,
+        root: path.resolve(__dirname, '..'),
+    });
+
     res.render(
-        'pages/content/home',
-        {
+        'pages/content/home', {
             ip: req.ip,
+            images
         }
     );
 });

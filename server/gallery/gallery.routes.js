@@ -49,6 +49,7 @@ router.get('/static', (req, res) => {
         filterByMonth: true,
         takeWithinLimit: true,
         filterByAvailability: true,
+        root: path.resolve(__dirname, '../..'),
     });
     res.render(`pages/content/gallery/static-gallery`, {
         images
