@@ -1,19 +1,36 @@
 // Import dependencies
-const galleryRouter = require('./server/gallery/gallery.routes.js')
+const productsRouter = require('./server/products/products.routes.js');
+const galleryRouter = require('./server/gallery/gallery.routes.js');
 const router = require('./server/app.routes.js');
 const express = require('express');
+const {Client} = require("pg");
 const path = require('path');
 
 // Configure the server
 const app = express();
 const port = 8080;
 
+// Configure the DbConnectionObject
+const client = new Client({
+    user: 'andrei',
+    password: 'andrion1234',
+    database: 'andrion',
+    host: 'localhost',
+    port: 5432
+});
+
+// Connect to the database
+client.connect();
+
 // Serve static files
 app.use('/static', express.static(path.join(__dirname, 'static')));
 
-// Use a separately defined router
+// Use separately defined routers
 app.use(router);
 app.use('/gallery', galleryRouter);
+app.use('/products', productsRouter({
+    dbCon: client,
+}));
 
 // Handle all other routes
 app.get('/*', (req, res, next) => {
