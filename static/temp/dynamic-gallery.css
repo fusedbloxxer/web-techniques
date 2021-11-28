@@ -5,24 +5,24 @@
       filter: grayscale(100%) contrast(0%);
       z-index: 10;
     }
-    3.5714285714% {
+    8.3333333333% {
       clip-path: polygon(0 0, 100% 0, 100% 100%, 100% 100%, 0 100%, 0 0);
       filter: grayscale(0%) contrast(100%);
       z-index: 10;
     }
-    7.1428571429% {
+    16.6666666667% {
       z-index: 10;
     }
-    10.7142857143% {
+    25% {
       z-index: 0;
     }
-    10.7142957143% {
+    25.00001% {
       z-index: -10;
     }
-    92.8571428571% {
+    83.3333333333% {
       z-index: -10;
     }
-    92.8571528571% {
+    83.3333433333% {
       z-index: 0;
     }
     100% {
@@ -59,7 +59,7 @@
     animation-timing-function: linear;
     animation-iteration-count: infinite;
     animation-fill-mode: forwards;
-    animation-duration: 42s;
+    animation-duration: 18s;
     transition: clip-path 1.5s;
     transition: filter 1.5s;
     position: absolute;
@@ -80,47 +80,23 @@
     background-color: rgba(0, 202, 237, 0.75);
     color: var(--color-white);
   }
-  div.dynamic-gallery .dynamic-gallery-container .dynamic-gallery-item:nth-of-type(14) > figure {
+  div.dynamic-gallery .dynamic-gallery-container .dynamic-gallery-item:nth-of-type(6) > figure {
     animation-delay: 0s;
   }
-  div.dynamic-gallery .dynamic-gallery-container .dynamic-gallery-item:nth-of-type(13) > figure {
+  div.dynamic-gallery .dynamic-gallery-container .dynamic-gallery-item:nth-of-type(5) > figure {
     animation-delay: 3s;
   }
-  div.dynamic-gallery .dynamic-gallery-container .dynamic-gallery-item:nth-of-type(12) > figure {
+  div.dynamic-gallery .dynamic-gallery-container .dynamic-gallery-item:nth-of-type(4) > figure {
     animation-delay: 6s;
   }
-  div.dynamic-gallery .dynamic-gallery-container .dynamic-gallery-item:nth-of-type(11) > figure {
+  div.dynamic-gallery .dynamic-gallery-container .dynamic-gallery-item:nth-of-type(3) > figure {
     animation-delay: 9s;
   }
-  div.dynamic-gallery .dynamic-gallery-container .dynamic-gallery-item:nth-of-type(10) > figure {
+  div.dynamic-gallery .dynamic-gallery-container .dynamic-gallery-item:nth-of-type(2) > figure {
     animation-delay: 12s;
   }
-  div.dynamic-gallery .dynamic-gallery-container .dynamic-gallery-item:nth-of-type(9) > figure {
-    animation-delay: 15s;
-  }
-  div.dynamic-gallery .dynamic-gallery-container .dynamic-gallery-item:nth-of-type(8) > figure {
-    animation-delay: 18s;
-  }
-  div.dynamic-gallery .dynamic-gallery-container .dynamic-gallery-item:nth-of-type(7) > figure {
-    animation-delay: 21s;
-  }
-  div.dynamic-gallery .dynamic-gallery-container .dynamic-gallery-item:nth-of-type(6) > figure {
-    animation-delay: 24s;
-  }
-  div.dynamic-gallery .dynamic-gallery-container .dynamic-gallery-item:nth-of-type(5) > figure {
-    animation-delay: 27s;
-  }
-  div.dynamic-gallery .dynamic-gallery-container .dynamic-gallery-item:nth-of-type(4) > figure {
-    animation-delay: 30s;
-  }
-  div.dynamic-gallery .dynamic-gallery-container .dynamic-gallery-item:nth-of-type(3) > figure {
-    animation-delay: 33s;
-  }
-  div.dynamic-gallery .dynamic-gallery-container .dynamic-gallery-item:nth-of-type(2) > figure {
-    animation-delay: 36s;
-  }
   div.dynamic-gallery .dynamic-gallery-container .dynamic-gallery-item:nth-of-type(1) > figure {
-    animation-delay: 39s;
+    animation-delay: 15s;
   }
 }
 @media screen and (min-width: 840px) and (max-width: 1256px) {

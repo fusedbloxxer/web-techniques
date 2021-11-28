@@ -62,7 +62,8 @@ router.get(['/dynamic'], (req, res) => {
         low: 6,
         high: 14,
         shuffle: true,
-        filterBy: (imgs) => imgs
+        filterBy: (imgs) => imgs,
+        root: path.resolve(__dirname, '../..'),
     });
 
     // Save some properties to use in SCSS

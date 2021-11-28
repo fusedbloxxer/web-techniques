@@ -109,7 +109,7 @@ function loadRandomImages({
     shuffle = true,
     filterBy = images => images.filter((x, i) => i % 2 != 0),
 } = {}) {
-    let images = filterBy(loadImages(root));
+    let images = filterBy(loadImages({root}));
 
     if (images.length < low) {
         throw `Array of images has to be at least of size ${low} (currently: ${images.length})`;
