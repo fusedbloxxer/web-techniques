@@ -71,6 +71,11 @@
         width: 100%;
 
         .dynamic-gallery-container {
+            border-width: 30px;
+            border-style: solid;
+            border-image-slice: 100;
+            border-image-source: url('/static/resources/images/content/gallery/border-image-frame.png');
+
             overflow: hidden;
             display: block;
 
