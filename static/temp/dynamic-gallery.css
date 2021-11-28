@@ -1,31 +1,31 @@
 @media screen and (min-width: 1256px) {
   @keyframes clip-out-animation {
     0% {
-      clip-path: circle(40%);
+      clip-path: polygon(100% 0, 100% 0, 100% 0, 0 100%, 0 100%, 0 100%);
+      filter: grayscale(100%) contrast(0%);
       z-index: 10;
-      opacity: 1;
     }
     4.1666666667% {
-      clip-path: circle(40%);
-      opacity: 1;
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 100% 100%, 0 100%, 0 0);
+      filter: grayscale(0%) contrast(100%);
+      z-index: 10;
     }
     8.3333333333% {
       z-index: 10;
-      opacity: 0;
     }
-    8.3333433333% {
-      clip-path: circle(0%);
+    12.5% {
+      z-index: 0;
+    }
+    12.50001% {
       z-index: -10;
     }
     91.6666666667% {
       z-index: -10;
-      opacity: 0;
     }
     91.6666766667% {
       z-index: 0;
     }
     100% {
-      opacity: 1;
       z-index: 0;
     }
   }
@@ -46,21 +46,22 @@
     height: 400px;
     width: 400px;
   }
-  div.dynamic-gallery .dynamic-gallery-container:hover .dynamic-gallery-item {
+  div.dynamic-gallery .dynamic-gallery-container:hover .dynamic-gallery-item > figure {
     animation-play-state: paused;
   }
   div.dynamic-gallery .dynamic-gallery-container .dynamic-gallery-item {
+    position: relative;
+    padding: 0px;
+    margin: 0px;
+  }
+  div.dynamic-gallery .dynamic-gallery-container .dynamic-gallery-item > figure {
     animation-name: clip-out-animation;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
     animation-fill-mode: forwards;
     animation-duration: 36s;
     transition: clip-path 1.5s;
-    position: relative;
-    padding: 0px;
-    margin: 0px;
-  }
-  div.dynamic-gallery .dynamic-gallery-container .dynamic-gallery-item > figure {
+    transition: filter 1.5s;
     position: absolute;
     padding: 0px;
     margin: 0px;
@@ -79,40 +80,40 @@
     background-color: rgba(0, 202, 237, 0.75);
     color: var(--color-white);
   }
-  div.dynamic-gallery .dynamic-gallery-container .dynamic-gallery-item:nth-of-type(12) {
+  div.dynamic-gallery .dynamic-gallery-container .dynamic-gallery-item:nth-of-type(12) > figure {
     animation-delay: 0s;
   }
-  div.dynamic-gallery .dynamic-gallery-container .dynamic-gallery-item:nth-of-type(11) {
+  div.dynamic-gallery .dynamic-gallery-container .dynamic-gallery-item:nth-of-type(11) > figure {
     animation-delay: 3s;
   }
-  div.dynamic-gallery .dynamic-gallery-container .dynamic-gallery-item:nth-of-type(10) {
+  div.dynamic-gallery .dynamic-gallery-container .dynamic-gallery-item:nth-of-type(10) > figure {
     animation-delay: 6s;
   }
-  div.dynamic-gallery .dynamic-gallery-container .dynamic-gallery-item:nth-of-type(9) {
+  div.dynamic-gallery .dynamic-gallery-container .dynamic-gallery-item:nth-of-type(9) > figure {
     animation-delay: 9s;
   }
-  div.dynamic-gallery .dynamic-gallery-container .dynamic-gallery-item:nth-of-type(8) {
+  div.dynamic-gallery .dynamic-gallery-container .dynamic-gallery-item:nth-of-type(8) > figure {
     animation-delay: 12s;
   }
-  div.dynamic-gallery .dynamic-gallery-container .dynamic-gallery-item:nth-of-type(7) {
+  div.dynamic-gallery .dynamic-gallery-container .dynamic-gallery-item:nth-of-type(7) > figure {
     animation-delay: 15s;
   }
-  div.dynamic-gallery .dynamic-gallery-container .dynamic-gallery-item:nth-of-type(6) {
+  div.dynamic-gallery .dynamic-gallery-container .dynamic-gallery-item:nth-of-type(6) > figure {
     animation-delay: 18s;
   }
-  div.dynamic-gallery .dynamic-gallery-container .dynamic-gallery-item:nth-of-type(5) {
+  div.dynamic-gallery .dynamic-gallery-container .dynamic-gallery-item:nth-of-type(5) > figure {
     animation-delay: 21s;
   }
-  div.dynamic-gallery .dynamic-gallery-container .dynamic-gallery-item:nth-of-type(4) {
+  div.dynamic-gallery .dynamic-gallery-container .dynamic-gallery-item:nth-of-type(4) > figure {
     animation-delay: 24s;
   }
-  div.dynamic-gallery .dynamic-gallery-container .dynamic-gallery-item:nth-of-type(3) {
+  div.dynamic-gallery .dynamic-gallery-container .dynamic-gallery-item:nth-of-type(3) > figure {
     animation-delay: 27s;
   }
-  div.dynamic-gallery .dynamic-gallery-container .dynamic-gallery-item:nth-of-type(2) {
+  div.dynamic-gallery .dynamic-gallery-container .dynamic-gallery-item:nth-of-type(2) > figure {
     animation-delay: 30s;
   }
-  div.dynamic-gallery .dynamic-gallery-container .dynamic-gallery-item:nth-of-type(1) {
+  div.dynamic-gallery .dynamic-gallery-container .dynamic-gallery-item:nth-of-type(1) > figure {
     animation-delay: 33s;
   }
 }

@@ -28,29 +28,31 @@
     @keyframes clip-out-animation {
         // The image is being shown initially above the others
         0% {
-            clip-path: circle(40%);
+            clip-path: polygon(100% 0, 100% 0, 100% 0, 0 100%, 0 100%, 0 100%);
+            filter: grayscale(100%) contrast(0%);
             z-index: 10;
-            opacity: 1;
         }
 
         #{math.div($unit-of-start, 2)}% {
-            clip-path: circle(40%);
-            opacity: 1;
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 100% 100%, 0 100%, 0 0);
+            filter: grayscale(0%) contrast(100%);
+            z-index: 10;
         }
 
         #{$unit-of-start}% {
             z-index: 10;
-            opacity: 0;
         }
 
-        #{$unit-of-start + $unit-of-err}% {
-            clip-path: circle(0%);
+        #{$unit-of-start * 1.5}% {
+            z-index: 0;
+        }
+
+        #{$unit-of-start * 1.5 + $unit-of-err}% {
             z-index: -10;
         }
 
         #{$unit-of-end}% {
             z-index: -10;
-            opacity: 0;
         }
 
         #{$unit-of-end + $unit-of-err}% {
@@ -58,7 +60,6 @@
         }
 
         100% {
-            opacity: 1;
             z-index: 0;
         }
     }
@@ -82,23 +83,24 @@
             height: 400px;
             width: 400px;
 
-            &:hover .dynamic-gallery-item {
+            &:hover .dynamic-gallery-item > figure {
                 animation-play-state: paused;
             }
 
             .dynamic-gallery-item {
-                animation-name: clip-out-animation;
-                animation-timing-function: linear;
-                animation-iteration-count: infinite;
-                animation-fill-mode: forwards;
-                animation-duration: $clip-out-total-animation-duration;
-                transition: clip-path $clip-out-item-animation-transitition-duration;
-
                 position: relative;
                 padding: 0px;
                 margin: 0px;
 
                 > figure {
+                    animation-name: clip-out-animation;
+                    animation-timing-function: linear;
+                    animation-iteration-count: infinite;
+                    animation-fill-mode: forwards;
+                    animation-duration: $clip-out-total-animation-duration;
+                    transition: clip-path $clip-out-item-animation-transitition-duration;
+                    transition: filter $clip-out-item-animation-transitition-duration;
+
                     position: absolute;
                     padding: 0px;
                     margin: 0px;
@@ -125,7 +127,7 @@
                 }
 
                 @for $i from 0 to $units-total {
-                    &:nth-of-type(#{$units-total - $i}) {
+                    &:nth-of-type(#{$units-total - $i}) > figure {
                         animation-delay:
                             $i * $clip-out-item-animation-total-duration;
                     }
