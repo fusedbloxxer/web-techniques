@@ -1,64 +1,54 @@
-const express = require('express');
-
-function init({ dbCon: client }) {
+function init({
+    productsService,
+}) {
+    const express = require('express');
     const router = express.Router();
+    const rxjs = require('rxjs');
 
-    router.get(['', '/'], (req, res, next) => {
-        res.render('pages/content/products/products', {}, (err, products) => {
-            if (err) {
-                next(err);
-                return;
-            }
-            res.send(products);
+    router.get('', (req, res, next) => {
+        rxjs.forkJoin({
+            operatingSystems: productsService.fetchProductOperatingSystems(),
+            products: productsService.fetchProductsByType(req.query.type),
+            productCategories: productsService.fetchProductCategories(),
+            productTypes: productsService.fetchProductTypes(),
+        }).subscribe({
+            next: ({
+                    productCategories,
+                    operatingSystems,
+                    productTypes,
+                    products,
+                }) => (
+                res.render('pages/content/products/products', {
+                    maxPrice: Math.max(...products.map(p => p.price)),
+                    productCategories,
+                    priceStep: 0.025,
+                    operatingSystems,
+                    productTypes,
+                    products,
+                })
+            ),
+            error: (err) => next({
+                status: 404,
+                message: 'Error: Could Not Fetch the Product Types',
+            })
         });
     });
 
-    router.get('/:id', (req, res, next) => {
+    router.get('/:id-:name', (req, res, next) => {
         const productId = req.params.id;
-        res.render('pages/content/products/product', {}, (err, products) => {
-            if (err) {
-                next(err);
-                return;
-            }
-            res.send(products);
+
+        productsService.fetchProductTypes().subscribe({
+            next: (productTypes) => (
+                res.render('pages/content/products/product', {
+                    productTypes,
+                })
+            ),
+            error: () => next({
+                status: 404,
+                message: 'Error: Could Not Fetch the Product Types',
+            })
         });
     });
-
-    // router.get("/", (req, res) => {
-    //     console.log(req.query);
-    //     const condition = '';
-    //     if ('category' in req.query) {
-    //         condition = ` AND category='${req.query.category}'`;
-    //     }
-    //     client.query(`
-    //         SELECT *
-    //         FROM product
-    //         WHERE 1=1 ${condition};
-    //     `, (err, data) => {
-    //         if (!err) {
-    //             console.log(data.rows);
-    //             res.send(data.rows);
-    //         } else {
-    //             console.error('oops');
-    //         }
-    //     });
-    // });
-
-    // router.get("/:id", (req, res) => {
-    //     console.log(req.params);
-    //     client.query(`
-    //         SELECT *
-    //         FROM product
-    //         WHERE id=${req.params.id};
-    //     `, (err, data) => {
-    //         if (!err) {
-    //             console.log(data.rows);
-    //             res.send(data.rows)
-    //         } else {
-    //             console.error('oops');
-    //         }
-    //     });
-    // });
 
     return router;
 }

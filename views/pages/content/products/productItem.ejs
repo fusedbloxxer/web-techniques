@@ -1,0 +1,90 @@
+<article class="product-item">
+    <figure class="thumbnail">
+        <a href="<%- product.url %>">
+            <img
+                class="thumbnail-image"
+                src="<%- product.image %>"
+                title="<%- product.name %>"
+                alt="[image of <%- product.name %>]"/>
+        </a>
+    </figure>
+
+    <h3 class="name">
+        <a href="<%- product.url %>">
+            <span class="name-value">
+                <%- product.name %>
+            </span>
+        </a>
+    </h3>
+
+    <div class="product-info">
+        <p class="category">
+            <span class="fas fa-tag">
+                Category:
+            </span>
+            <span class="category-value">
+                <%-product.category%>
+            </span>
+        </p>
+        <p class="os">
+            <span class="fas fa-tv">
+                Operating System:
+            </span>
+            <span class="os-value">
+                <%- product.os %>
+            </span>
+        </p>
+        <p class="release-year">
+            <span class="fas fa-calendar">
+                Release Year:
+            </span>
+            <span class="release-year-value">
+                <%- product.available_since.getFullYear() %>
+            </span>
+        </p>
+        <p class="battery">
+            <span class="fas fa-battery-full">
+                Battery Capacity:
+            </span>
+            <span class="battery-value">
+                <%- product.battery_capacity %> mAh
+            </span>
+        </p>
+        <div class="technologies">
+            <span class="fas fa-microchip">
+                Technologies:
+            </span>
+            <ul class="specs">
+                <% for (const technology of product.technologies.split(',')) { %>
+                    <li class="spec">
+                        <span class="spec-value">
+                            <%- technology %>
+                        </span>
+                    </li>
+                <% } %>
+            </ul>
+        </div>
+        <p class="price">
+            <%
+                const trunc = Math.floor(product.price);
+                const decim = (product.price - trunc)
+                    .toFixed(2).replace('0.', '');
+            %>
+            <span class="fas fa-money-bill-wave"></span>
+            $<span class="price-value-trunc"><%-trunc%></span><span class="price-value-decim">.<%-decim%></span>
+        </p>
+    </div>
+
+    <label
+        for="<%-product.id%>-cart-input"
+        class="select-cart">
+        <span class="fas fa-shopping-cart">
+            Add to Cart
+        </span>
+        <input
+            type="checkbox"
+            class="select-cart-input"
+            id="<%-product.id%>-cart-input"
+            value="<%-product.id%>">
+    </label>
+</article>

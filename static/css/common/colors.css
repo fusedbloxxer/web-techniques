@@ -10,6 +10,15 @@ body {
   --color-error-title: #F51100;
   --color-error-message: #B50C00;
   --text-color-primary: var(--color-black);
+  --color-attention: #9c2412;
+
+  --color-tag-bg: #22476d;
+  --color-tag-txt: var(--color-white);
+  --color-tag-border: var(--color-tag-bg);
+
+  --color-cart-add-hover: #019231;
+  --color-cart-add-checked: #00ee4f;
+  --color-cart-add-unchecked: #005c1f;
 }
 
 /*# sourceMappingURL=colors.css.map */

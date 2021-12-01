@@ -10,13 +10,166 @@
     tablet, catalog, filtering, searching, category, price, info"/>
     <meta name="description" content="Browse our phones and tablets at premium prices."/>
     <title>Andrion - Products</title>
+
+    <!-- Custom CSS Styling -->
+    <link rel="stylesheet" href="/static/css/content/products/products.css">
+
+    <!-- JavaScript Used for Filtering -->
+    <script src="/static/js/content/products/products.client.js"></script>
+    <script src="/static/js/content/products/productFilters.client.js"></script>
+    <script src="/static/js/content/products/productInputs.client.js"></script>
 </head>
 
 <body>
-    <%- include('../../../fragments/header.ejs') %>
+    <%- include('../../../fragments/header.ejs', {productTypes}) %>
 
     <main>
-        cool
+        <section class="products">
+            <h2>Products</h2>
+
+            <div class="products-container">
+                <div class="product-filters">
+                    <div class="product-filter">
+                        <label for="name-input">
+                            Product Name:
+                        </label>
+                        <br/>
+                        <input
+                            id="name-input"
+                            type="text"
+                            placeholder="Type a product name...">
+                    </div>
+                    <div class="product-filter">
+                        <label for="price-input">
+                            Price:
+                            <br/>
+                            0
+                            <input
+                                id="price-input"
+                                type="range"
+                                min="0"
+                                max="<%-locals.maxPrice%>"
+                                step="<%-locals.maxPrice * locals.priceStep%>"
+                                value="<%-locals.maxPrice%>">
+                            <%-locals.maxPrice%>
+                        </label>
+                    </div>
+                    <div class="product-filter">
+                        Operating System:
+                        <br/>
+                        <% for (const os of locals.operatingSystems) { %>
+                            <label
+                                for="os-<%-os%>-input">
+                                <input
+                                    id="os-<%-os%>-input"
+                                    type="radio"
+                                    value="<%-os%>"
+                                    name="os-input">
+                                <%-
+                                    os.slice(0, 1).toUpperCase()
+                                    +
+                                    os.slice(1)
+                                %>
+                            </label>
+                            <br/>
+                        <% } %>
+                        <label
+                            for="os-default-input">
+                            <input
+                                id="os-default-input"
+                                type="radio"
+                                value="all"
+                                name="os-input"
+                                checked>
+                            All
+                        </label>
+                    </div>
+                    <div class="product-filter">
+                        Category:
+                        <br/>
+                        <% for (const category of locals.productCategories) { %>
+                            <label
+                                for="category-<%-category%>-input">
+                                    <input
+                                        id="category-<%-category%>-input"
+                                        name="category-<%-category%>"
+                                        type="checkbox">
+                                    <%-
+                                        category.slice(0, 1).toUpperCase()
+                                        +
+                                        category.slice(1)
+                                    %>
+                            </label>
+                            <br/>
+                        <% } %>
+                    </div>
+                    <div class="product-filter">
+                        Search Product Technologies:
+                        <br/>
+                        <textarea
+                            rows="5"
+                            cols="25"
+                            id="technologies-input"
+                            placeholder="Search products using technology keywords..."></textarea>
+                    </div>
+                    <div class="product-filter">
+                        <label
+                            for="release-year-input">
+                            Release Year:
+                        </label>
+                        <br/>
+                        <%
+                            // Create a set to hold the unique years
+                            let years = new Set();
+
+                            // Sort the years ascendingly and add them to the set
+                            locals.products
+                                .map(p => parseInt(p.available_since.getFullYear()))
+                                .sort((x, y) => x - y)
+                                .forEach(year => years.add(year));
+                        %>
+                        <select id="release-year-input">
+                            <% for (const year of years) { %>
+                                <option
+                                    value="<%-year%>">
+                                    <%-year%>
+                                </option>
+                            <% } %>
+                            <option value="default" selected>
+                                All Years
+                            </option>
+                        </select>
+                    </div>
+                    <div class="product-filter">
+                        <label for="battery-input">
+                            Battery Capacity:
+                        </label>
+                        <br/>
+                        <%
+                            const batteryCapacities = locals.products
+                                .map(p => p.battery_capacity)
+                                .sort((x, y) => x - y);
+                        %>
+                        <select id="battery-input" multiple>
+                            <% for (const capacity of batteryCapacities) { %>
+                                <option value="<%-capacity%>">
+                                    <%-capacity%>
+                                </option>
+                            <% } %>
+                            <option value="All">
+                                All
+                            </option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="products-catalog">
+                    <% for (const product of locals.products) { %>
+                        <%- include('./productItem', {product}) %>
+                    <% } %>
+                </div>
+            </div>
+        </section>
     </main>
 
     <%- include('../../../fragments/footer.ejs') %>
