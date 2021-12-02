@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: row;
   align-items: flex-start;
+  justify-content: stretch;
   column-gap: 10px;
 }
 .products .products-container .product-filters {
@@ -10,6 +11,7 @@
   justify-content: flex-start;
   align-items: stretch;
   row-gap: 20px;
+  padding: 10px;
   margin: 0px 10px 0px 0px;
 }
 .products .products-container .product-filters .product-filter {
@@ -20,7 +22,8 @@
 }
 .products .products-container .product-content {
   display: flex;
-  row-gap: 20px;
+  row-gap: 10px;
+  width: 100%;
   flex-flow: column wrap;
 }
 .products .products-container .product-content .product-actions {

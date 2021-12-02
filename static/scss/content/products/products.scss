@@ -3,6 +3,7 @@
         display: flex;
         flex-direction: row;
         align-items: flex-start;
+        justify-content: stretch;
         column-gap: 10px;
 
         .product-filters {
@@ -12,6 +13,7 @@
             align-items: stretch;
             row-gap: 20px;
 
+            padding: 10px;
             margin: 0px 10px 0px 0px;
 
             .product-filter {
@@ -24,7 +26,8 @@
 
         .product-content {
             display: flex;
-            row-gap: 20px;
+            row-gap: 10px;
+            width: 100%;
             flex-flow: column wrap;
 
             .product-actions {
