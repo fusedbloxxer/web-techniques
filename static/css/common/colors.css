@@ -19,6 +19,8 @@ body {
   --color-cart-add-hover: #019231;
   --color-cart-add-checked: #00ee4f;
   --color-cart-add-unchecked: #005c1f;
+
+  --color-filter-border: var(--color-black);
 }
 
 /*# sourceMappingURL=colors.css.map */

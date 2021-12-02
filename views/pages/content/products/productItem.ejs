@@ -26,6 +26,14 @@
                 <%-product.category%>
             </span>
         </p>
+        <p class="audio-jack">
+            <span class="fas fa-volume-up">
+                Has Audio Jack:
+            </span>
+            <span class="audio-jack-value">
+                <%-product.has_phone_jack ? 'Yes' : 'No'%>
+            </span>
+        </p>
         <p class="os">
             <span class="fas fa-tv">
                 Operating System:
@@ -70,7 +78,9 @@
                 const decim = (product.price - trunc)
                     .toFixed(2).replace('0.', '');
             %>
-            <span class="fas fa-money-bill-wave"></span>
+            <span class="fas fa-money-bill-wave">
+                Price:
+            </span>
             $<span class="price-value-trunc"><%-trunc%></span><span class="price-value-decim">.<%-decim%></span>
         </p>
     </div>

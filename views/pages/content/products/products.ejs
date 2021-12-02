@@ -40,6 +40,14 @@
                             placeholder="Type a product name...">
                     </div>
                     <div class="product-filter">
+                        <label for="has-jack-input">
+                            <input
+                                id="has-jack-input"
+                                type="checkbox">
+                            Audio Jack
+                        </label>
+                    </div>
+                    <div class="product-filter">
                         <label for="price-input">
                             Price:
                             <br/>
@@ -163,10 +171,31 @@
                     </div>
                 </div>
 
-                <div class="products-catalog">
-                    <% for (const product of locals.products) { %>
-                        <%- include('./productItem', {product}) %>
-                    <% } %>
+                <div class="product-content">
+                    <div class="product-actions">
+                        <button id="apply-filters-button">
+                            Apply Filters
+                        </button>
+                        <button id="sort-asc-button">
+                            Sort By Name and Price
+                            <span class="fas fa-chevron-up"></span>
+                        </button>
+                        <button id="sort-des-button">
+                            Sort By Name and Price
+                            <span class="fas fa-chevron-down"></span>
+                        </button>
+                        <button id="filter-button">
+                            Total
+                        </button>
+                        <button id="filter-button">
+                            Reset
+                        </button>
+                    </div>
+                    <div class="products-catalog">
+                        <% for (const product of locals.products) { %>
+                            <%- include('./productItem', {product}) %>
+                        <% } %>
+                    </div>
                 </div>
             </div>
         </section>
