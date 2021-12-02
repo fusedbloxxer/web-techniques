@@ -46,8 +46,14 @@
                 <li>
                     <a href="/products">Products</a>
                     <ul class="submenu">
-                        <li><a href="/products?type=phones">Phones</a></li>
-                        <li><a href="/products?type=tablets">Tablets</a></li>
+                        <li><a href="/products">All</a></li>
+                        <% for (const category of locals.productTypes) { %>
+                            <li>
+                                <a href="/products?type=<%-category%>">
+                                    <%- category[0].toUpperCase() + category.slice(1).toLowerCase() %>
+                                </a>
+                            </li>
+                        <% } %>
                     </ul>
                 </li>
 

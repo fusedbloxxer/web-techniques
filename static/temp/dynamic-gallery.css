@@ -5,24 +5,24 @@
       filter: grayscale(100%) contrast(0%);
       z-index: 10;
     }
-    8.3333333333% {
+    5% {
       clip-path: polygon(0 0, 100% 0, 100% 100%, 100% 100%, 0 100%, 0 0);
       filter: grayscale(0%) contrast(100%);
       z-index: 10;
     }
-    16.6666666667% {
+    10% {
       z-index: 10;
     }
-    25% {
+    15% {
       z-index: 0;
     }
-    25.00001% {
+    15.00001% {
       z-index: -10;
     }
-    83.3333333333% {
+    90% {
       z-index: -10;
     }
-    83.3333433333% {
+    90.00001% {
       z-index: 0;
     }
     100% {
@@ -59,7 +59,7 @@
     animation-timing-function: linear;
     animation-iteration-count: infinite;
     animation-fill-mode: forwards;
-    animation-duration: 18s;
+    animation-duration: 30s;
     transition: clip-path 1.5s;
     transition: filter 1.5s;
     position: absolute;
@@ -80,23 +80,35 @@
     background-color: rgba(0, 202, 237, 0.75);
     color: var(--color-white);
   }
-  div.dynamic-gallery .dynamic-gallery-container .dynamic-gallery-item:nth-of-type(6) > figure {
+  div.dynamic-gallery .dynamic-gallery-container .dynamic-gallery-item:nth-of-type(10) > figure {
     animation-delay: 0s;
   }
-  div.dynamic-gallery .dynamic-gallery-container .dynamic-gallery-item:nth-of-type(5) > figure {
+  div.dynamic-gallery .dynamic-gallery-container .dynamic-gallery-item:nth-of-type(9) > figure {
     animation-delay: 3s;
   }
-  div.dynamic-gallery .dynamic-gallery-container .dynamic-gallery-item:nth-of-type(4) > figure {
+  div.dynamic-gallery .dynamic-gallery-container .dynamic-gallery-item:nth-of-type(8) > figure {
     animation-delay: 6s;
   }
-  div.dynamic-gallery .dynamic-gallery-container .dynamic-gallery-item:nth-of-type(3) > figure {
+  div.dynamic-gallery .dynamic-gallery-container .dynamic-gallery-item:nth-of-type(7) > figure {
     animation-delay: 9s;
   }
-  div.dynamic-gallery .dynamic-gallery-container .dynamic-gallery-item:nth-of-type(2) > figure {
+  div.dynamic-gallery .dynamic-gallery-container .dynamic-gallery-item:nth-of-type(6) > figure {
     animation-delay: 12s;
   }
-  div.dynamic-gallery .dynamic-gallery-container .dynamic-gallery-item:nth-of-type(1) > figure {
+  div.dynamic-gallery .dynamic-gallery-container .dynamic-gallery-item:nth-of-type(5) > figure {
     animation-delay: 15s;
+  }
+  div.dynamic-gallery .dynamic-gallery-container .dynamic-gallery-item:nth-of-type(4) > figure {
+    animation-delay: 18s;
+  }
+  div.dynamic-gallery .dynamic-gallery-container .dynamic-gallery-item:nth-of-type(3) > figure {
+    animation-delay: 21s;
+  }
+  div.dynamic-gallery .dynamic-gallery-container .dynamic-gallery-item:nth-of-type(2) > figure {
+    animation-delay: 24s;
+  }
+  div.dynamic-gallery .dynamic-gallery-container .dynamic-gallery-item:nth-of-type(1) > figure {
+    animation-delay: 27s;
   }
 }
 @media screen and (min-width: 840px) and (max-width: 1256px) {
