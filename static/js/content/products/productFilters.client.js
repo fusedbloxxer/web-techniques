@@ -68,7 +68,7 @@ function addTotalFilter() {
             totalElement.id = 'total-product-sum';
         }
 
-        totalElement.innerHTML = `Total Sum: ${total.toFixed(2)}`;
+        totalElement.innerHTML = `Total Sum: $${total.toFixed(2)}`;
 
         if (currentTimeout) {
             clearTimeout(currentTimeout);

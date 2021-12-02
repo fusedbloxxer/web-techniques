@@ -7,20 +7,28 @@ body {
   --color-neutral: #2C537A;
   --color-white: #FFFFFF;
   --color-black: #000000;
-  --color-error-title: #F51100;
-  --color-error-message: #B50C00;
-  --text-color-primary: var(--color-black);
+  --color-red: red;
   --color-attention: #9c2412;
-
   --color-tag-bg: #22476d;
   --color-tag-txt: var(--color-white);
   --color-tag-border: var(--color-tag-bg);
-
   --color-cart-add-hover: #019231;
   --color-cart-add-checked: #00ee4f;
   --color-cart-add-unchecked: #005c1f;
-
+  --color-error-title: #F51100;
+  --color-error-message: #B50C00;
+  --text-color-primary: var(--color-black);
   --color-filter-border: var(--color-black);
+  --color-filter-topbar-bg: #001b47;
+  --color-filter-topbar-border: #264577;
+  --color-filter-topbar-button-bg: #001b47;
+  --color-filter-topbar-button-bg-hover: #0045b4;
+  --color-filter-topbar-button-bg-active: #357df0;
+  --color-filter-topbar-button-text: #8bffff;
+  --color-filter-topbar-button-text-hover: var(--color-white);
+  --color-filter-topbar-button-chevron: var(--color-filter-topbar-button-text);
+  --color-filter-topbar-button-chevron-hover: var(--color-red);
+  --color-filter-topbar-button-border: #9ab5df;
 }
 
 /*# sourceMappingURL=colors.css.map */

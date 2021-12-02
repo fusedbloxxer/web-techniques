@@ -31,8 +31,34 @@
   flex-flow: row nowrap;
   justify-content: space-evenly;
   padding: 20px;
-  border-radius: 10px;
-  border: 2px solid var(--color-filter-border);
+  border-radius: 100px;
+  border: 5px solid var(--color-filter-topbar-border);
+  background-color: var(--color-filter-topbar-bg);
+}
+.products .products-container .product-content .product-actions > * {
+  transition: all 200ms linear;
+  border: 5px solid var(--color-filter-topbar-button-border);
+  background-color: var(--color-filter-topbar-button-bg);
+  color: var(--color-filter-topbar-button-text);
+  border-radius: 25px;
+  font-size: 1.25em;
+  padding: 15px;
+}
+.products .products-container .product-content .product-actions > * [class*=fa-chevron] {
+  transition: all 200ms linear;
+  color: var(--color-filter-topbar-button-chevron);
+}
+.products .products-container .product-content .product-actions > *:hover {
+  background-color: var(--color-filter-topbar-button-bg-hover);
+  color: var(--color-filter-topbar-button-text-hover);
+  transform: scale(1.25);
+  cursor: pointer;
+}
+.products .products-container .product-content .product-actions > *:hover [class*=fa-chevron] {
+  color: var(--color-filter-topbar-button-chevron-hover);
+}
+.products .products-container .product-content .product-actions > *:hover:active {
+  background-color: var(--color-filter-topbar-button-bg-active);
 }
 .products .products-container .product-content .products-catalog {
   display: flex;

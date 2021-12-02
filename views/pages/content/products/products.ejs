@@ -157,8 +157,11 @@
                         </label>
                         <br/>
                         <%
-                            const batteryCapacities = locals.products
-                                .map(p => p.battery_capacity)
+                            let batteryCapacities = Array
+                                .from(locals.products)
+                                .map(p => p.battery_capacity);
+                            batteryCapacities = Array
+                                .from(new Set(batteryCapacities))
                                 .sort((x, y) => x - y);
                         %>
                         <select id="battery-input" multiple>
