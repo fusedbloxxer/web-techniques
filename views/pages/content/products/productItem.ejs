@@ -30,7 +30,7 @@
             <span class="fas fa-volume-up">
                 Has Audio Jack:
             </span>
-            <span class="audio-jack-value">
+            <span class="has-jack-value">
                 <%-product.has_phone_jack ? 'Yes' : 'No'%>
             </span>
         </p>
@@ -55,8 +55,9 @@
                 Battery Capacity:
             </span>
             <span class="battery-value">
-                <%- product.battery_capacity %> mAh
+                <%- product.battery_capacity %>
             </span>
+            mAh
         </p>
         <div class="technologies">
             <span class="fas fa-microchip">

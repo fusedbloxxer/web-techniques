@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: row;
   align-items: flex-start;
+  column-gap: 10px;
 }
 .products .products-container .product-filters {
   display: flex;
@@ -14,6 +15,7 @@
 .products .products-container .product-filters .product-filter {
   border-radius: 10px;
   border: 3px dotted var(--color-filter-border);
+  width: 100%;
   padding: 5px;
 }
 .products .products-container .product-content {

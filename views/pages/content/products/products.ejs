@@ -16,6 +16,7 @@
 
     <!-- JavaScript Used for Filtering -->
     <script src="/static/js/content/products/products.client.js"></script>
+    <script src="/static/js/content/products/productValidators.client.js"></script>
     <script src="/static/js/content/products/productFilters.client.js"></script>
     <script src="/static/js/content/products/productInputs.client.js"></script>
 </head>
@@ -86,7 +87,7 @@
                             <input
                                 id="os-default-input"
                                 type="radio"
-                                value="all"
+                                value="default"
                                 name="os-input"
                                 checked>
                             All
@@ -100,8 +101,10 @@
                                 for="category-<%-category%>-input">
                                     <input
                                         id="category-<%-category%>-input"
-                                        name="category-<%-category%>"
-                                        type="checkbox">
+                                        name="category-input"
+                                        value="<%-category%>"
+                                        type="checkbox"
+                                        checked>
                                     <%-
                                         category.slice(0, 1).toUpperCase()
                                         +
@@ -164,7 +167,7 @@
                                     <%-capacity%>
                                 </option>
                             <% } %>
-                            <option value="All">
+                            <option value="default" selected>
                                 All
                             </option>
                         </select>
