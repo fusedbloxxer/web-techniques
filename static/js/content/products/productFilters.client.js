@@ -6,7 +6,45 @@ window.addEventListener('DOMContentLoaded', (event) => {
 });
 
 function addSortFilter() {
-    
+    const sortAscButton = document.getElementById('sort-asc-button');
+    const sortDescButton = document.getElementById('sort-des-button');
+    const products = Array.from(getProductElements());
+
+    sortAscButton.addEventListener('click', () => {
+        sortProductsByNameAndPrice(products, 1);
+    });
+
+    sortDescButton.addEventListener('click', () => {
+        sortProductsByNameAndPrice(products, -1);
+    });
+}
+
+function sortProductsByNameAndPrice(products, sign) {
+    products
+        .sort((x, y) => {
+            const xName = x.getElementsByClassName('name-value')[0]
+                .innerHTML.trim();
+            const yName = y.getElementsByClassName('name-value')[0]
+                .innerHTML.trim();
+
+            if (xName !== yName) {
+                return sign * xName.localeCompare(yName);
+            }
+
+            return sign * (getProductPrice(x) - getProductPrice(y));
+        })
+        .forEach(p => p.parentNode.appendChild(p));
+}
+
+function getProductPrice(product) {
+    let trunc = product.getElementsByClassName('price-value-trunc')[0]
+        .innerHTML.trim();
+    let decim = product.getElementsByClassName('price-value-decim')[0]
+        .innerHTML.trim();
+    trunc = parseInt(trunc);
+    decim = parseInt(decim);
+    const price = trunc + decim / 100;
+    return price;
 }
 
 function addTotalFilter() {
@@ -18,17 +56,8 @@ function addTotalFilter() {
             .filter(p => p.style.display !== 'none');
 
         const total = visibleProducts
-            .map(p => {
-                let trunc = p.getElementsByClassName('price-value-trunc')[0]
-                    .innerHTML.trim();
-                let decim = p.getElementsByClassName('price-value-decim')[0]
-                    .innerHTML.trim();
-                trunc = parseInt(trunc);
-                decim = parseInt(decim);
-                const price = trunc + decim / 100;
-                return price;
-            })
-            .reduce((x, y) => x + y);
+            .map(p => getProductPrice(p))
+            .reduce((x, y) => x + y, 0);
 
         const actionElements = document.getElementsByClassName('product-actions')[0];
         let totalElement = document.getElementById('total-product-sum');

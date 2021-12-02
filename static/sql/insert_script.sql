@@ -33,6 +33,9 @@ VALUES
 	(12, 'Thord Dock SO', 'Cheap and simple. Can''t get any better than this.', '/static/resources/images/content/gallery/thorn-dock-so.jpg', 'casual', 699.99, 6, 1500, '2014-10-12', 'android', 'smartphone', '4G,support', TRUE),
 	(13, 'Thorn Dock', 'The base version of Thorn Dock SO. Smaller performance for better price and battery.', '/static/resources/images/content/gallery/thorn-dock.jpg', 'casual', 499.99, 3, 1800, '2015-11-22', 'android', 'smartphone', '4G,support,turbo-charge', TRUE),
 	(14, 'Spear Figgle Dox', 'When you need robustness at all times.', '/static/resources/images/content/gallery/spear-figgle-dox.jpg', 'casual', 999.99, 3, 1900, '2017-08-16', 'linux', 'smartphone', '4G,vpn,gms,lts,cloud,root', TRUE),
-	(15, 'Hua Mars 1', 'The basic tool for an artist on the move.', '/static/resources/images/content/gallery/hua-two-in-one.jpg', 'office', 899.99, 7, 2100, '2015-04-13', 'android', 'smartphone', 'stylus,wifi,4G,turbo-charge', TRUE);
+	(15, 'Hua Mars 1', 'The basic tool for an artist on the move.', '/static/resources/images/content/gallery/hua-two-in-one.jpg', 'office', 899.99, 7, 2100, '2015-04-13', 'android', 'smartphone', 'stylus,wifi,4G,turbo-charge', TRUE),
+	(16, 'Hua Mars 1', 'The basic tool for an artist on the move.', '/static/resources/images/content/gallery/hua-two-in-one.jpg', 'office', 799.99, 7, 2100, '2015-04-13', 'android', 'smartphone', 'stylus,wifi,4G,turbo-charge', TRUE),
+	(17, 'Hua Mars 1', 'The basic tool for an artist on the move.', '/static/resources/images/content/gallery/hua-two-in-one.jpg', 'office', 2099.99, 7, 2100, '2015-04-13', 'android', 'smartphone', 'stylus,wifi,4G,turbo-charge', TRUE),
+	(18, 'Hua Mars 1', 'The basic tool for an artist on the move.', '/static/resources/images/content/gallery/hua-two-in-one.jpg', 'office', 499.99, 7, 2100, '2015-04-13', 'android', 'smartphone', 'stylus,wifi,4G,turbo-charge', TRUE);
 
 COMMIT TRANSACTION;
