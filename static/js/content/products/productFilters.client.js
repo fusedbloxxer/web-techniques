@@ -11,10 +11,22 @@ function addSortFilter() {
     const products = Array.from(getProductElements());
 
     sortAscButton.addEventListener('click', () => {
+        const isValid = validateAllFilters();
+
+        if (!isValid) {
+            return;
+        }
+
         sortProductsByNameAndPrice(products, 1);
     });
 
     sortDescButton.addEventListener('click', () => {
+        const isValid = validateAllFilters();
+
+        if (!isValid) {
+            return;
+        }
+
         sortProductsByNameAndPrice(products, -1);
     });
 }
@@ -52,6 +64,12 @@ function addTotalFilter() {
     let currentTimeout = null;
 
     totalButton.addEventListener('click', function(event) {
+        const isValid = validateAllFilters();
+
+        if (!isValid) {
+            return;
+        }
+
         const visibleProducts = Array.from(getProductElements())
             .filter(p => p.style.display !== 'none');
 
