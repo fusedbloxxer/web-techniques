@@ -12,12 +12,22 @@ const app = express();
 const port = process.env.PORT || 8080;
 
 // Configure the DbConnectionObject
+// const client = new Client({
+//     user: 'andrei',
+//     password: 'andrion1234',
+//     database: 'andrion',
+//     host: 'localhost',
+//     port: 5432
+// });
 const client = new Client({
-    user: 'andrei',
-    password: 'andrion1234',
-    database: 'andrion',
-    host: 'localhost',
-    port: 5432
+    user: 'ewbcegcmdffovp',
+    password: '2ee598f39f249123ea1d34f20ab5370c54b861dc36e26b4d3a4c1be5f62c3bef',
+    database: 'daedt5mb6prg95',
+    host: 'ec2-3-230-219-251.compute-1.amazonaws.com',
+    port: 5432,
+    ssl: {
+        rejectUnauthorized: false
+    }
 });
 
 // Connect to the database
