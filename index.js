@@ -9,7 +9,7 @@ const path = require('path');
 
 // Configure the server
 const app = express();
-const port = 8080;
+const port = process.env.PORT || 8080;
 
 // Configure the DbConnectionObject
 const client = new Client({
@@ -156,5 +156,5 @@ app.set("view engine","ejs");
 
 // Start the server
 app.listen(port, () => {
-    console.log("Server is listening on http://localhost:8080/");
+    console.log(`Server is listening on http://heroku:${port}/`);
 });
