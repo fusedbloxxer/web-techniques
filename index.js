@@ -20,10 +20,10 @@ const port = process.env.PORT || 8080;
 //     port: 5432
 // });
 const client = new Client({
-    user: 'ewbcegcmdffovp',
-    password: '2ee598f39f249123ea1d34f20ab5370c54b861dc36e26b4d3a4c1be5f62c3bef',
-    database: 'daedt5mb6prg95',
-    host: 'ec2-3-230-219-251.compute-1.amazonaws.com',
+    user: 'iwopmcbxppwqnw',
+    password: 'c87f2cbec070cdca0b09d0acfb415824222c18822fe8a8a782783f92ff4f3dd5',
+    database: 'df33m1b15fq4lh',
+    host: 'ec2-52-0-93-3.compute-1.amazonaws.com',
     port: 5432,
     ssl: {
         rejectUnauthorized: false
