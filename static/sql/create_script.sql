@@ -1,10 +1,12 @@
 -- Drop Tables
 DROP TABLE IF EXISTS product;
+DROP TABLE IF EXISTS app_user;
 
 -- Drop Types
 DROP TYPE IF EXISTS device_type;
 DROP TYPE IF EXISTS operating_system;
 DROP TYPE IF EXISTS category;
+DROP TYPE IF EXISTS role;
 
 -- Create Types
 CREATE TYPE device_type AS ENUM (
@@ -40,4 +42,20 @@ CREATE TABLE product (
     device_type device_type NOT NULL,
 	technologies character varying(1024) NOT NULL,
     has_phone_jack boolean DEFAULT true NOT NULL
+);
+
+CREATE TYPE role
+AS
+ENUM('admin', 'moderator', 'common');
+
+CREATE TABLE IF NOT EXISTS app_user (
+	id SERIAL PRIMARY KEY,
+	username VARCHAR(50) UNIQUE NOT NULL,
+	last_name VARCHAR(100) NOT NULL,
+	first_name VARCHAR(100) NOT NULL,
+	password VARCHAR(100) NOT NULL,
+	role role NOT NULL DEFAULT 'common',
+	email VARCHAR(100) NOT NULL,
+	chat_color VARCHAR(50) NOT NULL,
+	add_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
