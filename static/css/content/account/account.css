@@ -1,0 +1,21 @@
+ul.theme-list {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  list-style: none;
+}
+ul.theme-list > li {
+  transition: transform 120ms linear;
+  text-align: center;
+  width: 10%;
+  background-color: var(--color-theme-select-link);
+  border: solid 3px var(--color-theme-select-border);
+  border-radius: 25px;
+}
+ul.theme-list > li:hover {
+  cursor: pointer;
+  transform: scale(1.25);
+  background-color: var(--color-theme-select-hover);
+}
+
+/*# sourceMappingURL=account.css.map */

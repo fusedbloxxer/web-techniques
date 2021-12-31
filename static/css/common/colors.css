@@ -1,10 +1,4 @@
 body {
-  --color-primary: #5199E0;
-  --color-primary-light: #00CAED;
-  --color-primary-dark: #15283B;
-  --color-secondary: #437FBA;
-  --color-tertiary: #23588d;
-  --color-neutral: #2C537A;
   --color-white: #FFFFFF;
   --color-black: #000000;
   --color-red: red;
@@ -29,6 +23,9 @@ body {
   --color-filter-topbar-button-chevron: var(--color-filter-topbar-button-text);
   --color-filter-topbar-button-chevron-hover: var(--color-red);
   --color-filter-topbar-button-border: #9ab5df;
+  --color-theme-select-link: #216ce4;
+  --color-theme-select-hover: #3c87ff;
+  --color-theme-select-border: #0a52c7;
 }
 
 /*# sourceMappingURL=colors.css.map */

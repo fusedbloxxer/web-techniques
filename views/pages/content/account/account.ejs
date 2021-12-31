@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Include Common Head Fragment -->
+  <%- include('../../../fragments/head.ejs') %>
+
+  <!-- Page-Specific Information -->
+  <meta name="keywords" content="account, information, edit, settings, configure" />
+  <meta name="description" content="Your personal account page." />
+  <title>Andrion - Account Page</title>
+
+  <!-- CSS Styling -->
+  <link rel="stylesheet" type="text/css" href="/static/css/content/account/account.css" />
+
+  <!-- Add Scripts -->
+  <script src="/static/js/content/account/account.js"></script>
+</head>
+
+<body>
+  <%- include('../../../fragments/header.ejs', {productTypes}) %>
+
+    <main>
+      <ul class="theme-list">
+        <li class="theme-link" id="theme-dark">
+          <p class="fas fa-moon">
+          </p>
+        </li>
+        <li class="theme-link" id="theme-light">
+          <p class="fas fa-sun">
+          </p>
+        </li>
+        <li class="theme-link" id="theme-mountain">
+          <p class="fas fa-mountain">
+          </p>
+        </li>
+      </ul>
+    </main>
+
+    <%- include('../../../fragments/footer.ejs') %>
+</body>
+
+</html>

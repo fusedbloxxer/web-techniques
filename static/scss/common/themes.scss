@@ -1,0 +1,26 @@
+body.theme-light {
+  --color-primary: #5199E0;
+  --color-primary-light: #00CAED;
+  --color-primary-dark: #15283B;
+  --color-secondary: #437FBA;
+  --color-tertiary: #23588d;
+  --color-neutral: #2C537A;
+}
+
+body.theme-dark {
+  --color-primary: #13508d;
+  --color-primary-light: #018fa8;
+  --color-primary-dark: #0d1a27;
+  --color-secondary: #244d77;
+  --color-tertiary: #0e253b;
+  --color-neutral: #041d36;
+}
+
+body.theme-mountain {
+  --color-primary: #12a591;
+  --color-primary-light: #44f1a9;
+  --color-primary-dark: #04664d;
+  --color-secondary: #0d8545;
+  --color-tertiary: #00a063;
+  --color-neutral: #457e74;
+}
