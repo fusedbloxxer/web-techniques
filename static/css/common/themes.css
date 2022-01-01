@@ -7,6 +7,7 @@ body.theme-light {
   --color-secondary: #437FBA;
   --color-tertiary: #23588d;
   --color-neutral: #2C537A;
+  --color-home-section-border: var(--color-primary-dark);
   --color-filter-topbar-bg: var(--color-primary-dark);
   --color-filter-topbar-border: #264577;
   --color-filter-topbar-button-bg: var(--color-primary-tertiary);
@@ -23,6 +24,8 @@ body.theme-light {
   --color-theme-select-link: #62b4da;
   --color-theme-select-hover: #6a96dd;
   --color-theme-select-border: #1045a7;
+  --color-highlight-active-small-glow: #b3d5f6;
+  --color-highlight-active-big-glow: #37638f;
 }
 
 body.theme-dark {
@@ -34,6 +37,7 @@ body.theme-dark {
   --color-secondary: #244d77;
   --color-tertiary: #0e253b;
   --color-neutral: #041d36;
+  --color-home-section-border: var(--color-white);
   --color-filter-topbar-bg: var(--color-primary-dark);
   --color-filter-topbar-border: #264577;
   --color-filter-topbar-button-bg: var(--color-primary-tertiary);
@@ -50,6 +54,8 @@ body.theme-dark {
   --color-theme-select-link: #112950;
   --color-theme-select-hover: #2c5494;
   --color-theme-select-border: #ffffff;
+  --color-highlight-active-small-glow: #59c9dd;
+  --color-highlight-active-big-glow: #2e7788;
 }
 
 body.theme-mountain {
@@ -61,6 +67,7 @@ body.theme-mountain {
   --color-secondary: #0d8545;
   --color-tertiary: #00a063;
   --color-neutral: #457e74;
+  --color-home-section-border: var(--color-primary-dark);
   --color-filter-topbar-bg: var(--color-primary-dark);
   --color-filter-topbar-border: #264577;
   --color-filter-topbar-button-bg: var(--color-primary-tertiary);
@@ -77,6 +84,8 @@ body.theme-mountain {
   --color-theme-select-link: #10685c;
   --color-theme-select-hover: #14c7af;
   --color-theme-select-border: #02362f;
+  --color-highlight-active-small-glow: #2cf8aa;
+  --color-highlight-active-big-glow: #00995e;
 }
 
 /*# sourceMappingURL=themes.css.map */

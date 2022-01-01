@@ -164,5 +164,17 @@ nav > ul.menu > li > ul.submenu > li:hover > a::after {
     transition: none;
   }
 }
+.menu-item.highlight-active > a, .submenu-item.highlight-active > a {
+  animation: glow 2500ms infinite alternate;
+}
+
+@keyframes glow {
+  0% {
+    text-shadow: none;
+  }
+  100% {
+    text-shadow: 0 0 2px var(--color-highlight-active-small-glow), 0 0 4px var(--color-highlight-active-small-glow), 0 0 8px var(--color-highlight-active-small-glow), 0 0 12px var(--color-highlight-active-small-glow), 0 0 14px var(--color-highlight-active-small-glow), 0 0 16px var(--color-highlight-active-big-glow), 0 0 16px var(--color-highlight-active-big-glow), 0 0 18px var(--color-highlight-active-big-glow), 0 0 18px var(--color-highlight-active-big-glow), 0 0 22px var(--color-highlight-active-big-glow), 0 0 22px var(--color-highlight-active-big-glow);
+  }
+}
 
 /*# sourceMappingURL=main-menu.css.map */
