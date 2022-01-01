@@ -6,7 +6,10 @@
   .theme-item {
     transition: transform 120ms linear;
     text-align: center;
-    width: 10%;
+
+    $theme-button-zie: 54px;
+    width: $theme-button-zie;
+    height: $theme-button-zie;
 
     background-color: var(--color-theme-select-link);
     border: solid 3px var(--color-theme-select-border);
@@ -18,7 +21,7 @@
       background-color: var(--color-theme-select-hover);
     }
 
-    > p {
+    >p {
       color: var(--color-theme-select-icon);
       margin-bottom: 15px;
       margin-top: 15px;
@@ -26,6 +29,6 @@
   }
 
   input {
-    visibility: hidden;
+    display: none;
   }
 }

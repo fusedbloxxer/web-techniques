@@ -1,4 +1,7 @@
 body.theme-light {
+  --color-background: var(--color-white);
+  background-color: var(--color-background);
+
   --color-primary: #5199E0;
   --color-primary-light: #00CAED;
   --color-primary-dark: #15283B;
@@ -27,7 +30,8 @@ body.theme-light {
 }
 
 body.theme-dark {
-  background-color: var(--color-black);
+  --color-background: var(--color-black);
+  background-color: var(--color-background);
 
   --color-primary: #13508d;
   --color-primary-light: #018fa8;
@@ -57,6 +61,9 @@ body.theme-dark {
 }
 
 body.theme-mountain {
+  --color-background: var(--color-white);
+  background-color: var(--color-background);
+
   --color-primary: #12a591;
   --color-primary-light: #44f1a9;
   --color-primary-dark: #04664d;

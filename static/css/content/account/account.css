@@ -6,7 +6,8 @@
 #theme-list .theme-item {
   transition: transform 120ms linear;
   text-align: center;
-  width: 10%;
+  width: 54px;
+  height: 54px;
   background-color: var(--color-theme-select-link);
   border: solid 3px var(--color-theme-select-border);
   border-radius: 25px;
@@ -22,7 +23,7 @@
   margin-top: 15px;
 }
 #theme-list input {
-  visibility: hidden;
+  display: none;
 }
 
 /*# sourceMappingURL=account.css.map */

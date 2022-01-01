@@ -10,7 +10,7 @@ hr.separator {
   display: block;
 }
 hr.separator::after {
-  color: var(--color-secondary);
+  color: var(--text-color-primary);
   font-weight: bold;
   font-size: 2.25em;
   content: "*";
