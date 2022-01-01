@@ -6,4 +6,9 @@
     #hambuger, #hamburger-icon, #hamburger-checkbox {
         display: none;
     }
+
+    nav > ul.menu {
+        position: fixed;
+        top: 0px;
+    }
 }
