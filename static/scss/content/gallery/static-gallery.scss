@@ -3,6 +3,8 @@
 @use '../../common/variables.scss' as variables;
 
 .static-gallery {
+    color: var(--text-color-primary);
+
     text-align: center;
     grid-gap: 0.5em;
     display: grid;

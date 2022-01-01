@@ -1,4 +1,5 @@
 footer {
+  color: var(--text-color-primary);
   padding: 0px;
   margin: 10px 0px 0px 0px;
   width: 100%;
@@ -8,8 +9,10 @@ footer > *:not(a) {
   text-align: center;
 }
 footer > small {
-  background-color: transparent;
   display: block;
+}
+footer > small:first-of-type {
+  padding-top: 30px;
 }
 
 /*# sourceMappingURL=footer.css.map */

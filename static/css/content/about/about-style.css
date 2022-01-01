@@ -1,4 +1,5 @@
 main > .container {
+  color: var(--text-color-primary);
   text-align: center;
 }
 

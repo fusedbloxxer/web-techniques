@@ -5,15 +5,45 @@ body.theme-light {
   --color-secondary: #437FBA;
   --color-tertiary: #23588d;
   --color-neutral: #2C537A;
+
+  --color-filter-topbar-bg: var(--color-primary-dark);
+  --color-filter-topbar-border: #264577;
+  --color-filter-topbar-button-bg: var(--color-primary-tertiary);
+  --color-filter-topbar-button-bg-hover: var(--color-primary);
+  --color-filter-topbar-button-bg-active: #357df0;
+  --color-filter-topbar-button-text: #8bffff;
+  --color-filter-topbar-button-text-hover: var(--color-white);
+  --color-filter-topbar-button-chevron: var(--color-filter-topbar-button-text);
+  --color-filter-topbar-button-chevron-hover: var(--color-red);
+  --color-filter-topbar-button-border: #9ab5df;
+  --color-filter-border: var(--color-black);
+
+  --text-color-primary: var(--color-black);
 }
 
 body.theme-dark {
+  background-color: var(--color-black);
+
   --color-primary: #13508d;
   --color-primary-light: #018fa8;
   --color-primary-dark: #0d1a27;
   --color-secondary: #244d77;
   --color-tertiary: #0e253b;
   --color-neutral: #041d36;
+
+  --color-filter-topbar-bg: var(--color-primary-dark);
+  --color-filter-topbar-border: #264577;
+  --color-filter-topbar-button-bg: var(--color-primary-tertiary);
+  --color-filter-topbar-button-bg-hover: var(--color-primary);
+  --color-filter-topbar-button-bg-active: #357df0;
+  --color-filter-topbar-button-text: #8bffff;
+  --color-filter-topbar-button-text-hover: var(--color-white);
+  --color-filter-topbar-button-chevron: var(--color-filter-topbar-button-text);
+  --color-filter-topbar-button-chevron-hover: var(--color-red);
+  --color-filter-topbar-button-border: #9ab5df;
+  --color-filter-border: var(--color-white);
+
+  --text-color-primary: var(--color-white);
 }
 
 body.theme-mountain {
@@ -23,4 +53,18 @@ body.theme-mountain {
   --color-secondary: #0d8545;
   --color-tertiary: #00a063;
   --color-neutral: #457e74;
+
+  --color-filter-topbar-bg: var(--color-primary-dark);
+  --color-filter-topbar-border: #264577;
+  --color-filter-topbar-button-bg: var(--color-primary-tertiary);
+  --color-filter-topbar-button-bg-hover: var(--color-primary);
+  --color-filter-topbar-button-bg-active: #357df0;
+  --color-filter-topbar-button-text: #8bffff;
+  --color-filter-topbar-button-text-hover: var(--color-white);
+  --color-filter-topbar-button-chevron: var(--color-filter-topbar-button-text);
+  --color-filter-topbar-button-chevron-hover: var(--color-red);
+  --color-filter-topbar-button-border: #9ab5df;
+  --color-filter-border: var(--color-black);
+
+  --text-color-primary: var(--color-black);
 }
