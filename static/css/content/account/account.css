@@ -16,6 +16,11 @@
   transform: scale(1.25);
   background-color: var(--color-theme-select-hover);
 }
+#theme-list .theme-item > p {
+  color: var(--color-theme-select-icon);
+  margin-bottom: 15px;
+  margin-top: 15px;
+}
 #theme-list input {
   visibility: hidden;
 }
