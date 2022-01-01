@@ -1,5 +1,6 @@
+const _ = require('lodash');
 const rxjs = require('rxjs');
-const {map} = require('rxjs/operators');
+const {map,tap} = require('rxjs/operators');
 
 function ProductsService({ dbCon }) {
     // Extract args
@@ -32,6 +33,19 @@ function ProductsService({ dbCon }) {
         `))
         .pipe(
             map(data => data.rows.map(row => row.unnest))
+        );
+    }
+
+    // Get n-most random products
+    this.fetchRandomProducts = function({ sampleSize = 0 } = {}) {
+        // Get the number of products in the database
+        return rxjs.from(this.dbCon.query(`
+            SELECT *
+            FROM product;
+        `))
+        .pipe(
+            map(data => data.rows),
+            map(products => _.sampleSize(products, sampleSize)),
         );
     }
 

@@ -3,7 +3,7 @@
     display: grid;
     grid-gap: 10px;
     grid-template-columns: auto auto auto auto;
-    grid-template-areas: "gr-presentation gr-presentation gr-presentation    gr-presentation" "gr-presentation gr-presentation gr-presentation    gr-presentation" "gr-toc          gr-toc          gr-events-calendar gr-events-calendar" "gr-toc          gr-toc          gr-announcements   gr-announcements" "gr-online-users gr-user-stats   gr-user-stats      gr-site-and-server" "gr-motivation   gr-motivation   gr-motivation      gr-motivation" "gr-offers       gr-offers       gr-offers          gr-tech-terms" "gr-offers       gr-offers       gr-offers          gr-tech-terms" "gr-faq          gr-faq          gr-faq             gr-faq" "gr-gallery      gr-gallery      gr-gallery         gr-gallery";
+    grid-template-areas: "gr-presentation gr-presentation gr-presentation    gr-presentation" "gr-presentation gr-presentation gr-presentation    gr-presentation" "gr-toc          gr-toc          gr-events-calendar gr-events-calendar" "gr-toc          gr-toc          gr-announcements   gr-announcements" "gr-online-users gr-user-stats   gr-user-stats      gr-site-and-server" "gr-motivation   gr-motivation   gr-motivation      gr-motivation" "gr-offers       gr-offers       gr-offers          gr-tech-terms" "gr-offers       gr-offers       gr-offers          gr-tech-terms" "gr-faq          gr-faq          gr-faq             gr-faq" "gr-gallery      gr-gallery      gr-gallery         gr-gallery" "gr-slideshow    gr-slideshow    gr-slideshow       gr-slideshow";
   }
 }
 

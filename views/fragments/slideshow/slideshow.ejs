@@ -1,0 +1,44 @@
+<div id="product-slideshow" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-indicators">
+    <% for (const i in products) { %>
+      <button
+        type="button"
+        data-bs-target="#product-slideshow"
+        <% if (i == '0') { %>
+          class="active"
+        <% } %>
+        aria-label="Slide <%-Number(i) + 1%>"
+        data-bs-slide-to="<%-i%>"></button>
+    <% } %>
+  </div>
+
+  <div class="carousel-inner">
+    <% for (const product of products) { %>
+      <% if (product == products[0]) { %>
+        <div class="carousel-item active">
+      <% } else { %>
+        <div class="carousel-item">
+      <% } %>
+          <img
+            class="img-fluid rounded"
+            src="<%-product.image%>"
+            title="<%-product.name%>"
+            alt="<%-product.name%>" />
+          <div class="carousel-caption d-none d-md-block">
+            <h5><%-product.name%></h5>
+            <p><%-product.description%></p>
+          </div>
+        </div>
+    <% } %>
+  </div>
+
+  <button class="carousel-control-prev" type="button" data-bs-target="#product-slideshow" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+
+  <button class="carousel-control-next" type="button" data-bs-target="#product-slideshow" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>

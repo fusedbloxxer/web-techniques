@@ -1,0 +1,24 @@
+@media screen and (min-width: 840px) and (max-width: 1256px) {
+  .carousel-inner > .carousel-item > img {
+    width: 100%;
+    height: 540px;
+  }
+}
+@media screen and (min-width: 1256px) {
+  .carousel-inner > .carousel-item > img {
+    width: 100%;
+    height: 720px;
+  }
+}
+@media screen and (max-width: 840px) {
+  .carousel-inner > .carousel-item > img {
+    width: 100%;
+    height: 480px;
+  }
+}
+.carousel-inner > .carousel-item .carousel-caption {
+  background-color: rgba(0, 0, 0, 0.75);
+  border-radius: 56px;
+}
+
+/*# sourceMappingURL=slideshow.css.map */
