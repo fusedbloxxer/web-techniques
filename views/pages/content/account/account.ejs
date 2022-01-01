@@ -21,20 +21,22 @@
   <%- include('../../../fragments/header.ejs', {productTypes}) %>
 
     <main>
-      <ul class="theme-list">
-        <li class="theme-link" id="theme-dark">
-          <p class="fas fa-moon">
-          </p>
-        </li>
-        <li class="theme-link" id="theme-light">
-          <p class="fas fa-sun">
-          </p>
-        </li>
-        <li class="theme-link" id="theme-mountain">
-          <p class="fas fa-mountain">
-          </p>
-        </li>
-      </ul>
+      <div id="theme-list">
+        <label class="theme-item" for="theme-dark">
+          <p class="fas fa-moon"></p>
+        </label>
+        <input id="theme-dark" type="radio" name="theme" value="theme-dark">
+
+        <label class="theme-item" for="theme-light">
+          <p class="fas fa-sun"></p>
+        </label>
+        <input id="theme-light" type="radio" name="theme" value="theme-light">
+
+        <label class="theme-item" for="theme-mountain">
+          <p class="fas fa-mountain"></p>
+        </label>
+        <input id="theme-mountain" type="radio" name="theme" value="theme-mountain">
+      </div>
     </main>
 
     <%- include('../../../fragments/footer.ejs') %>

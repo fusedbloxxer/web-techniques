@@ -1,10 +1,9 @@
-ul.theme-list {
+#theme-list {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  list-style: none;
 }
-ul.theme-list > li {
+#theme-list .theme-item {
   transition: transform 120ms linear;
   text-align: center;
   width: 10%;
@@ -12,10 +11,13 @@ ul.theme-list > li {
   border: solid 3px var(--color-theme-select-border);
   border-radius: 25px;
 }
-ul.theme-list > li:hover {
+#theme-list .theme-item:hover {
   cursor: pointer;
   transform: scale(1.25);
   background-color: var(--color-theme-select-hover);
+}
+#theme-list input {
+  visibility: hidden;
 }
 
 /*# sourceMappingURL=account.css.map */

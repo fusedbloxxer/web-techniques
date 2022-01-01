@@ -1,11 +1,9 @@
-ul.theme-list {
+#theme-list {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
 
-  list-style: none;
-
-  >li {
+  .theme-item {
     transition: transform 120ms linear;
     text-align: center;
     width: 10%;
@@ -19,5 +17,9 @@ ul.theme-list {
       transform: scale(1.25);
       background-color: var(--color-theme-select-hover);
     }
+  }
+
+  input {
+    visibility: hidden;
   }
 }

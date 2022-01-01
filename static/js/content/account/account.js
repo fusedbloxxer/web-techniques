@@ -1,10 +1,16 @@
 window.addEventListener("DOMContentLoaded", function() {
-  const themeLinks = document.getElementsByClassName("theme-link");
+  const themeList = document
+    .getElementById("theme-list")
+    .getElementsByTagName("input");
 
-  for (const themeLink of themeLinks) {
-    themeLink.addEventListener("click", function() {
-      localStorage.setItem("theme", themeLink.id);
-      document.body.className = themeLink.id;
+  for (const themeItem of themeList) {
+    themeItem.addEventListener("change", function() {
+      if (!this.checked) {
+        return;
+      }
+
+      localStorage.setItem("theme", themeItem.id);
+      document.body.className = themeItem.id;
     });
   }
 });
