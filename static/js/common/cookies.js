@@ -1,5 +1,21 @@
 window.addEventListener("DOMContentLoaded", function () {
   checkBannerCookie();
+  console.log(getCookie("lastAccessedPages"));
+});
+
+window.addEventListener("beforeunload", function () {
+  if (getCookie("bannerAccepted")) {
+    const maxArraySize = 2;
+    const storedPages = getCookie("lastAccessedPages");
+    const lastAccessedPages = storedPages ? JSON.parse(storedPages) : [];
+
+    if (lastAccessedPages.length >= maxArraySize) {
+      lastAccessedPages.shift();
+    }
+
+    lastAccessedPages.push(window.location.href);
+    setCookie("lastAccessedPages", JSON.stringify(lastAccessedPages));
+  }
 });
 
 function checkBannerCookie() {
@@ -8,13 +24,17 @@ function checkBannerCookie() {
   if (isBannerAccepted) {
     document.getElementById("banner").style.display = "none";
   } else {
+    deleteAllCookies();
     document.getElementById("banner").style.display = "block";
     document.getElementById("banner-accept").onclick = function () {
       // One week in ms
-      const expireDuration = 5000;// 6.048e+8;
+      const expireDuration = 115000;// 6.048e+8;
       setCookie("bannerAccepted", true, expireDuration);
       document.getElementById("banner").style.display = "none";
     };
+    document.getElementById("banner-decline").onclick = function () {
+      document.getElementById("banner").style.display = "none";
+    }
   }
 }
 
@@ -34,7 +54,7 @@ function setCookie(cookieName, cookieValue, expireDuration /* milliseconds */) {
 }
 
 function getCookie(cookieName) {
-  const name = cookieName + "=";
+  const name = cookieName.trim() + "=";
   const cookies = document.cookie.split(";");
 
   for (let i = 0; i !== cookies.length; i++) {
@@ -46,6 +66,13 @@ function getCookie(cookieName) {
   }
 
   return undefined;
+}
+
+function deleteAllCookies() {
+  const cookies = document.cookie.split(';');
+  for (const cookie of cookies) {
+    deleteCookie(cookie.split('=')[0]);
+  }
 }
 
 function deleteCookie(cookieName) {
