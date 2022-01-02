@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Include Common Head Fragment -->
+  <%- include('../../../fragments/head.ejs') %>
+
+    <!-- Page-Specific Information -->
+    <meta name="keywords" content="account, information, edit, settings, configure" />
+    <meta name="description" content="Your personal account page." />
+    <title>Andrion - Account Page</title>
+
+    <!-- CSS Styling -->
+    <link rel="stylesheet" type="text/css" href="/static/css/content/account/account.css" />
+
+    <!-- Add Scripts -->
+    <script src="/static/js/content/account/account.js"></script>
+</head>
+
+<body>
+  <%- include('../../../fragments/header.ejs', {productTypes}) %>
+
+    <main>
+      <div id="container">
+        <div id="theme-list" class="card">
+          <div class="card-header">
+            Themes
+          </div>
+          <div class="card-body">
+            <label id="theme-dark-label" class="theme-item" for="theme-dark">
+              <p class="fas fa-moon"></p>
+            </label>
+            <input id="theme-dark" type="radio" name="theme" value="theme-dark">
+
+            <label id="theme-light-label" class="theme-item" for="theme-light">
+              <p class="fas fa-sun"></p>
+            </label>
+            <input id="theme-light" type="radio" name="theme" value="theme-light">
+
+            <label id="theme-mountain-label" class="theme-item" for="theme-mountain">
+              <p class="fas fa-mountain"></p>
+            </label>
+            <input id="theme-mountain" type="radio" name="theme" value="theme-mountain">
+          </div>
+        </div>
+
+        <div id="recent-pages-container" class="card">
+          <div class="card-header">
+            Recently Accessed Pages
+          </div>
+          <div class="card-body">
+            <div id="recent-pages-list" class="list-group">
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </main>
+
+    <%- include('../../../fragments/footer.ejs') %>
+</body>
+
+</html>

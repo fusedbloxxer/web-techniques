@@ -8,23 +8,25 @@ nav {
   top: 0px;
   left: 0px;
   width: 100%;
-  position: fixed;
-  background-color: transparent;
   z-index: 1000;
+  position: fixed;
+  background-color: var(--color-primary);
 }
-nav > ul.menu, nav > ul.menu > li > ul.submenu {
+nav > ul.menu,
+nav > ul.menu > li > ul.submenu {
   background-color: transparent;
   border: none;
-  height: 100%;
   padding: 0px;
   margin: 0px;
 }
-nav > ul.menu > li, nav > ul.menu > li > ul.submenu > li {
+nav > ul.menu > li,
+nav > ul.menu > li > ul.submenu > li {
   background-color: var(--color-primary);
   list-style-type: none;
   height: 2.5em;
 }
-nav > ul.menu > li a, nav > ul.menu > li > ul.submenu > li a {
+nav > ul.menu > li a,
+nav > ul.menu > li > ul.submenu > li a {
   transition: line-height 300ms linear, font-size 300ms linear;
   padding: 5px;
   font-weight: bold;
@@ -43,6 +45,7 @@ nav > ul.menu {
   display: flex;
   flex-direction: row;
   align-items: stretch;
+  position: relative;
 }
 nav > ul.menu > li {
   flex: auto;
@@ -70,7 +73,8 @@ nav > ul.menu > li > ul.submenu {
   transform-origin: top;
   transition: transform 600ms, opacity 600ms;
 }
-nav > ul.menu > li > ul.submenu > li > a::before, nav > ul.menu > li > ul.submenu > li > a::after {
+nav > ul.menu > li > ul.submenu > li > a::before,
+nav > ul.menu > li > ul.submenu > li > a::after {
   transition: transform 350ms;
   box-sizing: border-box;
   transform-origin: top;
@@ -92,7 +96,8 @@ nav > ul.menu > li > ul.submenu > li a::after {
   right: 0px;
   background: linear-gradient(to left, var(--color-white), var(--color-primary));
 }
-nav > ul.menu > li > ul.submenu > li:hover > a::before, nav > ul.menu > li > ul.submenu > li:hover > a::after {
+nav > ul.menu > li > ul.submenu > li:hover > a::before,
+nav > ul.menu > li > ul.submenu > li:hover > a::after {
   transform: scaleY(1);
 }
 

@@ -1,34 +1,35 @@
-// Import dependencies
-const {ProductsService} = require('./server/products/products.service');
+// Import Services
+const {ProductsService} = require('./server/products/products.service.js');
+const {AccountService} = require('./server/account/account.service.js');
+
+// Import Routers
 const productsRouter = require('./server/products/products.routes.js');
+const accountRouter = require('./server/account/account.routes.js');
 const galleryRouter = require('./server/gallery/gallery.routes.js');
 const applicationRouter = require('./server/app.routes.js');
+
+// Import dependencies
 const express = require('express');
 const {Client} = require("pg");
 const path = require('path');
+const fs = require('fs');
 
 // Configure the server
 const app = express();
 const port = process.env.PORT || 8080;
 
-// Configure the DbConnectionObject
-// const client = new Client({
-//     user: 'andrei',
-//     password: 'andrion1234',
-//     database: 'andrion',
-//     host: 'localhost',
-//     port: 5432
-// });
-const client = new Client({
-    user: 'iwopmcbxppwqnw',
-    password: 'c87f2cbec070cdca0b09d0acfb415824222c18822fe8a8a782783f92ff4f3dd5',
-    database: 'df33m1b15fq4lh',
-    host: 'ec2-52-0-93-3.compute-1.amazonaws.com',
-    port: 5432,
-    ssl: {
-        rejectUnauthorized: false
-    }
-});
+// Check environment and load settings
+if (process.env.ENVIRONMENT === 'production') {
+    ({ protocol, domainName } = JSON.parse(process.env.HOST));
+    var client = new Client(JSON.parse(process.env.DATABASE_CREDENTIALS));
+} else {
+    const raw = fs.readFileSync(path.join(__dirname, 'config', 'server.json'));
+    ({ host: {protocol, domainName }, databaseCredentials } = JSON.parse(raw));
+    var client = new Client(databaseCredentials);
+}
+
+// Store host address
+const host = `${protocol}${domainName}`;
 
 // Connect to the database
 client.connect();
@@ -39,6 +40,9 @@ app.use('/static', express.static(path.join(__dirname, 'static')));
 // Create dependencies
 const productsService = new ProductsService({
     dbCon: client,
+});
+
+const accountService = new AccountService({
 });
 
 // Use separately defined routers
@@ -53,6 +57,11 @@ app.use('/gallery', galleryRouter({
 
 app.use('/products', productsRouter({
     productsService,
+}));
+
+app.use('/account', accountRouter({
+    accountService,
+    productsService
 }));
 
 // Handle all other routes
@@ -162,9 +171,9 @@ app.use(function defaultErrorHandler(err, req, res, next) {
 });
 
 // Set the render engine to be usedd
-app.set("view engine","ejs");
+app.set("view engine", "ejs");
 
 // Start the server
 app.listen(port, () => {
-    console.log(`Server is listening on http://heroku:${port}/`);
+    console.log(`Server is listening on ${host}`);
 });

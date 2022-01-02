@@ -1,6 +1,42 @@
 #banner {
-  padding-top: 32px;
-  text-align: center;
+  position: fixed;
+  z-index: 1000;
+  margin: 25px;
+  bottom: 0px;
+  left: 0px;
+  height: 25vw;
+  width: 25vw;
+  color: var(--text-color-primary);
+  background-color: var(--color-banner-bg-initial);
+  opacity: 0;
+  transform-origin: bottom left;
+  animation-name: banner-appear;
+  animation-fill-mode: forwards;
+  animation-iteration-count: 1;
+  animation-direction: normal;
+  animation-duration: 5s;
+}
+#banner * {
+  font-size: 1.5vw;
+}
+
+@keyframes banner-appear {
+  0% {
+    opacity: 1;
+    transform: scale(0);
+    background-color: var(--color-banner-bg-initial);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+    background-color: var(--color-banner-bg-final);
+  }
+}
+@media screen and (min-width: 840px) and (max-width: 1256px), screen and (max-width: 840px) {
+  #banner {
+    animation-play-state: paused;
+    animation-delay: -5s;
+  }
 }
 
 /*# sourceMappingURL=banner.css.map */

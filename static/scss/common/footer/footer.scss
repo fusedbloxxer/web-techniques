@@ -1,15 +1,25 @@
 footer {
+    background-color: var(--color-primary);
+    color: var(--text-color-primary);
+
+    position: relative;
+    margin-top: auto;
     padding: 0px;
-    margin: 10px 0px 0px 0px;
     width: 100%;
 
+    address {
+        margin: 0px;
+    }
+
     > *:not(a) {
-        background-color: var(--color-primary);
         text-align: center;
     }
 
     > small {
-        background-color: transparent;
         display: block;
+
+        &:first-of-type {
+            margin-top: 10px;
+        }
     }
 }

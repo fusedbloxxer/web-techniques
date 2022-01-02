@@ -2,6 +2,7 @@ function init({
     productsService,
 }) {
     const {loadImages} = require('./gallery/gallery.service.js');
+    const {forkJoin, iif, tap, of} = require('rxjs');
     const express = require('express');
     const router = express.Router();
     const path = require('path');
@@ -17,6 +18,7 @@ function init({
     });
 
     router.get(['/home'], (req, res, next) => {
+        // Load gallery images
         const images = loadImages({
             filterByMonth: true,
             takeWithinLimit: true,
@@ -24,19 +26,57 @@ function init({
             root: path.resolve(__dirname, '..'),
         });
 
-        productsService.fetchProductTypes().subscribe({
-            next: (productTypes) => {
+        // Init slideshow if necessary
+        if (!req.app.locals.slideShow) {
+            req.app.locals.slideShow = {
+                lastRequest: new Date(0),
+            };
+        }
+
+        // Get stored slideShowState
+        const slideShow = req.app.locals.slideShow;
+
+        // Previous request timestamp
+        const {lastRequest} = slideShow;
+
+        // Time in seconds
+        const timePassed = Math.abs(new Date() - lastRequest) / 1000;
+
+        // Get new sample or previous batch
+        const randomProducts = iif(
+            () => timePassed >= 15,
+            productsService.fetchRandomProducts({
+                sampleSize: 5,
+            }).pipe(
+                tap(products => {
+                    slideShow.products = products;
+                    slideShow.lastRequest = new Date();
+                })
+            ),
+            of(slideShow.products)
+        )
+
+        // Launch requests and send the result
+        forkJoin({
+            productTypes: productsService.fetchProductTypes(),
+            products: randomProducts,
+        }).subscribe({
+            next: ({
+                productTypes,
+                products
+            }) => {
                 res.render(
                     'pages/content/home', {
                         productTypes,
                         ip: req.ip,
+                        products,
                         images
                     }
                 );
             },
             error: () => next({
                 status: 404,
-                message: 'Error: Product Types Not Found',
+                message: 'Error: Could not load product data from database.',
             })
         });
     });

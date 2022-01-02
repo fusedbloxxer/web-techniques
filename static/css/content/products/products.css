@@ -16,6 +16,7 @@
 }
 .products .products-container .product-filters .product-filter {
   border-radius: 10px;
+  color: var(--text-color-primary);
   border: 3px dotted var(--color-filter-border);
   width: 100%;
   padding: 5px;

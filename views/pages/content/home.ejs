@@ -18,6 +18,7 @@
 
     <!-- Other CSS Styling -->
     <link rel="stylesheet" type="text/css" href="/static/css/content/home/tech-terms/tech-terms.css" />
+    <link rel="stylesheet" type="text/css" href="/static/css/content/home/slideshow/slideshow.css"/>
     <link rel="stylesheet" type="text/css" href="/static/css/content/gallery/static-gallery.css" />
     <link rel="stylesheet" type="text/css" href="/static/css/content/home/offer/offer-video.css" />
     <link rel="stylesheet" type="text/css" href="/static/css/content/home/sells/sells.css" />
@@ -467,11 +468,20 @@
 
                 <%-
                     include('../../fragments/gallery/static-gallery.ejs', {
-                        images: locals.images
-                    })
+                        images: locals.images,
+                    });
                 %>
             </section>
 
+            <section id="slideshow">
+                <h2>Slideshow</h2>
+
+                <%-
+                    include('../../fragments/slideshow/slideshow.ejs', {
+                        products: locals.products,
+                    });
+                %>
+            </section>
             <!-- <section id="latest">
         <h2>Latest News in Tech</h2>
 

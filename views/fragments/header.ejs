@@ -1,8 +1,24 @@
 <header>
     <a id="top"></a>
-    <h1 id="banner">
-        Andrion -- Banner
-    </h1>
+    <div id="banner" class="card text-center overflow-auto">
+        <div class="card-header">
+            Banner
+        </div>
+        <div class="card-body">
+            <div class="alert alert-info" role="alert">
+                This is a school project!
+            </div>
+            <div class="alert alert-primary" role="alert">
+                Allow cookie usage?
+            </div>
+            <button id="banner-accept" type="button" class="btn btn-primary">
+                Accept
+            </button>
+            <button id="banner-decline" type="button" class="btn btn-secondary">
+                Decline
+            </button>
+        </div>
+    </div>
     <div id="top-container">
         <h1 id="title">
             Andrion -- Phones & Tablets
@@ -14,41 +30,75 @@
             </label>
             <input id="hamburger-checkbox" type="checkbox">
             <ul class="menu">
-                <li>
-                    <a href="/">
+                <li class="menu-item">
+                    <a href="/home">
                         <span class="fas fa-house-user"></span>
                         <span id="homepage">Homepage</span>
                     </a>
                     <ul class="submenu">
-                        <li><a href="/#presentation">Presentation</a></li>
-                        <li><a href="/#table-of-contents">Table of Contents</a></li>
-                        <li><a href="/#events-calendar">Events Calendar</a></li>
-                        <li><a href="/#announcements">Announcements</a></li>
-                        <li><a href="/#online-users">Online Users</a></li>
-                        <li><a href="/#user-stats">User Data and Stats</a></li>
-                        <li><a href="/#site-and-server">Website &amp; Server</a></li>
-                        <li><a href="/#motivation">Motivation</a></li>
-                        <li><a href="/#tech-terms">Technical Terms</a></li>
-                        <li><a href="/#offers">Offers</a></li>
-                        <li><a href="/#faq"><abbr title="Frequently Asked Questions">FAQ</abbr></a></li>
-                        <li><a href="/#gallery">Gallery</a></li>
+                        <li class="submenu-item">
+                            <a href="/home#presentation">Presentation</a>
+                        </li>
+                        <li class="submenu-item">
+                            <a href="/home#table-of-contents">Table of Contents</a>
+                        </li>
+                        <li class="submenu-item">
+                            <a href="/home#events-calendar">Events Calendar</a>
+                        </li>
+                        <li class="submenu-item">
+                            <a href="/home#announcements">Announcements</a>
+                        </li>
+                        <li class="submenu-item">
+                            <a href="/home#online-users">Online Users</a>
+                        </li>
+                        <li class="submenu-item">
+                            <a href="/home#user-stats">User Data and Stats</a>
+                        </li>
+                        <li class="submenu-item">
+                            <a href="/home#site-and-server">Website &amp; Server</a>
+                        </li>
+                        <li class="submenu-item">
+                            <a href="/home#motivation">Motivation</a>
+                        </li>
+                        <li class="submenu-item">
+                            <a href="/home#tech-terms">Technical Terms</a>
+                        </li>
+                        <li class="submenu-item">
+                            <a href="/home#offers">Offers</a>
+                        </li>
+                        <li class="submenu-item">
+                            <a href="/home#faq">
+                                <abbr title="Frequently Asked Questions">
+                                    FAQ
+                                </abbr>
+                            </a>
+                        </li>
+                        <li class="submenu-item">
+                            <a href="/home#gallery">Gallery</a>
+                        </li>
                     </ul>
                 </li>
 
-                <li>
+                <li class="menu-item">
                     <a href="/gallery">Gallery</a>
                     <ul class="submenu">
-                        <li><a href="/gallery/static">Static</a></li>
-                        <li><a href="/gallery/dynamic">Dynamic</a></li>
+                        <li class="submenu-item">
+                            <a href="/gallery/static">Static</a>
+                        </li>
+                        <li class="submenu-item">
+                            <a href="/gallery/dynamic">Dynamic</a>
+                        </li>
                     </ul>
                 </li>
 
-                <li>
+                <li class="menu-item">
                     <a href="/products">Products</a>
                     <ul class="submenu">
-                        <li><a href="/products">All</a></li>
+                        <li class="submenu-item">
+                            <a href="/products">All</a>
+                        </li>
                         <% for (const category of locals.productTypes) { %>
-                            <li>
+                            <li class="submenu-item">
                                 <a href="/products?type=<%-category%>">
                                     <%- category[0].toUpperCase() + category.slice(1).toLowerCase() %>
                                 </a>
@@ -57,31 +107,31 @@
                     </ul>
                 </li>
 
-                <li>
-                    <a href="/latest-news">Latest News</a>
+                <li class="menu-item">
+                    <a href="/news">News</a>
                 </li>
 
-                <li>
-                    <a href="/register">Register</a>
+                <li class="menu-item">
+                    <a href="/account">Account</a>
                     <ul class="submenu">
-                        <li><a href="/login">Login</a></li>
-                        <li><a href="/create">Create an account</a></li>
+                        <li class="submenu-item">
+                            <a href="/account/login">Login</a>
+                        </li>
+                        <li class="submenu-item">
+                            <a href="/account/register">Register</a>
+                        </li>
                     </ul>
                 </li>
 
-                <li>
-                    <a href="/account">Account</a>
-                </li>
-
-                <li>
+                <li class="menu-item">
                     <a href="/orders">Orders</a>
                 </li>
 
-                <li>
+                <li class="menu-item">
                     <a href="/contact">Contact</a>
                 </li>
 
-                <li>
+                <li class="menu-item">
                     <a href="/about">About</a>
                 </li>
             </ul>

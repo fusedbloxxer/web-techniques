@@ -12,25 +12,25 @@ nav {
     top: 0px;
     left: 0px;
     width: 100%;
-    position: fixed;
-    background-color: transparent;
     z-index: 1000;
+    position: fixed;
+    background-color: var(--color-primary);
 
-    > ul.menu, > ul.menu > li > ul.submenu {
+    >ul.menu,
+    >ul.menu>li>ul.submenu {
         background-color: transparent;
         border: none;
-        height: 100%;
         padding: 0px;
         margin: 0px;
 
-        > li {
+        >li {
             background-color: var(--color-primary);
             list-style-type: none;
             height: 2.5em;
 
             a {
                 transition: line-height $text-growth-animation-duration linear,
-                            font-size $text-growth-animation-duration linear;
+                    font-size $text-growth-animation-duration linear;
                 padding: 5px;
                 font-weight: bold;
                 text-decoration: none;
@@ -46,21 +46,22 @@ nav {
         }
     }
 
-    > ul.menu {
+    >ul.menu {
         width: 100%;
         display: flex;
         flex-direction: row;
         align-items: stretch;
+        position: relative;
 
-        > li {
+        >li {
             flex: auto;
 
-            > a:hover {
+            >a:hover {
                 font-size: 1.5em;
                 line-height: 1.25em;
             }
 
-            &:hover > ul.submenu {
+            &:hover>ul.submenu {
                 display: flex;
                 height: 100%;
                 opacity: 1;
@@ -68,10 +69,10 @@ nav {
                 flex-direction: column;
                 align-items: stretch;
                 transition: transform $dropdown-animation-duration,
-                            opacity $dropdown-animation-duration;
+                    opacity $dropdown-animation-duration;
             }
 
-            > ul.submenu {
+            >ul.submenu {
                 height: 0;
                 display: flex;
                 opacity: 0;
@@ -80,10 +81,12 @@ nav {
                 transform: scaleY(0);
                 transform-origin: top;
                 transition: transform $dropdown-animation-duration,
-                            opacity $dropdown-animation-duration;
+                    opacity $dropdown-animation-duration;
 
-                > li {
-                    > a::before, > a::after {
+                >li {
+
+                    >a::before,
+                    >a::after {
                         transition: transform $submenu-hover-animation-duration;
                         box-sizing: border-box;
                         transform-origin: top;
@@ -109,7 +112,9 @@ nav {
                     }
 
                     &:hover {
-                        > a::before, > a::after {
+
+                        >a::before,
+                        >a::after {
                             transform: scaleY(1);
                         }
                     }

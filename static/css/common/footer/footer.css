@@ -1,15 +1,22 @@
 footer {
+  background-color: var(--color-primary);
+  color: var(--text-color-primary);
+  position: relative;
+  margin-top: auto;
   padding: 0px;
-  margin: 10px 0px 0px 0px;
   width: 100%;
 }
+footer address {
+  margin: 0px;
+}
 footer > *:not(a) {
-  background-color: var(--color-primary);
   text-align: center;
 }
 footer > small {
-  background-color: transparent;
   display: block;
+}
+footer > small:first-of-type {
+  margin-top: 10px;
 }
 
 /*# sourceMappingURL=footer.css.map */

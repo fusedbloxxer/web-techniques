@@ -1,0 +1,55 @@
+#container {
+  width: 75%;
+  height: 100%;
+  display: flex;
+  align-items: stretch;
+  align-items: stretch;
+  flex-direction: column;
+  justify-content: space-evenly;
+  row-gap: 25px;
+}
+#container .card {
+  background-color: var(--color-primary);
+}
+#container * {
+  color: var(--text-color-primary);
+}
+#container #theme-list {
+  width: 100%;
+}
+#container #theme-list .card-body {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+#container #theme-list .card-body .theme-item {
+  transition: transform 120ms linear;
+  text-align: center;
+  width: 25%;
+  height: 12.5%;
+  background-color: var(--color-theme-select-link);
+  border: solid 5px var(--color-theme-select-border);
+  border-radius: 25px;
+}
+#container #theme-list .card-body .theme-item:hover {
+  cursor: pointer;
+  transform: scale(1.25);
+  background-color: var(--color-theme-select-hover);
+}
+#container #theme-list .card-body .theme-item > p {
+  color: var(--color-theme-select-icon);
+  margin-bottom: 15px;
+  margin-top: 15px;
+}
+#container #theme-list .card-body input {
+  display: none;
+}
+#container #recent-pages-container {
+  display: none;
+}
+#container #recent-pages-container a {
+  background-color: var(--color-recent-pages-item-bg);
+  color: var(--color-recent-pages-item-text);
+}
+
+/*# sourceMappingURL=account.css.map */

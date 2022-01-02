@@ -1,3 +1,6 @@
+#tech-terms {
+  color: var(--text-color-primary);
+}
 #tech-terms blockquote > p {
   font-family: "Roboto", sans-serif;
 }
