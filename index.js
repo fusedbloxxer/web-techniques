@@ -12,30 +12,24 @@ const applicationRouter = require('./server/app.routes.js');
 const express = require('express');
 const {Client} = require("pg");
 const path = require('path');
+const fs = require('fs');
 
 // Configure the server
 const app = express();
 const port = process.env.PORT || 8080;
 
-// Configure the DbConnectionObject
-const client = new Client({
-    user: 'andrei',
-    password: 'andrion1234',
-    database: 'andrion',
-    host: 'localhost',
-    port: 5432
-});
+// Check environment and load settings
+if (process.env.ENVIRONMENT === 'production') {
+    ({ protocol, domainName } = JSON.parse(process.env.HOST));
+    var client = new Client(JSON.parse(process.env.DATABASE_CREDENTIALS));
+} else {
+    const raw = fs.readFileSync(path.join(__dirname, 'config', 'server.json'));
+    ({ host: {protocol, domainName }, databaseCredentials } = JSON.parse(raw));
+    var client = new Client(databaseCredentials);
+}
 
-// const client = new Client({
-//     user: 'iwopmcbxppwqnw',
-//     password: 'c87f2cbec070cdca0b09d0acfb415824222c18822fe8a8a782783f92ff4f3dd5',
-//     database: 'df33m1b15fq4lh',
-//     host: 'ec2-52-0-93-3.compute-1.amazonaws.com',
-//     port: 5432,
-//     ssl: {
-//         rejectUnauthorized: false
-//     }
-// });
+// Store host address
+const host = `${protocol}${domainName}`;
 
 // Connect to the database
 client.connect();
@@ -181,5 +175,5 @@ app.set("view engine", "ejs");
 
 // Start the server
 app.listen(port, () => {
-    console.log(`Server is listening on http://localhost:${port}/`);
+    console.log(`Server is listening on ${host}`);
 });
