@@ -1,22 +1,21 @@
 window.addEventListener("DOMContentLoaded", function () {
-  checkCookie();
+  checkBannerCookie();
 });
 
-function checkCookie() {
-  // let acc_cookie = getCookie("acceptat_banner");
-  // if (acc_cookie) {
-  //   //sirul vid e evaluat la fals intr-o expresie booleana
-  //   document.getElementById("banner").style.display = "none";
-  // } else {
-  //   document.getElementById("banner").style.display = "block";
-  //   document.getElementById("ok_cookies").onclick = function () {
-  //     setCookie("acceptat_banner", true, 5000);
-  //     //setCookie("test", "ceva", 5000);
-  //     document.getElementById("banner").style.display = "none";
-  //   };
-  // }
+function checkBannerCookie() {
+  const isBannerAccepted = getCookie("bannerAccepted");
 
-  console.log("check the baaaaneeeeer");
+  if (isBannerAccepted) {
+    document.getElementById("banner").style.display = "none";
+  } else {
+    document.getElementById("banner").style.display = "block";
+    document.getElementById("banner-accept").onclick = function () {
+      // One week in ms
+      const expireDuration = 5000;// 6.048e+8;
+      setCookie("bannerAccepted", true, expireDuration);
+      document.getElementById("banner").style.display = "none";
+    };
+  }
 }
 
 function setCookie(cookieName, cookieValue, expireDuration /* milliseconds */) {

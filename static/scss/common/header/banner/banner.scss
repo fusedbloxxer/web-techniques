@@ -1,3 +1,8 @@
+@use 'sass:map';
+@use '../../variables' as variables;
+
+$banner-appear-duration: 5s;
+
 #banner {
     position: fixed;
     z-index: 1000;
@@ -35,5 +40,16 @@
         opacity: 1;
         transform: scale(1);
         background-color: var(--color-banner-bg-final);
+    }
+}
+
+@media  screen
+            and (min-width: map.get(variables.$screen-sizes, "medium-min"))
+            and (max-width: map.get(variables.$screen-sizes, "medium-max")),
+        screen
+            and (max-width: map.get(variables.$screen-sizes, "small-max")) {
+    #banner {
+        animation-play-state: paused;
+        animation-delay: -$banner-appear-duration;
     }
 }
