@@ -1,5 +1,39 @@
 #banner {
+    position: fixed;
+    z-index: 1000;
+    margin: 25px;
+    bottom: 0px;
+    left: 0px;
+
+    height: 25vw;
+    width: 25vw;
+
+    * {
+        font-size: 1.5vw;
+    }
+
     color: var(--text-color-primary);
-    padding-top: 62px;
-    text-align: center;
+    background-color: var(--color-banner-bg-initial);
+
+    opacity: 0;
+    transform-origin: bottom left;
+    animation-name: banner-appear;
+    animation-fill-mode: forwards;
+    animation-iteration-count: 1;
+    animation-direction: normal;
+    animation-duration: 5s;
+}
+
+@keyframes banner-appear {
+    0% {
+        opacity: 1;
+        transform: scale(0);
+        background-color: var(--color-banner-bg-initial);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+        background-color: var(--color-banner-bg-final);
+    }
 }

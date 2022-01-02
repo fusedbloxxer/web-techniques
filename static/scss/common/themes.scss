@@ -32,6 +32,9 @@ body.theme-light {
 
   --color-highlight-active-small-glow: #b3d5f6;
   --color-highlight-active-big-glow: #37638f;
+
+  --color-banner-bg-final: var(--color-primary-light);
+  --color-banner-bg-initial: var(--color-primary-dark);
 }
 
 body.theme-dark {
@@ -68,6 +71,9 @@ body.theme-dark {
 
   --color-highlight-active-small-glow: #59c9dd;
   --color-highlight-active-big-glow: #2e7788;
+
+  --color-banner-bg-final: var(--color-primary-light);
+  --color-banner-bg-initial: var(--color-primary-dark);
 }
 
 body.theme-mountain {
@@ -104,4 +110,7 @@ body.theme-mountain {
 
   --color-highlight-active-small-glow: #2cf8aa;
   --color-highlight-active-big-glow: #00995e;
+
+  --color-banner-bg-final: var(--color-primary-light);
+  --color-banner-bg-initial: var(--color-primary-dark);
 }

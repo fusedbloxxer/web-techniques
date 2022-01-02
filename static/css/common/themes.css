@@ -26,6 +26,8 @@ body.theme-light {
   --color-theme-select-border: #1045a7;
   --color-highlight-active-small-glow: #b3d5f6;
   --color-highlight-active-big-glow: #37638f;
+  --color-banner-bg-final: var(--color-primary-light);
+  --color-banner-bg-initial: var(--color-primary-dark);
 }
 
 body.theme-dark {
@@ -56,6 +58,8 @@ body.theme-dark {
   --color-theme-select-border: #ffffff;
   --color-highlight-active-small-glow: #59c9dd;
   --color-highlight-active-big-glow: #2e7788;
+  --color-banner-bg-final: var(--color-primary-light);
+  --color-banner-bg-initial: var(--color-primary-dark);
 }
 
 body.theme-mountain {
@@ -86,6 +90,8 @@ body.theme-mountain {
   --color-theme-select-border: #02362f;
   --color-highlight-active-small-glow: #2cf8aa;
   --color-highlight-active-big-glow: #00995e;
+  --color-banner-bg-final: var(--color-primary-light);
+  --color-banner-bg-initial: var(--color-primary-dark);
 }
 
 /*# sourceMappingURL=themes.css.map */
