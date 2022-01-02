@@ -5,7 +5,7 @@ window.addEventListener("DOMContentLoaded", function () {
 
 window.addEventListener("beforeunload", function () {
   if (getCookie("bannerAccepted")) {
-    const maxArraySize = 2;
+    const maxArraySize = 10;
     const storedPages = getCookie("lastAccessedPages");
     const lastAccessedPages = storedPages ? JSON.parse(storedPages) : [];
 
@@ -28,7 +28,7 @@ function checkBannerCookie() {
     document.getElementById("banner").style.display = "block";
     document.getElementById("banner-accept").onclick = function () {
       // One week in ms
-      const expireDuration = 115000;// 6.048e+8;
+      const expireDuration = 6.048e+8;
       setCookie("bannerAccepted", true, expireDuration);
       document.getElementById("banner").style.display = "none";
     };
