@@ -4,123 +4,118 @@
   class="date"
   action="<%= locals.action %>"
   enctype="multipart/form-data">
-  <div class="form-group">
-    <label for="in-username">
-      Username:
+
+  <label class="form-label" for="in-first-name">
+    First Name:
+  </label>
+  <input
+    type="text"
+    name="first-name"
+    id="in-first-name"
+    value="Pharaday"
+    class="form-control"
+    pattern="[A-Z][a-z]+([-\.][A-Z][a-z]+)?"
+    required>
+
+  <label class="form-label" for="in-last-name">
+    Last Name:
+  </label>
+  <input
+    type="text"
+    name="last-name"
+    class="form-control"
+    id="in-last-name"
+    value="Michael"
+    required>
+
+  <label class="form-label" for="in-username">
+    Username:
+  </label>
+  <input
+    type="text"
+    name="username"
+    id="in-username"
+    class="form-control"
+    value="User<%= Math.floor(Math.random()*100000) %>"
+    required pattern="[A-Za-z0-9]+">
+
+  <label class="form-label" for="in-password">
+    Password:
+  </label>
+  <input
+    id="in-password"
+    type="password"
+    required
+    class="form-control"
+    name="password"
+    value=""
+    required>
+
+  <label class="form-label" for="in-password-again">
+    Password Again:
+  </label>
+  <input
+    id="in-password-again"
+    type="password"
+    name="password-again"
+    class="form-control"
+    value=""
+    required>
+
+  <label class="form-label" for="in-email">
+    Email:
+  </label>
+  <input
+    type="text"
+    name="email"
+    id="in-email"
+    class="form-control"
+    value="michael.pharaday9376@gmail.com"
+    size="50"
+    required>
+
+  <label class="form-label" for="in-color">
+    Chat Color:
+  </label>
+  <select class="form-select" name="color" id="in-color">
+    <option value="red" selected>red</option>
+    <option value="blue">blue</option>
+    <option value="green">green</option>
+  </select>
+
+  <label for="in-photo" class="form-label">
+    Photo:
+  </label>
+  <input
+    class="form-control"
+    id="in-photo"
+    type="file"
+    name="photo">
+
+  <div class="form-check form-switch">
+    <label class="form-check-label" for="in-sight-issue">
+      Sight Issue
     </label>
     <input
-      type="text"
-      name="username"
-      id="in-username"
-      class="form-control"
-      value="User<%= Math.floor(Math.random()*100000) %>"
-      required pattern="[A-Za-z0-9]+">
+      class="form-check-input"
+      role="switch"
+      id="in-sight-issue"
+      type="checkbox"
+      name="sight-issue">
   </div>
 
-  <div class="form-group">
-    <label for="in-last-name">
-      Last Name:
-    </label>
-    <input
-      type="text"
-      name="last-name"
-      class="form-control"
-      id="in-last-name"
-      value="Michael">
+  <div class="d-grid gap-2">
+    <button
+      class="btn btn-block btn-primary"
+      id="inpt-submt"
+      type="submit">
+      Send
+    </button>
+    <button
+      class="btn btn-block btn-secondary"
+      id="inp-reset"
+      type="reset">
+      Reset
+    </button>
   </div>
-
-  <div class="form-group">
-    <label for="in-first-name">
-      First Name:
-    </label>
-    <input
-      type="text"
-      name="first-name"
-      id="in-first-name"
-      value="Pharaday"
-      class="form-control"
-      pattern="[A-Z][a-z]+([-\.][A-Z][a-z]+)?">
-  </div>
-
-  <div class="form-group">
-    <label for="in-password">
-      Password:
-    </label>
-    <input
-      id="in-password"
-      type="password"
-      required
-      class="form-control"
-      name="password"
-      value="">
-  </div>
-
-  <div class="form-group">
-    <label for="in-password-again">
-      Password Again:
-    </label>
-    <input
-      id="in-password-again"
-      required
-      type="password"
-      name="password-again"
-      class="form-control"
-      value="">
-  </div>
-
-  <div class="form-group">
-    <label for="in-email">
-      Email:
-    </label>
-    <input
-      type="text"
-      name="email"
-      id="in-email"
-      required
-      class="form-control"
-      value="michael.pharaday9376@gmail.com"
-      size="50">
-  </div>
-
-  <div class="form-group">
-    <label for="in-color">
-      Chat Color:
-    </label>
-    <select class="form-control"name="color" id="in-color">
-      <option value="red" selected>red</option>
-      <option value="blue">blue</option>
-      <option value="green">green</option>
-    </select>
-  </div>
-
-  <div class="form-group">
-    <label for="in-photo">
-      Photo:
-    </label>
-    <input
-      class="form-control"
-      id="in-photo"
-      type="file"
-      name="photo">
-  </div>
-
-  <div class="row">
-    <div class="col">
-      <button
-        class="form-control"
-        id="inpt-submt"
-        type="submit">
-        Send
-      </button>
-    </div>
-    <div class="col">
-      <button
-        class="form-control"
-        id="inp-reset"
-        type="reset">
-        Reset
-      </button>
-    </div>
-  </div>
-
 </form>
