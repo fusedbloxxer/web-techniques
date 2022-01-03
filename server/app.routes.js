@@ -74,7 +74,7 @@ function init({
                     }
                 );
             },
-            error: () => next({
+            error: (error) => next({
                 status: 404,
                 message: 'Error: Could not load product data from database.',
             })
