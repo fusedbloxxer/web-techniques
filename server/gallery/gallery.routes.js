@@ -54,19 +54,9 @@ function init({
             filterByAvailability: true,
             root: path.resolve(__dirname, '../..'),
         });
-
-        productsService.fetchProductTypes().subscribe({
-            next: (productTypes) => (
-                res.render(`pages/content/gallery/static-gallery`, {
-                    productTypes,
-                    images,
-                })
-            ),
-            error: () => next({
-                status: 404,
-                message: 'Error: Product Types Not Found',
-            })
-        });
+        res.render(`pages/content/gallery/static-gallery`, {
+            images,
+        })
     });
 
     // Extract and redirect to the proper gallery page
@@ -86,18 +76,9 @@ function init({
             height = images[0].sizes.large.height;
         }
 
-        productsService.fetchProductTypes().subscribe({
-            next: (productTypes) => (
-                res.render(`pages/content/gallery/dynamic-gallery`, {
-                    productTypes,
-                    images,
-                })
-            ),
-            error: () => next({
-                status: 404,
-                message: 'Error: Product Types Not Found',
-            })
-        });
+        res.render(`pages/content/gallery/dynamic-gallery`, {
+            images,
+        })
     });
 
     // Generate a scss custom for n-random images

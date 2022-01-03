@@ -3,18 +3,10 @@ function init({ accountService, productsService }) {
   const router = express.Router();
 
   router.get("", (req, res, next) => {
-    productsService.fetchProductTypes().subscribe({
-      next: (productTypes) =>
-        res.render(`pages/content/account/account`, {
-          productTypes,
-        }),
-      error: () =>
-        next({
-          status: 404,
-          message: "Error: Product Types Not Found",
-        }),
-    });
+    res.render(`pages/content/account/account`);
   });
+
+  router.get("/register", (req, res, next) => {});
 
   return router;
 }

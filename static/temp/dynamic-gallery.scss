@@ -8,7 +8,7 @@
 
     // Units
     $unit-of-err: 0.00001;
-    $units-total: 12;
+    $units-total: 8;
     $unit-of-start: math.div(100, $units-total);
     $unit-of-end: 100 - $unit-of-start;
 

@@ -58,16 +58,11 @@ function init({
 
         // Launch requests and send the result
         forkJoin({
-            productTypes: productsService.fetchProductTypes(),
             products: randomProducts,
         }).subscribe({
-            next: ({
-                productTypes,
-                products
-            }) => {
+            next: ({ products }) => {
                 res.render(
                     'pages/content/home', {
-                        productTypes,
                         ip: req.ip,
                         products,
                         images

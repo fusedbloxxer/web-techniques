@@ -13,6 +13,8 @@ const express = require('express');
 const {Client} = require("pg");
 const path = require('path');
 const fs = require('fs');
+const rxjs = require('rxjs');
+const {forkJoin} = rxjs;
 
 // Configure the server
 const app = express();
@@ -45,6 +47,29 @@ const productsService = new ProductsService({
 const accountService = new AccountService({
 });
 
+// Prepare common data required by all routers
+app.use("/*", function(req, res, next) {
+    const requests = {
+        productTypes: productsService.fetchProductTypes(),
+    };
+
+    forkJoin(requests).subscribe({
+        next: (response) => {
+            for (const key in response) {
+                res.locals[key] = response[key];
+            }
+            next();
+        },
+        error: (err) => {
+            console.error(err);
+            next({
+                status: 500,
+                message: 'Could not obtain all required data.',
+            })
+        }
+    })
+});
+
 // Use separately defined routers
 // and inject the dependencies into them
 app.use(applicationRouter({
@@ -66,107 +91,55 @@ app.use('/account', accountRouter({
 
 // Handle all other routes
 app.get('/*', (req, res, next) => {
-    productsService.fetchProductTypes().subscribe({
-        next: (productTypes) => (
-            res.render(`pages/content${req.url}`, {
-                productTypes: productTypes,
-            })
-        ),
-        error: () => next({
-            status: 404,
-            message: 'Error: Product Types Not Found',
-        })
-    });
+    res.render(`pages/content${req.url}`);
 });
 
 // Use error handlers
 app.use(function errorLogger(err, req, res, next) {
-    console.error(`An error occurred and was caught by the middleware:`);
-    console.error(err);
+    console.error(`An error occurred was caught by the middleware: ${err}`);
     next(err);
 });
 
 app.use(function viewNotFoundHandler(err, req, res, next) {
-    if (err.message?.includes('Failed to lookup view') ||
-        err.message?.includes('Cannot find') ||
-        err.message?.includes('ENOENT')) {
-        productsService.fetchProductTypes().subscribe({
-            next: (productTypes) => (
-                res
-                    .status(404)
-                    .render(
-                        'pages/errors/error', {
-                            error: {
-                                code: 404,
-                                title: 'Not Found!',
-                                message: 'Could not find the file you requested.',
-                                image: '/static/resources/images/errors/error-not-found.jpg'
-                            },
-                            productTypes,
-                        }
-                    )
-            ),
-            error: () => next({
-                status: 404,
-                message: 'Error: Product Types Not Found',
-            })
-        });
+    if (!err.message?.includes('Failed to lookup view') &&
+        !err.message?.includes('Cannot find') &&
+        !err.message?.includes('ENOENT')) {
+        next(err);
         return;
     }
-
-    next(err);
+    res.status(404).render('pages/errors/error', {
+        error: {
+            code: 404,
+            title: 'Not Found!',
+            message: 'Could not find the file you requested.',
+            image: '/static/resources/images/errors/error-not-found.jpg'
+        }
+    });
 })
 
 app.use(function forbiddenHandler(err, req, res, next) {
-    if (err.status === 403) {
-        productsService.fetchProductTypes().subscribe({
-            next: (productTypes) => (
-                res
-                    .status(403)
-                    .render(
-                        'pages/errors/error', {
-                            error: {
-                                code: 403,
-                                title: 'Access Is Forbidden',
-                                message: 'You are not authorized to access this page.',
-                                image: '/static/resources/images/errors/error-forbidden.jpg'
-                            },
-                            productTypes,
-                        }
-                    )
-            ),
-            error: () => next({
-                status: 404,
-                message: 'Error: Product Types Not Found',
-            })
-        });
+    if (err.status !== 403) {
+        next(err);
         return;
     }
-
-    next(err);
+    res.status(403).render('pages/errors/error', {
+        error: {
+            code: 403,
+            title: 'Access Is Forbidden',
+            message: 'You are not authorized to access this page.',
+            image: '/static/resources/images/errors/error-forbidden.jpg'
+        }
+    });
 });
 
 app.use(function defaultErrorHandler(err, req, res, next) {
-    productsService.fetchProductTypes().subscribe({
-        next: (productTypes) => (
-            res
-            .status(500)
-                .render(
-                    'pages/errors/error', {
-                        error: {
-                            code: 500,
-                            title: 'An Internal Error Occurred!',
-                            message: 'An unknown error took place.',
-                            image: '/static/resources/images/errors/error-general.png'
-                        },
-                        productTypes,
-                    }
-                )
-        ),
-        error: () => next({
-            status: 404,
-            message: 'Error: Product Types Not Found',
-        })
+    res.status(500).render('pages/errors/error', {
+        error: {
+            code: 500,
+            title: 'An Internal Error Occurred!',
+            message: 'An unknown error took place.',
+            image: '/static/resources/images/errors/error-general.png'
+        }
     });
 });
 

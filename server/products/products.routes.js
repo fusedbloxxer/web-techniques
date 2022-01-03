@@ -10,12 +10,10 @@ function init({
             operatingSystems: productsService.fetchProductOperatingSystems(),
             products: productsService.fetchProductsByType(req.query.type),
             productCategories: productsService.fetchProductCategories(),
-            productTypes: productsService.fetchProductTypes(),
         }).subscribe({
             next: ({
                     productCategories,
                     operatingSystems,
-                    productTypes,
                     products,
                 }) => (
                 res.render('pages/content/products/products', {
@@ -23,7 +21,6 @@ function init({
                     productCategories,
                     priceStep: 0.025,
                     operatingSystems,
-                    productTypes,
                     products,
                 })
             ),
@@ -36,18 +33,7 @@ function init({
 
     router.get('/:id-:name', (req, res, next) => {
         const productId = req.params.id;
-
-        productsService.fetchProductTypes().subscribe({
-            next: (productTypes) => (
-                res.render('pages/content/products/product', {
-                    productTypes,
-                })
-            ),
-            error: () => next({
-                status: 404,
-                message: 'Error: Could Not Fetch the Product Types',
-            })
-        });
+        res.render('pages/content/products/product');
     });
 
     return router;
