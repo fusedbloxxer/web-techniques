@@ -10,6 +10,7 @@ body {
   row-gap: 15px;
   min-height: 100vh;
   margin: 0px;
+  color: var(--text-color-primary);
 }
 
 main {

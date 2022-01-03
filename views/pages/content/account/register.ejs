@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Include Common Head Fragment -->
+  <%- include('../../../fragments/head.ejs') %>
+
+    <!-- Page-Specific Information -->
+    <meta name="keywords" content="register, create new account, new user, account" />
+    <meta name="description" content="Create a new account." />
+    <title>Andrion - Register</title>
+
+    <!-- CSS Styling -->
+
+    <!-- Add Scripts -->
+</head>
+
+<body>
+  <%- include('../../../fragments/header.ejs', {productTypes}) %>
+
+    <main>
+      <div class="afisaj">
+        <h1>Inregistrare utilizator</h1>
+        <% if (locals.err !="") { %>
+          <%- include('../../../fragments/account/formular.ejs', {action: "/inreg"}) %>
+        <% } %>
+
+        <% if(locals.raspuns) { %>
+        <%- locals.raspuns + "<br/>" %>
+        <% } %>
+
+        <% if(locals.err) { %>
+        <%- locals.err %>
+        <% } %>
+      </div>
+    </main>
+
+    <%- include('../../../fragments/footer.ejs') %>
+</body>
+
+</html>
