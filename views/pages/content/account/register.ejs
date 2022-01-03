@@ -11,6 +11,7 @@
     <title>Andrion - Register</title>
 
     <!-- CSS Styling -->
+    <link rel="stylesheet" href="/static/css/content/account/register.css" />
 
     <!-- Add Scripts -->
 </head>
@@ -21,6 +22,9 @@
     <main>
       <div class="afisaj">
         <h1>Inregistrare utilizator</h1>
+
+        <br>
+
         <% if (locals.err !="") { %>
           <%- include('../../../fragments/account/formular.ejs', {action: "/inreg"}) %>
         <% } %>

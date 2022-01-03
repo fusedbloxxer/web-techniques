@@ -1,110 +1,126 @@
 <form
-  id="form_inreg"
+  id="register-form"
   method="post"
   class="date"
   action="<%= locals.action %>"
   enctype="multipart/form-data">
-  <p>
-    <label for="inp-username">
+  <div class="form-group">
+    <label for="in-username">
       Username:
     </label>
     <input
       type="text"
       name="username"
-      id="inp-username"
-      value="prof<%= Math.floor(Math.random()*100000) %>"
+      id="in-username"
+      class="form-control"
+      value="User<%= Math.floor(Math.random()*100000) %>"
       required pattern="[A-Za-z0-9]+">
-  </p>
+  </div>
 
-  <p>
-    <label for="inp-nume">
-      Nume:
+  <div class="form-group">
+    <label for="in-last-name">
+      Last Name:
     </label>
     <input
       type="text"
-      name="nume"
-      id="inp-nume"
-      value="Gogulescu">
-  </p>
+      name="last-name"
+      class="form-control"
+      id="in-last-name"
+      value="Michael">
+  </div>
 
-  <p>
-    <label for="inp-prenume">
-      Prenume:
+  <div class="form-group">
+    <label for="in-first-name">
+      First Name:
     </label>
     <input
       type="text"
-      name="prenume"
-      id="inp-prenume"
-      value="Gogu"
+      name="first-name"
+      id="in-first-name"
+      value="Pharaday"
+      class="form-control"
       pattern="[A-Z][a-z]+([-\.][A-Z][a-z]+)?">
-  </p>
+  </div>
 
-  <p>
-    <label for="parl">
-      Parola:
+  <div class="form-group">
+    <label for="in-password">
+      Password:
     </label>
     <input
-      id="parl"
+      id="in-password"
       type="password"
       required
-      name="parola"
+      class="form-control"
+      name="password"
       value="">
-  </p>
+  </div>
 
-  <p id="p-reintrod">
-    <label for="rparl">
-      Reintroduceti parola:
+  <div class="form-group">
+    <label for="in-password-again">
+      Password Again:
     </label>
     <input
-      id="rparl"
+      id="in-password-again"
       required
       type="password"
-      name="rparola"
+      name="password-again"
+      class="form-control"
       value="">
-  </p>
+  </div>
 
-  <p>
-    <label for="inp-email">
+  <div class="form-group">
+    <label for="in-email">
       Email:
     </label>
     <input
       type="text"
       name="email"
-      id="inp-email"
+      id="in-email"
       required
-      value="profprofprof007@gmail.com"
+      class="form-control"
+      value="michael.pharaday9376@gmail.com"
       size="50">
-  </p>
+  </div>
 
-  <p>
-    <label for="sel-culoare">
-      Culoare text chat:
+  <div class="form-group">
+    <label for="in-color">
+      Chat Color:
     </label>
-    <select name="culoareText" id="sel-culoare">
-      <option value="red" selected>rosu</option>
-      <option value="blue">albastru</option>
-      <option value="green">verde</option>
+    <select class="form-control"name="color" id="in-color">
+      <option value="red" selected>red</option>
+      <option value="blue">blue</option>
+      <option value="green">green</option>
     </select>
-  </p>
+  </div>
 
-  <p>
-    <label for="inp-poza">
-      Poza:
+  <div class="form-group">
+    <label for="in-photo">
+      Photo:
     </label>
     <input
-      id="inp-poza"
+      class="form-control"
+      id="in-photo"
       type="file"
-      name="poza">
-  </p>
+      name="photo">
+  </div>
 
-  <p>
-    <input
-      id="inpt-submt"
-      type="submit"
-      value="Trimite">
-    <input
-      id="inp-reset"
-      type="reset"
-      value="Reseteaza">
-  </p>
+  <div class="row">
+    <div class="col">
+      <button
+        class="form-control"
+        id="inpt-submt"
+        type="submit">
+        Send
+      </button>
+    </div>
+    <div class="col">
+      <button
+        class="form-control"
+        id="inp-reset"
+        type="reset">
+        Reset
+      </button>
+    </div>
+  </div>
+
 </form>
