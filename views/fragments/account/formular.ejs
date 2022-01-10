@@ -25,6 +25,7 @@
     name="last-name"
     class="form-control"
     id="in-last-name"
+    pattern="[A-Z][a-z]+([-\.][A-Z][a-z]+)?"
     value="Michael"
     required>
 
@@ -37,7 +38,8 @@
     id="in-username"
     class="form-control"
     value="User<%= Math.floor(Math.random()*100000) %>"
-    required pattern="[A-Za-z0-9]+">
+    required
+    pattern="[A-Za-z0-9\-]{3,}">
 
   <label class="form-label" for="in-password">
     Password:
@@ -48,8 +50,13 @@
     required
     class="form-control"
     name="password"
-    value=""
+    value="aA.33"
+    pattern="(?=.*[A-Z])(?=.*[a-z])(?=.*\d.*\d)(?=.*\.).*"
     required>
+  <div class="form-text">
+    The password must contain 1 lowercase letter, 1 uppercase
+    letter, at least two digits and a dot.
+  </div>
 
   <label class="form-label" for="in-password-again">
     Password Again:
@@ -59,8 +66,13 @@
     type="password"
     name="password-again"
     class="form-control"
-    value=""
+    value="aA.33"
+    pattern="(?=.*[A-Z])(?=.*[a-z])(?=.*\d.*\d)(?=.*\.).*"
     required>
+  <div class="form-text">
+    The password must contain 1 lowercase letter, 1 uppercase
+    letter, at least two digits and a dot.
+  </div>
 
   <label class="form-label" for="in-email">
     Email:
@@ -71,6 +83,7 @@
     id="in-email"
     class="form-control"
     value="michael.pharaday9376@gmail.com"
+    pattern="(?:[^\.][a-zA-Z\d\.]+[^\.])@(?:[^\.][a-zA-Z\d\.]+[^\.])"
     size="50"
     required>
 
@@ -107,13 +120,13 @@
   <div class="d-grid gap-2">
     <button
       class="btn btn-block btn-primary"
-      id="inpt-submt"
+      id="in-submit"
       type="submit">
       Send
     </button>
     <button
       class="btn btn-block btn-secondary"
-      id="inp-reset"
+      id="in-reset"
       type="reset">
       Reset
     </button>

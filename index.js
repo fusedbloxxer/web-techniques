@@ -45,6 +45,7 @@ const productsService = new ProductsService({
 });
 
 const accountService = new AccountService({
+    dbCon: client,
 });
 
 // Prepare common data required by all routers
@@ -85,8 +86,9 @@ app.use('/products', productsRouter({
 }));
 
 app.use('/account', accountRouter({
+    dbCon: client,
     accountService,
-    productsService
+    productsService,
 }));
 
 // Handle all other routes
@@ -128,6 +130,21 @@ app.use(function forbiddenHandler(err, req, res, next) {
             title: 'Access Is Forbidden',
             message: 'You are not authorized to access this page.',
             image: '/static/resources/images/errors/error-forbidden.jpg'
+        }
+    });
+});
+
+app.use(function badRequestHandler(err, req, res, next) {
+    if (err.status !== 400) {
+        next(err);
+        return;
+    }
+    res.status(400).render('pages/errors/error', {
+        error: {
+            code: 400,
+            title: 'Bad Request',
+            message: 'You made an invalid request to the server!',
+            image: '/static/resources/images/errors/bad-request.jpg'
         }
     });
 });

@@ -38,4 +38,30 @@ VALUES
 	(17, 'Hua Mars 1', 'The basic tool for an artist on the move.', '/static/resources/images/content/gallery/hua-two-in-one.jpg', 'office', 2099.99, 7, 2100, '2015-04-13', 'android', 'smartphone', 'stylus,wifi,4G,turbo-charge', TRUE),
 	(18, 'Hua Mars 1', 'The basic tool for an artist on the move.', '/static/resources/images/content/gallery/hua-two-in-one.jpg', 'office', 499.99, 7, 2100, '2015-04-13', 'android', 'smartphone', 'stylus,wifi,4G,turbo-charge', TRUE);
 
+-- 	id SERIAL PRIMARY KEY,
+-- 	username VARCHAR(50) UNIQUE NOT NULL,
+-- 	last_name VARCHAR(100) NOT NULL,
+-- 	first_name VARCHAR(100) NOT NULL,
+-- 	email VARCHAR(100) UNIQUE NOT NULL,
+-- 	add_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
+-- 	chat_color VARCHAR(50) DEFAULT 'black' NOT NULL,
+-- 	password VARCHAR(100) NOT NULL,
+-- 	role role NOT NULL DEFAULT 'common',
+-- 	sight_issue BOOLEAN DEFAULT FALSE NOT NULL,
+-- 	photo VARCHAR(300)
+
+INSERT INTO app_user(
+	username,
+	last_name,
+	first_name,
+	email,
+	password
+)VALUES(
+	'nomansland',
+	'Merhez',
+	'Boghzand',
+	'korpanthyne@mostorf3.co',
+	'iU0934..Ad3'
+);
+
 COMMIT TRANSACTION;
