@@ -39,27 +39,32 @@ function AccountService({
       },
     ];
 
+    const validationResult = {
+      isValid: true,
+      error: "",
+    };
+
+    const newLine = '<br/>';
+
     // Check the fields' existance and validate
     // their formats
     for (const field of requiredFields) {
       if (!fields[field.name]?.length) {
-        return {
-          isValid: false,
-          error: `The ${field.name} must be present.`,
-        };
+        validationResult.isValid = false;
+        validationResult.error += `The ${field.name} must be present.${newLine}`;
       }
 
       if (!fields[field.name].match(field.pattern)) {
-        return {
-          isValid: false,
-          error: fields[field.name].error,
-        };
+        validationResult.isValid = false;
+        validationResult.error += `${field.error}${newLine}`;
       }
     }
 
-    return {
-      isValid: true,
-    };
+    if (!validationResult.isValid) {
+      validationResult.error.slice(0, -newLine.length);
+    }
+
+    return validationResult;
   };
 
   this.userExists = function(username) {
