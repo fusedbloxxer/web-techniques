@@ -1,0 +1,10 @@
+{
+  "security": {
+    "salt": {
+      "length": 128
+    },
+    "hash": {
+      "length": 128
+    }
+  }
+}

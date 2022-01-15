@@ -1,6 +1,7 @@
 // Import Services
 const {ProductsService} = require('./server/products/products.service.js');
 const {AccountService} = require('./server/account/account.service.js');
+const {EmailService} = require('./server/services/email.service.js');
 
 // Import Routers
 const productsRouter = require('./server/products/products.routes.js');
@@ -24,11 +25,22 @@ const port = process.env.PORT || 8080;
 if (process.env.ENVIRONMENT === 'production') {
     ({ protocol, domainName } = JSON.parse(process.env.HOST));
     var client = new Client(JSON.parse(process.env.DATABASE_CREDENTIALS));
+    var secrets = JSON.parse(process.env.SECRETS);
 } else {
-    const raw = fs.readFileSync(path.join(__dirname, 'config', 'server.json'));
+    let raw = fs.readFileSync(path.join(__dirname, 'config', 'server.json'));
+
+    // Read the database credentials settings
     ({ host: {protocol, domainName }, databaseCredentials } = JSON.parse(raw));
     var client = new Client(databaseCredentials);
+
+    // Read the secret credentials json
+    raw = fs.readFileSync(path.join(__dirname, 'config', 'secrets.json'));
+    var secrets = JSON.parse(raw)
 }
+
+// Read public settings
+const rawFile = fs.readFileSync(path.join(__dirname, 'config', 'settings.json'));
+const appSettings = JSON.parse(rawFile);
 
 // Store host address
 const host = `${protocol}${domainName}`;
@@ -44,9 +56,25 @@ const productsService = new ProductsService({
     dbCon: client,
 });
 
+const emailService = new EmailService({
+    emailAccount: secrets.emailAccount,
+    host,
+});
+
 const accountService = new AccountService({
     dbCon: client,
+    emailService,
+    appSettings,
 });
+
+// emailService.sendEmail({
+//     receiptEmail: 'andreeionescu67@gmail.com',
+//     subject: "test",
+//     plain: "ok",
+//     html: 'ok'
+// }).then(function sentEmail(response) {
+//     console.log(response)
+// })
 
 // Prepare common data required by all routers
 app.use("/*", function(req, res, next) {

@@ -1,11 +1,13 @@
-const {map} = require('rxjs/operators');
+const {map, switchMap, tap} = require('rxjs/operators');
+const crypto = require('crypto');
 const rxjs = require('rxjs');
 
 function AccountService({
+  emailService,
+  appSettings,
   dbCon,
 }) {
-
-  this.isFormValid = function(fields) {
+  this.isFormValid = function(fields, files) {
     const requiredFields = [
       {
         name: "first-name",
@@ -60,6 +62,13 @@ function AccountService({
       }
     }
 
+    // Validate the file extension
+    if (!files.photo.originalFilename?.match('^(|.*\.jpg)$')) {
+      validationResult.isValid = false;
+      validationResult.error += `Invalid photo file format. Only jpg is allowed!${newLine}`;
+    }
+
+    // Remove the last newline
     if (!validationResult.isValid) {
       validationResult.error.slice(0, -newLine.length);
     }
@@ -67,14 +76,14 @@ function AccountService({
     return validationResult;
   };
 
-  this.userExists = function(username) {
+  this.userExists = function(username, email) {
     const queryUserExists = `
       SELECT 'X'
       FROM app_user
-      WHERE username = $1;
+      WHERE username = $1 OR email = $2;
     `;
 
-    const queryRequest = dbCon.query(queryUserExists, [username]);
+    const queryRequest = dbCon.query(queryUserExists, [username, email]);
 
     const usernameExists$ = rxjs
       .from(queryRequest)
@@ -85,7 +94,76 @@ function AccountService({
     return usernameExists$;
   };
 
-  return;
+  this.createDefaultPreferences = function() {
+    const queryInsertDefaultPreference = `
+      INSERT INTO user_preference
+      DEFAULT VALUES
+      RETURNING preference_id;
+    `;
+
+    return rxjs.from(dbCon.query(queryInsertDefaultPreference)).pipe(
+      map(data => data.rows[0].preference_id)
+    );
+  }
+
+  this.createUser = function(userFields, userFiles) {
+    // SQL script for inserting a new user
+    const queryInsertUser = `
+      INSERT INTO app_user(
+        first_name,
+        last_name,
+        username,
+        email,
+        chat_color,
+        sight_issue,
+        password_hash,
+        password_salt,
+        photo,
+        preference_id
+      )VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10);
+    `;
+
+    // Create a unique salt for each user
+    const saltBytes = crypto.randomBytes(appSettings.security.salt.length);
+    const passwordSalt = saltBytes.toString('base64');
+
+    // Hash the password
+    const passwordHash = crypto.scryptSync(
+      userFields.password,
+      passwordSalt,
+      appSettings.security.hash.length
+    ).toString('base64');
+
+    // Extract fields in order and build a user object
+    const user = [
+      userFields['first-name'],
+      userFields['last-name'],
+      userFields['username'],
+      userFields['email'],
+      userFields['color'] ?? 'red',
+      userFields['sight-issue'] ?? false,
+      passwordHash,
+      passwordSalt,
+      userFiles['photo'].originalFilename ? userFiles['photo'].filepath : null,
+    ];
+
+    // Create transaction observable depending on preferences
+    this.createUser$ = function(preference_id) {
+      return rxjs.from(dbCon.query(
+        queryInsertUser,
+        [...user, preference_id]
+      ));
+    }
+
+    // Create preference, user and send email
+    return this.createDefaultPreferences().pipe(
+      switchMap(preference_id => this.createUser$(preference_id)),
+      tap(() => emailService.sendRegisterEmail({
+        username: userFields['username'],
+        email: userFields['email'],
+      }))
+    );
+  };
 }
 
 module.exports = {

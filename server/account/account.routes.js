@@ -1,11 +1,28 @@
+const formidable = require('formidable');
+const express = require("express");
+const path = require('path');
+const fs = require('fs');
+
 function init({
   dbCon,
   accountService,
   productsService,
 }) {
-  const formidable = require('formidable');
-  const express = require("express");
   const router = express.Router();
+
+  const userImagesFolder = path.join(
+    __dirname,
+    '..',
+    '..',
+    'data',
+    '#USERNAME',
+    'images',
+  );
+
+  const userImageFilePath = path.join(
+    userImagesFolder,
+    '#IMAGE_FILE'
+  );
 
   router.get('', (req, res, next) => {
     res.render(`pages/content/account/account`);
@@ -16,11 +33,11 @@ function init({
   });
 
   router.post('/register/submit', (req, res, next) => {
-    let formular = new formidable.IncomingForm();
+    const formular = new formidable.IncomingForm();
     let username;
 
-    formular.parse(req, function(err, fields, files) { // 4
-      const formValidationResult = accountService.isFormValid(fields)
+    formular.parse(req, function(err, fields, files) {
+      const formValidationResult = accountService.isFormValid(fields, files);
 
       if (!formValidationResult.isValid) {
         res.render(`pages/content/account/register`, {
@@ -29,14 +46,28 @@ function init({
         return;
       }
 
-      accountService.userExists(fields.username).subscribe({
+      accountService.userExists(fields.username, fields.email).subscribe({
         next: (userExists) => {
           if (userExists) {
             res.render(`pages/content/account/register`, {
-              error: `The user with the username '${username}' already exists`,
+              error: `The user with the username '${fields.username}' and '${fields.email}' already exists`,
             });
             return;
           }
+
+          accountService.createUser(fields, files).subscribe({
+            next: () => {
+              res.redirect(`/`);
+              return;
+            },
+            error: (err) => {
+              console.error(err);
+              res.render(`pages/content/account/register`, {
+                error: 'Database error',
+              });
+              return;
+            }
+          });
         },
         error: (error) => {
           res.render(`pages/content/account/register`, {
@@ -45,73 +76,47 @@ function init({
           return;
         }
       });
-
-      // queryVerifUtiliz=` select * from utilizatori where username= '${fields.username}' `;
-      // console.log(queryVerifUtiliz)
-
-      // dbCon.query(queryVerifUtiliz, function(err, rez){
-      //     if (err){
-      //         console.log(err);
-      //         res.render("pagini/inregistrare", {err:"Eroare baza date"});
-      //     }
-
-      //     else{
-      //         if (rez.rows.length==0){
-      //             var criptareParola=crypto.scryptSync(fields.parola,parolaCriptare,32).toString('hex');
-      //             var token=genereazaToken(100);
-      //             var queryUtiliz = `
-      //               insert into utilizatori(
-      //                 username,
-      //                 nume,
-      //                 prenume,
-      //                 parola,
-      //                 email,
-      //                 culoare_chat,
-      //                 cod
-      //               )values('${fields.username}','${fields.nume}','${fields.prenume}', $1 ,'${fields.email}','${fields.culoareText}','${token}')`;
-
-      //             console.log(queryUtiliz, criptareParola);
-      //             dbCon.query(queryUtiliz, [criptareParola], function(err, rez){ //TO DO parametrizati restul de query
-      //                 if (err){
-      //                     console.log(err);
-      //                     res.render("pagini/inregistrare",{err:"Eroare baza date"});
-      //                 }
-      //                 else{
-      //                     trimiteMail(fields.username,fields.email, token);
-      //                     res.render("pagini/inregistrare",{err:"", raspuns:"Date introduse"});
-      //                 }
-      //             });
-      //         }
-      //         else{
-      //             eroare+="Username-ul mai exista. ";
-      //             res.render("pagini/inregistrare",{err:eroare});
-      //         }
-      //     }
-      // });
     });
 
-    formular.on("field", function(nume,val){  // 1 pentru campuri cu continut de tip text (pentru inputuri de tip text, number, range,... si taguri select, textarea)
-      console.log("----> ",nume, val );
-      if(nume=="username")
-          username=val;
-    });
-
-    formular.on("fileBegin", function(nume,fisier){ //2
-      if(!fisier.originalFilename)
-          return;
-      folderUtilizator=__dirname+"/poze_uploadate/"+username+"/";
-      console.log("----> ",nume, fisier);
-      if (!fs.existsSync(folderUtilizator)){
-          fs.mkdirSync(folderUtilizator);
-          v=fisier.originalFilename.split(".");
-          fisier.filepath=folderUtilizator+"poza."+v[v.length-1];//setez calea de upload
-          //fisier.filepath=folderUtilizator+fisier.originalFilename;
+    // Read all fields
+    formular.on("field", function(fieldName, fieldValue) {
+      console.log("----> ", fieldName, fieldValue);
+      if (fieldName == 'username') {
+        username = fieldValue
       }
     });
 
-    formular.on("file", function(nume,fisier){ //3
-      //s-a terminat de uploadat
-      console.log("fisier uploadat");
+    // Start the upload of the file
+    formular.on("fileBegin", function(name, file) {
+      if(!file.originalFilename)
+          return;
+
+      // Check if the file is jpg otherwise reject it
+      if (file.originalFilename.split('.').slice(-1)?.[0] !== 'jpg') {
+        return;
+      }
+
+      // Log the file name
+      console.log("----> ", name, file.originalFilename);
+
+      // Save the photo in a user's own folder
+      const folder = userImagesFolder.replace('#USERNAME', username);
+      if (!fs.existsSync(folder)) {
+        fs.mkdirSync(folder, {recursive: true});
+      }
+
+      // Set the file to be saved in the user's own folder'
+      file.filepath = userImageFilePath
+        .replace('#USERNAME', username)
+        .replace('#IMAGE_FILE', file.originalFilename);
+    });
+
+    // Notify when the file has uploaded
+    formular.on("file", function(name, file){
+      if(!file.originalFilename)
+          return;
+
+      console.log(` == Image (${name}): ${file.originalFilename} has been uploaded`);
     });
   });
 

@@ -21,10 +21,11 @@
   "author": "Ionescu Andrei",
   "license": "ISC",
   "dependencies": {
-    "formidable": "^2.0.1",
     "ejs": "^3.1.6",
     "express": "^4.17.1",
+    "formidable": "^2.0.1",
     "lodash": "^4.17.21",
+    "nodemailer": "^6.7.2",
     "pg": "^8.7.1",
     "rxjs": "^7.4.0",
     "sass": "^1.43.5",

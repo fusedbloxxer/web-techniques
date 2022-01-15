@@ -1,3 +1,4 @@
 /static/temp/
 /node_modules/
 /static/css/**okj
+/config/secrets.json
