@@ -42,13 +42,21 @@ function EmailService({
 
   this.sendRegisterEmail = function({
     username,
+    timeToken,
+    activateToken,
     email,
   }) {
     return this.sendEmail({
       receiptEmail: email,
       subject: 'Andrion New Account',
       plain: `You just registered on Andrion with the username ${username}, starting today, ${new Date().toUTCString()}`,
-      html: ejs.render(newUserEmail, {host, username, email, 'token': 'undefined'})
+      html: ejs.render(newUserEmail, {
+        host,
+        email,
+        username,
+        timeToken,
+        activateToken,
+      })
     });
   }
 }

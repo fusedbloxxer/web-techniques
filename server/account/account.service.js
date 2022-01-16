@@ -4,6 +4,7 @@ const rxjs = require('rxjs');
 
 function AccountService({
   emailService,
+  tokenService,
   appSettings,
   dbCon,
 }) {
@@ -118,9 +119,12 @@ function AccountService({
         sight_issue,
         password_hash,
         password_salt,
+        time_token,
+        activate_token,
         photo,
         preference_id
-      )VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10);
+      )VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12)
+      RETURNING *;
     `;
 
     // Create a unique salt for each user
@@ -134,6 +138,14 @@ function AccountService({
       appSettings.security.hash.length
     ).toString('base64');
 
+    // Create initial random tokens
+    const timeToken = crypto.randomBytes(appSettings.security.token.length)
+      .toString('base64')
+      .slice(0, Math.floor(appSettings.security.token.length / 2));
+    const activateToken = crypto.randomBytes(appSettings.security.token.length)
+      .toString('base64')
+      .slice(0, Math.floor(appSettings.security.token.length / 2));
+
     // Extract fields in order and build a user object
     const user = [
       userFields['first-name'],
@@ -144,6 +156,8 @@ function AccountService({
       userFields['sight-issue'] ?? false,
       passwordHash,
       passwordSalt,
+      timeToken,
+      activateToken,
       userFiles['photo'].originalFilename ? userFiles['photo'].filepath : null,
     ];
 
@@ -152,15 +166,20 @@ function AccountService({
       return rxjs.from(dbCon.query(
         queryInsertUser,
         [...user, preference_id]
-      ));
+      )).pipe(
+        map(data => data.rows?.[0])
+      );
     }
 
     // Create preference, user and send email
     return this.createDefaultPreferences().pipe(
       switchMap(preference_id => this.createUser$(preference_id)),
-      tap(() => emailService.sendRegisterEmail({
-        username: userFields['username'],
-        email: userFields['email'],
+      switchMap(user => tokenService.updateUserTokens(user.username)),
+      tap(user => emailService.sendRegisterEmail({
+        activateToken: user.activate_token,
+        timeToken: user.time_token,
+        username: user.username,
+        email: user.email,
       }))
     );
   };

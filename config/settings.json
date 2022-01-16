@@ -5,6 +5,9 @@
     },
     "hash": {
       "length": 128
+    },
+    "token": {
+      "length": 80
     }
   }
 }

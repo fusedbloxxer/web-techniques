@@ -2,6 +2,7 @@
 const {ProductsService} = require('./server/products/products.service.js');
 const {AccountService} = require('./server/account/account.service.js');
 const {EmailService} = require('./server/services/email.service.js');
+const {TokenService} = require('./server/services/token.service.js');
 
 // Import Routers
 const productsRouter = require('./server/products/products.routes.js');
@@ -61,20 +62,17 @@ const emailService = new EmailService({
     host,
 });
 
-const accountService = new AccountService({
+const tokenService = new TokenService({
     dbCon: client,
-    emailService,
     appSettings,
 });
 
-// emailService.sendEmail({
-//     receiptEmail: 'andreeionescu67@gmail.com',
-//     subject: "test",
-//     plain: "ok",
-//     html: 'ok'
-// }).then(function sentEmail(response) {
-//     console.log(response)
-// })
+const accountService = new AccountService({
+    dbCon: client,
+    tokenService,
+    emailService,
+    appSettings,
+});
 
 // Prepare common data required by all routers
 app.use("/*", function(req, res, next) {

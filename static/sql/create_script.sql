@@ -78,6 +78,8 @@ CREATE TABLE app_user(
 	password_salt VARCHAR(1024) NOT NULL,
 	sight_issue BOOLEAN DEFAULT FALSE NOT NULL,
 	preference_id INT REFERENCES user_preference(preference_id) NOT NULL UNIQUE,
+	time_token VARCHAR(80) NOT NULL,
+	activate_token VARCHAR(80) NOT NULL,
 	photo VARCHAR(300)
 );
 
