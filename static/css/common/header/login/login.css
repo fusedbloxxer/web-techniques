@@ -1,4 +1,12 @@
+#login-container {
+  width: 100%;
+  display: flex;
+  margin-bottom: 15px;
+  justify-content: center;
+  flex-direction: row;
+}
 #login-container .card {
+  width: 50%;
   background-color: var(--color-primary);
 }
 #login-container label, #login-container .form-text {

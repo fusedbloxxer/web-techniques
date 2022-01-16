@@ -6,11 +6,11 @@
       method="post"
       action="<%= locals.action %>">
 
-      <div class="row">
-        <label class="form-label col-2" for="in-username">
+      <div class="mb-3 row d-flex">
+        <label class="col-form-label col-lg-3 col-md-5 col-sm-6" for="in-username">
           Username:
         </label>
-        <div class="col-10">
+        <div class="col-lg-7 col-md-6 col-sm-6 flex-fill">
           <input
             type="text"
             name="username"
@@ -21,11 +21,11 @@
         </div>
       </div>
 
-        <div class="row">
-          <label class="form-label col-2" for="in-password">
+        <div class="mb-3 row d-flex">
+          <label class="col-form-label col-lg-3 col-md-5 col-sm-6" for="in-password">
             Password:
           </label>
-          <div class="col-10">
+          <div class="col-lg-7 col-md-6 col-sm-6 flex-fill">
             <input
             id="in-password"
             type="password"
@@ -36,7 +36,8 @@
             required>
           </div>
         </div>
-        <div class="form-text">
+
+        <div class="form-text mb-3">
           The password must contain 1 lowercase letter, 1 uppercase
           letter, at least two digits and a dot.
         </div>
