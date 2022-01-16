@@ -7,16 +7,18 @@ window.addEventListener("DOMContentLoaded", function () {
   }
 
   registerForm.onsubmit = function () {
+    const registerForm = document.getElementById("register-form");
+
     const formIn = {
-      passwordAgainIn: document.getElementById("in-password-again"),
-      sightIssueIn: document.getElementById("in-sight-issue"),
-      firstNameIn: document.getElementById("in-first-name"),
-      lastNameIn: document.getElementById("in-last-name"),
-      usernameIn: document.getElementById("in-username"),
-      passwordIn: document.getElementById("in-password"),
-      emailIn: document.getElementById("in-email"),
-      colorIn: document.getElementById("in-color"),
-      photoIn: document.getElementById("in-photo"),
+      passwordAgainIn: registerForm.getElementById("in-password-again"),
+      sightIssueIn: registerForm.getElementById("in-sight-issue"),
+      firstNameIn: registerForm.getElementById("in-first-name"),
+      lastNameIn: registerForm.getElementById("in-last-name"),
+      usernameIn: registerForm.getElementById("in-username"),
+      passwordIn: registerForm.getElementById("in-password"),
+      emailIn: registerForm.getElementById("in-email"),
+      colorIn: registerForm.getElementById("in-color"),
+      photoIn: registerForm.getElementById("in-photo"),
     };
 
     // Assert all input fields exist

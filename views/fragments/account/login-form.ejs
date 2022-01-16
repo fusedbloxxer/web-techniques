@@ -1,10 +1,11 @@
+<% if (!locals.user) { %>
 <div id="login-container">
   <div class="card">
     <div class="card-body">
       <form
-      id="login-form"
-      method="post"
-      action="<%= locals.action %>">
+        id="login-form"
+        method="post"
+        action="/account/login">
 
       <div class="mb-3 row d-flex">
         <label class="col-form-label col-lg-3 col-md-5 col-sm-6" for="in-username">
@@ -42,15 +43,21 @@
           letter, at least two digits and a dot.
         </div>
 
-        <div class="d-grid gap-2">
+        <div class="row d-flex">
           <button
-            class="btn btn-block btn-primary"
+            class="btn btn-block btn-primary col-5 me-1 flex-fill"
             id="in-submit"
             type="submit">
             Login
           </button>
+          <a
+            href="/account/register"
+            class="btn btn-secondary col-5 ms-1 flex-fill">
+            Register
+          </a>
         </div>
       </form>
     </div>
   </div>
 </div>
+<% } %>

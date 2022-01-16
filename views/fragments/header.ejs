@@ -113,18 +113,6 @@
                 </li>
 
                 <li class="menu-item">
-                    <a href="/account">Account</a>
-                    <ul class="submenu">
-                        <li class="submenu-item">
-                            <a href="/account/login">Login</a>
-                        </li>
-                        <li class="submenu-item">
-                            <a href="/account/register">Register</a>
-                        </li>
-                    </ul>
-                </li>
-
-                <li class="menu-item">
                     <a href="/orders">Orders</a>
                 </li>
 
@@ -135,6 +123,21 @@
                 <li class="menu-item">
                     <a href="/about">About</a>
                 </li>
+
+                <% if (locals.user) { %>
+                    <li class="menu-item">
+                        <a href="/account">Hello, <%-user.username%></a>
+                        <ul class="submenu">
+                            <li class="submenu-item">
+                                <a
+                                    title="logout"
+                                    href="/account/<%-user.username%>/logout">
+                                    Logout
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                <% } %>
             </ul>
         </nav>
     </div>
