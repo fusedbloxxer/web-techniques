@@ -39,6 +39,27 @@ function TokenService({
     const token = Array(length).fill(0).map(() => lodash.sample(consonants));
     return token.join('');
   }
+
+  this.confirmUserTokens = function(username, timeToken, activateToken) {
+    const queryConfirmAccount = `
+      UPDATE app_user
+      SET account_confirmed = TRUE
+      WHERE username        = $1 AND
+            time_token      = $2 AND
+            activate_token  = $3;
+    `;
+
+    // Bundle the values for the parameterized query
+    const values = [
+      username,
+      timeToken,
+      activateToken,
+    ]
+
+    return rxjs.from(dbCon.query(queryConfirmAccount, values)).pipe(
+      map(data => data.rowCount > 0)
+    );
+  }
 }
 
 module.exports = {

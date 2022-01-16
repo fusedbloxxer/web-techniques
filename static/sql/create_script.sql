@@ -80,6 +80,7 @@ CREATE TABLE app_user(
 	preference_id INT REFERENCES user_preference(preference_id) NOT NULL UNIQUE,
 	time_token VARCHAR(80) NOT NULL,
 	activate_token VARCHAR(80) NOT NULL,
+	account_confirmed BOOLEAN DEFAULT FALSE NOT NULL,
 	photo VARCHAR(300)
 );
 

@@ -112,6 +112,7 @@ app.use('/products', productsRouter({
 }));
 
 app.use('/account', accountRouter({
+    tokenService,
     dbCon: client,
     accountService,
     productsService,

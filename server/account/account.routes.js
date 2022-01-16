@@ -5,6 +5,7 @@ const fs = require('fs');
 
 function init({
   dbCon,
+  tokenService,
   accountService,
   productsService,
 }) {
@@ -117,6 +118,29 @@ function init({
           return;
 
       console.log(` == Image (${name}): ${file.originalFilename} has been uploaded`);
+    });
+  });
+
+  router.get('/activate/:timeToken/:username/:activateToken', (req, res, next) => {
+    tokenService.confirmUserTokens(
+      req.params.username,
+      req.params.timeToken,
+      req.params.activateToken
+    ).subscribe({
+      next: (accountConfirmed) => {
+        if (!accountConfirmed) {
+          res.render(`pages/content/account/register`, {
+            error: 'Invalid account confirmation link.',
+          });
+          return;
+        }
+        res.render(`pages/content/account/confirm`);
+      },
+      error: (err) => {
+        res.render(`pages/content/account/register`, {
+          error: 'Database error',
+        });
+      }
     });
   });
 
