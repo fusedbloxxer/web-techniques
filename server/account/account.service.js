@@ -183,6 +183,27 @@ function AccountService({
       }))
     );
   };
+
+  this.loginUser = function(username, password) {
+  };
+
+  this.getUser = function(username) {
+    const queryUserExists = `
+      SELECT *
+      FROM app_user
+      WHERE username = $1;
+    `;
+
+  const queryRequest = dbCon.query(queryUserExists, [username,]);
+
+  const user$ = rxjs
+    .from(queryRequest)
+    .pipe(
+      map(data => data.rows?.[0]),
+    );
+
+  return user$;
+  }
 }
 
 module.exports = {

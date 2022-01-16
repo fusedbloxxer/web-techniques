@@ -1,7 +1,9 @@
 const formidable = require('formidable');
 const express = require("express");
+const crypto = require('crypto');
 const path = require('path');
 const fs = require('fs');
+const { route } = require('express/lib/application');
 
 function init({
   dbCon,
@@ -26,6 +28,13 @@ function init({
   );
 
   router.get('', (req, res, next) => {
+    if (!req.session.user) {
+      next({
+        status: 401,
+        msg: 'You do not have permission to access this page.',
+      });
+      return;
+    }
     res.render(`pages/content/account/account`);
   });
 
@@ -142,6 +151,61 @@ function init({
         });
       }
     });
+  });
+
+  router.post('/login', (req, res, next) => {
+    const form = new formidable.IncomingForm();
+    form.parse(req, function(err, fields, files) {
+      accountService.getUser(fields.username).subscribe({
+        next: (user) => {
+          if (!user) {
+            next({
+              msg: `User ${fields.username} does not exist`,
+              status: 404,
+            });
+            return;
+          }
+          if (!tokenService.matchPasswordsHash(user, fields.password)) {
+            req.session.loginMessage = 'Login failed';
+            next({
+              msg: `Invalid password for user ${fields.username}.`,
+              status: 401,
+            });
+            return;
+          }
+          if (!user.account_confirmed) {
+            req.session.loginMessage = 'Login failed';
+            next({
+              msg: `The user ${fields.username} has not verified its email.`,
+              status: 401,
+            });
+            return;
+          }
+          if (req.session) {
+            req.session.loginMessage = undefined;
+            req.session.user = {
+              id: user.user_id,
+              username: user.username,
+              firstName: user.first_name,
+              lastName: user.last_name,
+              email: user.email,
+            };
+          }
+          res.redirect('/');
+          return;
+        },
+        error: (err) => next({
+          msg: 'Database Error',
+          status: 500,
+        })
+      });
+    });
+  });
+
+  router.get('/:username/logout', (req, res, next) => {
+    req.session.destroy();
+    res.locals.user = undefined;
+    res.redirect('/');
   });
 
   return router;

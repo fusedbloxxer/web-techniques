@@ -12,6 +12,7 @@ const applicationRouter = require('./server/app.routes.js');
 
 // Import dependencies
 const express = require('express');
+const session = require('express-session');
 const {Client} = require("pg");
 const path = require('path');
 const fs = require('fs');
@@ -74,12 +75,24 @@ const accountService = new AccountService({
     appSettings,
 });
 
+// Use sessions to manage user state
+app.use(session({
+    secret: secrets.session.secret,
+    saveUninitialized: false,
+    resave: true,
+}));
+
 // Prepare common data required by all routers
 app.use("/*", function(req, res, next) {
+    // Add user session to each ejs page
+    res.locals.user = req.session.user;
+
+    // Specify necessary data
     const requests = {
         productTypes: productsService.fetchProductTypes(),
     };
 
+    // Resolve requests and provide data to each user request
     forkJoin(requests).subscribe({
         next: (response) => {
             for (const key in response) {
@@ -132,7 +145,8 @@ app.use(function errorLogger(err, req, res, next) {
 app.use(function viewNotFoundHandler(err, req, res, next) {
     if (!err.message?.includes('Failed to lookup view') &&
         !err.message?.includes('Cannot find') &&
-        !err.message?.includes('ENOENT')) {
+        !err.message?.includes('ENOENT') &&
+        err.status != 404) {
         next(err);
         return;
     }
@@ -140,7 +154,7 @@ app.use(function viewNotFoundHandler(err, req, res, next) {
         error: {
             code: 404,
             title: 'Not Found!',
-            message: 'Could not find the file you requested.',
+            message: err.msg || 'Could not find the file you requested.',
             image: '/static/resources/images/errors/error-not-found.jpg'
         }
     });
@@ -172,6 +186,21 @@ app.use(function badRequestHandler(err, req, res, next) {
             title: 'Bad Request',
             message: 'You made an invalid request to the server!',
             image: '/static/resources/images/errors/bad-request.jpg'
+        }
+    });
+});
+
+app.use(function unauthorizedHandler(err, req, res, next) {
+    if (err.status !== 401) {
+        next(err);
+        return;
+    }
+    res.status(401).render('pages/errors/error', {
+        error: {
+            code: 401,
+            title: 'Unauthorized',
+            message: err.msg || 'You aren\'t allowed to access this resource.',
+            image: '/static/resources/images/errors/error-unauthorized.jpg'
         }
     });
 });

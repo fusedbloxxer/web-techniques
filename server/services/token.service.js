@@ -1,5 +1,6 @@
 const { map } = require('rxjs/operators');
 const lodash = require('lodash');
+const crypto = require('crypto');
 const rxjs = require('rxjs');
 
 function TokenService({
@@ -28,7 +29,7 @@ function TokenService({
     return rxjs.from(dbCon.query(queryUpdateTokens, values)).pipe(
       map(data => data.rows?.[0])
     );
-  }
+  };
 
   this.generateActiveToken = function(length) {
     const consonants = Array('Z'.charCodeAt(0) - 'A'.charCodeAt(0))
@@ -38,7 +39,7 @@ function TokenService({
       .map(x => String.fromCharCode(x));
     const token = Array(length).fill(0).map(() => lodash.sample(consonants));
     return token.join('');
-  }
+  };
 
   this.confirmUserTokens = function(username, timeToken, activateToken) {
     const queryConfirmAccount = `
@@ -59,7 +60,19 @@ function TokenService({
     return rxjs.from(dbCon.query(queryConfirmAccount, values)).pipe(
       map(data => data.rowCount > 0)
     );
-  }
+  };
+
+  this.matchPasswordsHash = function(user, pass) {
+    // Compute input password hash
+    const inputPasswordHash = crypto.scryptSync(
+      pass,
+      user.password_salt,
+      appSettings.security.hash.length,
+    ).toString('base64');
+
+    // Match password hashes
+    return inputPasswordHash === user.password_hash;
+  };
 }
 
 module.exports = {
