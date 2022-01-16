@@ -5,11 +5,12 @@ body {
 }
 
 nav {
-  top: 0px;
+  top: 160px;
   left: 0px;
   width: 100%;
+  height: 0px;
   z-index: 1000;
-  position: fixed;
+  position: absolute;
   background-color: var(--color-primary);
 }
 nav > ul.menu,
@@ -117,6 +118,9 @@ nav > ul.menu > li > ul.submenu > li:hover > a::after {
     box-sizing: border-box;
   }
 
+  nav {
+    height: auto;
+  }
   nav > input[type=checkbox]#hamburger-checkbox:checked + ul.menu {
     flex-direction: column;
     transform: scaleX(1);

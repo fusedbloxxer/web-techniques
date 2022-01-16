@@ -1,0 +1,55 @@
+<div id="login-container">
+  <div class="card">
+    <div class="card-body">
+      <form
+      id="login-form"
+      method="post"
+      action="<%= locals.action %>">
+
+      <div class="row">
+        <label class="form-label col-2" for="in-username">
+          Username:
+        </label>
+        <div class="col-10">
+          <input
+            type="text"
+            name="username"
+            id="in-username"
+            class="form-control"
+            required
+            pattern="[A-Za-z0-9\-]{3,}">
+        </div>
+      </div>
+
+        <div class="row">
+          <label class="form-label col-2" for="in-password">
+            Password:
+          </label>
+          <div class="col-10">
+            <input
+            id="in-password"
+            type="password"
+            required
+            class="form-control"
+            name="password"
+            pattern="(?=.*[A-Z])(?=.*[a-z])(?=.*\d.*\d)(?=.*\.).*"
+            required>
+          </div>
+        </div>
+        <div class="form-text">
+          The password must contain 1 lowercase letter, 1 uppercase
+          letter, at least two digits and a dot.
+        </div>
+
+        <div class="d-grid gap-2">
+          <button
+            class="btn btn-block btn-primary"
+            id="in-submit"
+            type="submit">
+            Login
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

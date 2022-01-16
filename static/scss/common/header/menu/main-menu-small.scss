@@ -21,6 +21,8 @@
     }
 
     nav {
+        height: auto;
+
         > input[type="checkbox"]#hamburger-checkbox:checked + ul.menu {
             flex-direction: column;
             transform: scaleX(1);

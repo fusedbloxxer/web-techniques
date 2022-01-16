@@ -1,0 +1,8 @@
+#login-container .card {
+  background-color: var(--color-primary);
+}
+#login-container label, #login-container .form-text {
+  color: var(--text-color-primary);
+}
+
+/*# sourceMappingURL=login.css.map */
