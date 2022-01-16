@@ -45,3 +45,12 @@
 
 <!-- Track the current page in the menu -->
 <script src="/static/js/common/pageTracker.js"></script>
+
+<!-- Server-Side Settings -->
+<% if (locals.user?.sightIssue) { %>
+  <style>
+    body {
+      font-size: 2em;
+    }
+  </style>
+<% } %>

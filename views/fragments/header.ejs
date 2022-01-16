@@ -129,9 +129,12 @@
                         <a href="/account">Hello, <%-user.username%></a>
                         <ul class="submenu">
                             <li class="submenu-item">
-                                <a
-                                    title="logout"
-                                    href="/account">
+                                <a href="/account/<%-user.username%>/profile">
+                                    Profile
+                                </a>
+                            </li>
+                            <li class="submenu-item">
+                                <a href="/account">
                                     Settings
                                 </a>
                             </li>

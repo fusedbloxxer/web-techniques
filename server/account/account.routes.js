@@ -189,6 +189,10 @@ function init({
               firstName: user.first_name,
               lastName: user.last_name,
               email: user.email,
+              chatColor: user.chat_color,
+              sightIssue: user.sight_issue,
+              preferenceId: user.preference_id,
+              photo: user.photo,
             };
           }
           res.redirect('/');
@@ -206,6 +210,38 @@ function init({
     req.session.destroy();
     res.locals.user = undefined;
     res.redirect('/');
+  });
+
+  router.get('/:username/profile', (req, res, next) => {
+    if (!req.session.user) {
+      next({
+        status: 401,
+        msg: 'You do not have permission to access this page.',
+      });
+      return;
+    }
+    res.render(`pages/content/account/profile`);
+  });
+
+  router.post('/validate-password', (req, res, next) => {
+    if (!req.session.user) {
+      res.status(401).send(JSON.stringify({
+        msg: 'Invalid user.'
+      }));
+      return;
+    }
+
+    const isPassValid = tokenService
+      .matchPasswordsHash(req.session.user, req.body.password);
+
+    if (!isPassValid) {
+      res.status(401).send(JSON.stringify({
+        msg: 'Invalid password!'
+      }));
+      return;
+    }
+
+    res.status(200).send(JSON.stringify({}));
   });
 
   return router;

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Include Common Head Fragment -->
+  <%- include('../../../fragments/head.ejs') %>
+
+  <!-- Page-Specific Information -->
+  <meta name="keywords" content="account, information, edit, settings, configure" />
+  <meta name="description" content="Your personal profile page." />
+  <title>Andrion - Profile</title>
+  <!-- CSS Styling -->
+  <!-- Add Scripts -->
+  <script src="/static/js/content/account/profile/update-info.js">
+  </script>
+</head>
+
+<body>
+  <%- include('../../../fragments/header.ejs', {productTypes}) %>
+
+    <main>
+      <%- include('../../../fragments/account/profile-form.ejs') %>
+    </main>
+
+    <%- include('../../../fragments/footer.ejs') %>
+</body>
+
+</html>

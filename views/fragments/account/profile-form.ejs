@@ -1,0 +1,107 @@
+<div id="profile-container">
+  <form
+    id="update-profile-form"
+    method="post"
+    action="/account/<%=user.username%>/profile/update"
+    enctype="multipart/form-data">
+
+    <label class="form-label" for="in-first-name">
+      First Name:
+    </label>
+    <input
+      type="text"
+      name="first-name"
+      id="in-first-name"
+      value="<%=user.firstName%>"
+      class="form-control"
+      pattern="[A-Z][a-z]+([-\.][A-Z][a-z]+)?"
+      required>
+
+    <label class="form-label" for="in-last-name">
+      Last Name:
+    </label>
+    <input
+      type="text"
+      name="last-name"
+      class="form-control"
+      id="in-last-name"
+      pattern="[A-Z][a-z]+([-\.][A-Z][a-z]+)?"
+      value="<%=user.lastName%>"
+      required>
+
+    <label class="form-label" for="in-username">
+      Username:
+    </label>
+    <input
+      type="text"
+      name="username"
+      id="in-username"
+      class="form-control"
+      value="<%=user.username%>"
+      required
+      pattern="[A-Za-z0-9\-]{3,}">
+
+    <label class="form-label" for="in-email">
+      Email:
+    </label>
+    <input
+      type="text"
+      name="email"
+      id="in-email"
+      class="form-control"
+      value="<%=user.email%>"
+      pattern="(?:[^\.][a-zA-Z\d\.]+[^\.])@(?:[^\.][a-zA-Z\d\.]+[^\.])"
+      size="50"
+      required>
+
+    <label class="form-label" for="in-color">
+      Chat Color:
+    </label>
+    <select class="form-select" name="color" id="in-color">
+      <% for (const color of ['red', 'blue', 'green']) { %>
+        <% if (user.chatColor === color) { %>
+        <option value="<%=user.chatColor%>" selected>
+          <%-user.chatColor%>
+        </option>
+        <% } else { %>
+          <option value="<%=color%>">
+            <%-color%>
+          </option>
+        <% } %>
+      <% } %>
+    </select>
+
+    <label for="in-photo" class="form-label">
+      Photo:
+    </label>
+    <input
+      class="form-control"
+      id="in-photo"
+      type="file"
+      value="<%=user.photo%>"
+      name="photo">
+
+    <div class=" mt-2 form-check form-switch">
+      <label class="form-check-label" for="in-sight-issue">
+        Sight Issue
+      </label>
+      <input
+        class="form-check-input"
+        role="switch"
+        id="in-sight-issue"
+        type="checkbox"
+        name="sight-issue"
+        <%- user.sightIssue ? 'checked' : '' %>
+      >
+    </div>
+
+    <div class="mt-2 d-grid gap-2">
+      <button
+        class="btn btn-block btn-primary"
+        id="in-submit"
+        type="submit">
+        Update
+      </button>
+    </div>
+  </form>
+</div>
